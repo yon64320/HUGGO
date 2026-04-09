@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Tarifs HUGGO — Paliers fonctionnalités | 0% commission",
+    "description": "Découvrez les paliers HUGGO : Essentiel, Smart, Marketing, Analytics. Zéro commission sur vos ventes. Demandez un devis personnalisé sous 24h."
+  },
+  "hero": {
+    "title": "Un palier adapté à chaque commerce.",
+    "subtitle": "Tarification adaptée à votre activité et votre volume. Zéro commission sur vos ventes, quel que soit le palier choisi.",
+    "cta-primary": "Demander un devis",
+    "micro-text": "Devis personnalisé sous 24h"
+  },
+  "tiers": {
+    "title": "Quatre paliers, une même promesse : zéro commission."
+  },
+  "included": {
+    "title": "Quel que soit votre palier, ces fondamentaux sont inclus.",
+    "items": [
+      "Zéro commission sur toutes vos ventes — abonnement mensuel fixe",
+      "Synchronisation caisse — HUGGO se connecte à votre système de caisse existant",
+      "Paiement multi-méthodes — Apple Pay, Google Pay, Stripe, Contodeo",
+      "Mises à jour incluses — votre assistant évolue sans surcoût"
+    ]
+  },
+  "roi": {
+    "title": "Le retour sur investissement se voit dès le premier mois.",
+    "items": [
+      {
+        "title": "+15 à +30% de panier moyen.",
+        "description": "Vos clients commandent plus quand la friction disparaît. Recommandations produits, mémoire client, relance panier : HUGGO augmente le ticket moyen naturellement."
+      },
+      {
+        "title": "0% de commission vs 20-30% sur les plateformes.",
+        "description": "Sur un chiffre d'affaires de 5 000 € mensuels via une plateforme de livraison, vous reversez 1 000 à 1 500 € de commissions. Avec HUGGO : zéro."
+      },
+      {
+        "title": "Opérationnel le jour même.",
+        "description": "Pas de semaines de paramétrage, pas de développeur à payer. Votre assistant WhatsApp est en ligne en quelques minutes."
+      }
+    ]
+  },
+  "network": {
+    "title": "Vous gérez un réseau de 50+ points de vente ?",
+    "description": "Tarification dédiée, dégressive selon le volume. Un interlocuteur commercial dédié pour construire votre proposition sur mesure.",
+    "cta": "Nous contacter →"
+  },
+  "faq": {
+    "title": "Questions fréquentes — Tarifs",
+    "items": [
+      {
+        "question": "Pourquoi les prix ne sont-ils pas affichés ?",
+        "answer": "Parce que la tarification est adaptée à votre activité, votre volume et votre verticale (retail, franchise, collectivité). Nous préférons vous proposer un devis juste plutôt qu'un prix générique. Réponse sous 24h."
+      },
+      {
+        "question": "Y a-t-il des commissions sur les ventes ?",
+        "answer": "Non. Aucune commission, aucun pourcentage prélevé sur vos ventes. L'abonnement est mensuel et fixe."
+      },
+      {
+        "question": "Puis-je changer de palier ?",
+        "answer": "Oui. Vous pouvez évoluer vers un palier supérieur à tout moment, sans interruption de service."
+      },
+      {
+        "question": "Quel est le coût pour un réseau ?",
+        "answer": "La tarification réseau est dégressive selon le nombre de points de vente. Contactez notre équipe commerciale pour un devis adapté."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Obtenez votre devis en 24h.",
+    "subtitle": "Dites-nous quel est votre commerce — nous vous envoyons un devis adapté, sans engagement.",
+    "cta-primary": "Demander un devis",
+    "cta-secondary": "Demander une démo"
+  }
+}

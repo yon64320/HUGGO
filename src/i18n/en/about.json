@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "About HUGGO — Vision, Partners, Commitments",
+    "description": "HUGGO, an Atidgo subsidiary, turns WhatsApp into a sales channel for retailers. Vision, tech partners, RSE commitments. Request a demo."
+  },
+  "hero": {
+    "title": "HUGGO, the AI assistant that brings retailers closer to their customers.",
+    "subtitle": "Born from the conviction that WhatsApp is the natural channel for local commerce. Built for retailers who want to take back control of their customer relationships — without complexity, without commission.",
+    "cta-primary": "Request a demo"
+  },
+  "vision": {
+    "title": "Why HUGGO exists.",
+    "description": "Local commerce feeds neighborhoods, animates villages, and creates connections. But every year, retailers lose ground to platforms that capture their customers and erode their margins.\n\nHUGGO was born from one observation: WhatsApp is already on 95% of French smartphones. Your customers use it 50 times a day. The channel exists — it just needs to become a sales channel.\n\nThat's what HUGGO does: a personalized AI assistant for every retailer, capable of taking orders, recommending products, and building loyalty. Directly within a WhatsApp conversation. No app to download, no account to create, no commission to pay."
+  },
+  "company": {
+    "title": "Built on solid foundations.",
+    "description": "HUGGO is a subsidiary of Atidgo, a specialist in conversational technology and AI applied to commerce. This lineage gives HUGGO a proven technical infrastructure, a network of technology partners, and a history of €50M in qualified transactional data.\n\nHUGGO is the entity fully dedicated to local commerce: Atidgo's technology, focused on the needs of retailers and their customers."
+  },
+  "partners": {
+    "title": "Our technology partners.",
+    "items": [
+      { "name": "Google Cloud Platform", "description": "Cloud infrastructure and artificial intelligence. HUGGO is built on GCP for scalability, reliability, and AI capabilities." },
+      { "name": "Centrale Paris / France", "description": "Academic partnership for the predictive model (weather + local event crossover)." },
+      { "name": "ACSEO", "description": "Technical integrator. Development partner since the platform's inception." },
+      { "name": "Orisha Distribution", "description": "ERP synchronization (products, stock, orders). The interface with existing POS systems." },
+      { "name": "Contodeo", "description": "Integrated payment. Multi-method within the WhatsApp conversation." }
+    ]
+  },
+  "numbers": {
+    "title": "HUGGO by the numbers.",
+    "items": [
+      { "value": "15M", "label": "orders processed since March 2025" },
+      { "value": "€50M", "label": "in qualified transactional data (AI data)" },
+      { "value": "3", "label": "CHR distributors deploying HUGGO nationwide" },
+      { "value": "~50", "label": "integrations available via HubRise" }
+    ]
+  },
+  "csr": {
+    "title": "Six concrete commitments.",
+    "items": [
+      { "title": "Anti-waste", "description": "Pre-orders let the retailer produce to demand. Less surplus, less loss, less waste." },
+      { "title": "Digital inclusion", "description": "HUGGO runs on WhatsApp — the most widespread app in France. No learning curve, no account to create. Accessible to elderly people, non-tech-savvy users, and tourists." },
+      { "title": "Local commerce", "description": "Every order through HUGGO goes directly to the retailer. No middleman platform, no commission. Revenue stays local." },
+      { "title": "Short supply chain", "description": "Through HUGGO Collectivity, local producers sell directly to consumers. From field to table, no detour." },
+      { "title": "Quality of life", "description": "Shorter lines for customers. Less operational stress for retailers. Pre-orders smooth activity and reduce rush hours." },
+      { "title": "Accessibility", "description": "Order from home, without traveling, without time constraints. For people with reduced mobility, caregivers, and families far from shops." }
+    ]
+  },
+  "final-cta": {
+    "title": "Join the retailers transforming their customer relationships.",
+    "cta-primary": "Request a demo",
+    "cta-secondary": "Contact us"
+  }
+}

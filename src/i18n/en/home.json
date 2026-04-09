@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "HUGGO — WhatsApp Ordering for Retailers | 0% Commission",
+    "description": "Turn WhatsApp into a sales channel for your store. AI assistant 24/7, 0% commission, live in minutes. Request a demo."
+  },
+  "hero": {
+    "title": "Your customers order on WhatsApp. You keep every cent.",
+    "subtitle": "HUGGO gives your store its own AI assistant on WhatsApp. It takes orders, recommends your products, and keeps your customers coming back — 24/7. You're live in minutes.",
+    "baseline": "You chat, You go!",
+    "cta-primary": "Request a demo",
+    "cta-secondary": "I'm a distributor / network — Contact us",
+    "micro-text": "We'll call you within 24h · No commitment"
+  },
+  "stats": {
+    "title": "The numbers speak."
+  },
+  "logos": {
+    "title": "Works with your tools"
+  },
+  "benefits": {
+    "title": "What HUGGO changes for your business.",
+    "items": [
+      {
+        "title": "Keep 100% of your margins.",
+        "subtitle": "Direct channel, zero commission",
+        "description": "WhatsApp is a direct channel between you and your customers. No middleman platform, no commission. Your sales are yours.",
+        "proof": "0% commission vs 20-30% on delivery platforms."
+      },
+      {
+        "title": "A salesperson who never sleeps.",
+        "subtitle": "AI assistant, 24/7",
+        "description": "Your assistant takes orders, recommends your products, and follows up on abandoned carts. Even at 11 PM, even on Sundays.",
+        "proof": "15M orders processed since March 2025."
+      },
+      {
+        "title": "Snap your menu, and you're set.",
+        "subtitle": "Live in minutes",
+        "description": "No developer, no training, no hardware. Take a photo of your menu or sync your POS system: HUGGO builds your assistant automatically.",
+        "proof": "0 to 30% of customer base digitized within 1 month."
+      },
+      {
+        "title": "WhatsApp, kiosk, POS, website: one single basket.",
+        "subtitle": "Synchronized basket everywhere",
+        "description": "Your customer starts an order on WhatsApp, modifies it in-store, pays however they like. Everything syncs in real time with your POS.",
+        "proof": "Connected to major POS systems via HubRise and Orisha Distribution."
+      }
+    ]
+  },
+  "offers": {
+    "title": "HUGGO adapts to your business.",
+    "items": [
+      {
+        "title": "Retailers",
+        "description": "Bakery, restaurant, caterer, grocery, wine shop, bar, décor, clothing — your AI assistant handles orders and builds loyalty with regulars.",
+        "cta": "Discover the Retail offer →",
+        "link": "retail"
+      },
+      {
+        "title": "Networks & Franchises",
+        "description": "One AI assistant per location, one consolidated network view. Deploy HUGGO across 50, 200, or 500 locations at once.",
+        "cta": "Discover the Franchise offer →",
+        "link": "franchise"
+      },
+      {
+        "title": "Local authorities & Short supply chains",
+        "description": "Local producers, mobile vendors, municipalities without nearby shops. HUGGO creates a direct WhatsApp sales channel — no infrastructure needed.",
+        "cta": "Discover the Collectivity offer →",
+        "link": "collectivity"
+      }
+    ]
+  },
+  "how-it-works-summary": {
+    "title": "Live in 4 steps.",
+    "steps": [
+      {
+        "title": "Find your store",
+        "description": "HUGGO locates your business on Google Business."
+      },
+      {
+        "title": "Import your products",
+        "description": "Photo of your menu or direct sync from your POS."
+      },
+      {
+        "title": "Your assistant is built",
+        "description": "AI sets up a personalized WhatsApp assistant for your store."
+      },
+      {
+        "title": "Your customers start ordering",
+        "description": "Your number goes live on Google Business. Orders roll in."
+      }
+    ],
+    "cta": "See how it works in detail →"
+  },
+  "social-proof": {
+    "title": "They run HUGGO every day.",
+    "testimonial-placeholder": "Placeholder for retailer testimonial.",
+    "partners": {
+      "title": "Built with the best.",
+      "items": [
+        { "name": "Google Cloud Platform", "description": "Infrastructure and AI" },
+        { "name": "Orisha Distribution", "description": "ERP synchronization" },
+        { "name": "Centrale Paris/France", "description": "Predictive model" },
+        { "name": "Contodeo", "description": "Integrated payment" }
+      ]
+    }
+  },
+  "mascotte": {
+    "text": "Got a question? Message us on WhatsApp. We reply the way we like: fast and clear.",
+    "cta": "Chat on WhatsApp →"
+  },
+  "faq": {
+    "title": "Your questions, our answers.",
+    "items": [
+      {
+        "question": "My customers aren't tech-savvy — they'll never use this.",
+        "answer": "Your customers already use WhatsApp — it's on 95% of smartphones in France. Nothing to download, nothing to learn. They send a message, just like they do 50 times a day. The result: 60% of the customer base digitized in 3 months, including stores whose customers had never ordered online before."
+      },
+      {
+        "question": "WhatsApp is personal. Not for ordering.",
+        "answer": "WhatsApp Business is the most widely used commercial messaging channel in the world. Your customers would rather send a message than call or stand in line. The numbers confirm it: 15 million orders processed through HUGGO since March 2025."
+      },
+      {
+        "question": "It's expensive — I already have a website.",
+        "answer": "A website doesn't take orders automatically, recommend products, or follow up on abandoned carts. HUGGO does — 24/7, without hiring anyone. And unlike delivery platforms, zero commission on your sales. The result: +15 to +30% average basket increase."
+      },
+      {
+        "question": "I'm not a tech person — it sounds complicated.",
+        "answer": "Setup takes minutes. Take a photo of your menu — the AI handles the rest. No hardware, no training, no developer. Your assistant is live the same day."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Ready to take back control of your sales?",
+    "subtitle": "A 15-minute demo is all it takes to see HUGGO in action for your store.",
+    "cta-primary": "Request a demo",
+    "cta-secondary": "Contact us"
+  }
+}

@@ -1,0 +1,184 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SEOHead from '../../components/astro/SEOHead.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
+import ContactForm from '../../components/react/ContactForm';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'en';
+
+// Meta
+const metaTitle = await t(locale, 'contact', 'meta.title');
+const metaDescription = await t(locale, 'contact', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'contact', 'hero.title');
+const heroSubtitle = await t(locale, 'contact', 'hero.subtitle');
+
+// Form titles
+const merchantFormTitle = await t(locale, 'contact', 'merchant-form.title');
+const distributorFormTitle = await t(locale, 'contact', 'distributor-form.title');
+
+// Info
+const infoTitle = await t(locale, 'contact', 'info.title');
+const infoEmail = await t(locale, 'contact', 'info.email');
+const infoAddress = await t(locale, 'contact', 'info.address');
+const infoHours = await t(locale, 'contact', 'info.hours');
+
+// Reassurance (3 items)
+const reassuranceItems = [
+  {
+    title: await t(locale, 'contact', 'reassurance.items.0.title'),
+    description: await t(locale, 'contact', 'reassurance.items.0.description'),
+  },
+  {
+    title: await t(locale, 'contact', 'reassurance.items.1.title'),
+    description: await t(locale, 'contact', 'reassurance.items.1.description'),
+  },
+  {
+    title: await t(locale, 'contact', 'reassurance.items.2.title'),
+    description: await t(locale, 'contact', 'reassurance.items.2.description'),
+  },
+];
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/en/' },
+  { name: 'Contact', url: 'https://www.huggo.app/en/contact/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="contact" jsonLd={[breadcrumb]} />
+
+  <!-- ========== HERO ========== -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+            {heroTitle}
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">
+            {heroSubtitle}
+          </p>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORMS ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Merchant form -->
+        <ScrollReveal direction="left">
+          <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 md:p-10 border border-[var(--border-color)]">
+            <div class="mb-8">
+              <div class="w-12 h-12 rounded-xl bg-[var(--color-green-primary)]/10 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-[var(--text-primary)]">{merchantFormTitle}</h2>
+            </div>
+            <ContactForm client:visible locale={locale} formType="merchant" />
+          </div>
+        </ScrollReveal>
+
+        <!-- Distributor form -->
+        <ScrollReveal direction="right">
+          <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 md:p-10 border border-[var(--border-color)]">
+            <div class="mb-8">
+              <div class="w-12 h-12 rounded-xl bg-[var(--color-green-primary)]/10 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-[var(--text-primary)]">{distributorFormTitle}</h2>
+            </div>
+            <ContactForm client:visible locale={locale} formType="distributor" />
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT INFO ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {infoTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <!-- Email -->
+        <ScrollReveal delay={0.1}>
+          <div class="bg-[var(--bg-primary)] rounded-2xl p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[var(--text-primary)] mb-1">Email</h3>
+            <a href={`mailto:${infoEmail}`} class="text-[var(--color-green-primary)] hover:underline text-sm">
+              {infoEmail}
+            </a>
+          </div>
+        </ScrollReveal>
+
+        <!-- Address -->
+        <ScrollReveal delay={0.2}>
+          <div class="bg-[var(--bg-primary)] rounded-2xl p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[var(--text-primary)] mb-1">Address</h3>
+            <p class="text-sm text-[var(--text-secondary)]">{infoAddress}</p>
+          </div>
+        </ScrollReveal>
+
+        <!-- Hours -->
+        <ScrollReveal delay={0.3}>
+          <div class="bg-[var(--bg-primary)] rounded-2xl p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[var(--text-primary)] mb-1">Hours</h3>
+            <p class="text-sm text-[var(--text-secondary)]">{infoHours}</p>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REASSURANCE ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {reassuranceItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">{item.title}</h3>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

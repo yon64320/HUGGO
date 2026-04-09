@@ -1,0 +1,426 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { mainNav } from '@data/navigation';
+import type { Locale } from '@i18n/config';
+import { t } from '@i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ctaText = await t(locale, 'common', 'header-cta');
+---
+
+<header class="glass-nav" id="main-header">
+  <div class="glass-nav__inner">
+    <!-- Logo -->
+    <a href={`/${locale}/`} class="glass-nav__brand" aria-label="HUGGO - Accueil">
+      <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Chat bubble -->
+        <rect x="2" y="4" width="32" height="24" rx="6" fill="var(--color-green-primary, #4A9B4A)" />
+        <polygon points="10,28 16,34 18,28" fill="var(--color-green-primary, #4A9B4A)" />
+        <!-- HUGGO text inside bubble -->
+        <text x="18" y="20" text-anchor="middle" font-family="var(--font-display, 'Sora', sans-serif)" font-size="10" font-weight="700" fill="#ffffff">HUGGO</text>
+        <!-- HUGGO brand text -->
+        <text x="42" y="24" font-family="var(--font-display, 'Sora', sans-serif)" font-size="18" font-weight="700" fill="var(--text-primary, #1A1A2E)">HUGGO</text>
+      </svg>
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="glass-nav__desktop-nav" aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}>
+      <ul class="glass-nav__links">
+        {mainNav.map((item) => (
+          <li class={item.children ? 'glass-nav__dropdown' : ''}>
+            {item.children ? (
+              <>
+                <button
+                  type="button"
+                  class="glass-nav__link glass-nav__dropdown-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {item.label[locale]}
+                  <svg class="glass-nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <ul class="glass-nav__dropdown-menu">
+                  {item.children.map((child) => (
+                    <li>
+                      <a href={child.href[locale]} class="glass-nav__dropdown-link">
+                        {child.label[locale]}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a href={item.href[locale]} class="glass-nav__link">
+                {item.label[locale]}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Header CTA -->
+    <a href={locale === 'fr' ? '/fr/contact' : '/en/contact'} class="glass-nav__cta glass-nav__cta--desktop">
+      {ctaText}
+    </a>
+
+    <!-- Right-side actions -->
+    <div class="header-actions">
+      <!-- Dark mode toggle -->
+      <button
+        type="button"
+        class="dark-mode-toggle"
+        id="dark-mode-toggle"
+        aria-label={locale === 'fr' ? 'Basculer le mode sombre' : 'Toggle dark mode'}
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+
+      <!-- Language switcher -->
+      <LanguageSwitcher locale={locale} />
+
+      <!-- Mobile hamburger -->
+      <button
+        type="button"
+        class="glass-nav__toggle"
+        id="mobile-menu-toggle"
+        aria-label={locale === 'fr' ? 'Ouvrir le menu' : 'Open menu'}
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line class="hamburger-top" x1="3" y1="6" x2="21" y2="6" />
+          <line class="hamburger-mid" x1="3" y1="12" x2="21" y2="12" />
+          <line class="hamburger-bot" x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile navigation panel -->
+  <nav
+    id="mobile-nav"
+    class="mobile-nav-panel"
+    aria-label={locale === 'fr' ? 'Navigation mobile' : 'Mobile navigation'}
+    hidden
+  >
+    <ul class="mobile-nav-panel__links">
+      {mainNav.map((item) => (
+        <>
+          {item.children ? (
+            <>
+              <li class="mobile-nav-panel__group-label">{item.label[locale]}</li>
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.href[locale]} class="mobile-nav-panel__link mobile-nav-panel__link--child">
+                    {child.label[locale]}
+                  </a>
+                </li>
+              ))}
+            </>
+          ) : (
+            <li>
+              <a href={item.href[locale]} class="mobile-nav-panel__link">
+                {item.label[locale]}
+              </a>
+            </li>
+          )}
+        </>
+      ))}
+    </ul>
+    <a href={locale === 'fr' ? '/fr/contact' : '/en/contact'} class="glass-nav__cta glass-nav__cta--mobile">
+      {ctaText}
+    </a>
+  </nav>
+</header>
+
+<!-- Scroll behavior: add glass effect on scroll -->
+<script is:inline>
+  (function () {
+    var header = document.getElementById('main-header');
+    if (!header) return;
+
+    var scrollThreshold = 20;
+
+    function handleScroll() {
+      if (window.scrollY > scrollThreshold) {
+        header.classList.add('glass-nav--scrolled');
+      } else {
+        header.classList.remove('glass-nav--scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  })();
+</script>
+
+<!-- Dark mode toggle -->
+<script is:inline>
+  (function () {
+    var toggle = document.getElementById('dark-mode-toggle');
+    if (!toggle) return;
+
+    function getTheme() {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    toggle.addEventListener('click', function () {
+      var current = getTheme();
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  })();
+</script>
+
+<!-- Mobile menu toggle -->
+<script is:inline>
+  (function () {
+    var toggleBtn = document.getElementById('mobile-menu-toggle');
+    var mobileNav = document.getElementById('mobile-nav');
+    if (!toggleBtn || !mobileNav) return;
+
+    toggleBtn.addEventListener('click', function () {
+      var isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileNav.hidden = isOpen;
+    });
+  })();
+</script>
+
+<!-- Dropdown hover behavior -->
+<script is:inline>
+  (function () {
+    var dropdowns = document.querySelectorAll('.glass-nav__dropdown');
+    dropdowns.forEach(function(dropdown) {
+      var trigger = dropdown.querySelector('.glass-nav__dropdown-trigger');
+      if (!trigger) return;
+      dropdown.addEventListener('mouseenter', function() {
+        trigger.setAttribute('aria-expanded', 'true');
+      });
+      dropdown.addEventListener('mouseleave', function() {
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
+
+<style>
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3, 0.75rem);
+  }
+
+  /* Dark mode toggle button */
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: none;
+    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color var(--duration-fast, 150ms), border-color var(--duration-fast, 150ms);
+  }
+
+  .dark-mode-toggle:hover {
+    color: var(--color-green-primary, #4A9B4A);
+    border-color: var(--color-green-primary, #4A9B4A);
+  }
+
+  /* Show/hide sun/moon based on theme */
+  :global([data-theme="light"]) .icon-sun {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .icon-moon {
+    display: none;
+  }
+
+  /* Mobile nav panel */
+  .mobile-nav-panel {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.72));
+    backdrop-filter: blur(var(--glass-blur, 16px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 16px));
+    border-bottom: 1px solid var(--border-color-glass, rgba(0, 0, 0, 0.06));
+    padding: var(--space-4, 1rem) var(--space-6, 1.5rem);
+  }
+
+  .mobile-nav-panel__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 0.75rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav-panel__link {
+    display: block;
+    color: var(--text-secondary);
+    font-family: var(--font-body, sans-serif);
+    font-size: var(--text-base, 1rem);
+    font-weight: var(--font-weight-medium, 500);
+    padding: var(--space-2, 0.5rem) 0;
+    text-decoration: none;
+    transition: color var(--duration-fast, 150ms);
+  }
+
+  .mobile-nav-panel__link:hover {
+    color: var(--color-green-primary, #4A9B4A);
+  }
+
+  /* Dropdown container */
+  .glass-nav__dropdown {
+    position: relative;
+  }
+
+  /* Dropdown trigger button */
+  .glass-nav__dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+  }
+
+  .glass-nav__chevron {
+    transition: transform var(--duration-fast, 150ms);
+  }
+
+  .glass-nav__dropdown:hover .glass-nav__chevron,
+  .glass-nav__dropdown-trigger[aria-expanded="true"] + .glass-nav__dropdown-menu + .glass-nav__chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown menu */
+  .glass-nav__dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 12rem;
+    background: var(--glass-bg, rgba(255, 255, 255, 0.95));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-4px);
+    transition: opacity var(--duration-fast, 150ms), visibility var(--duration-fast, 150ms), transform var(--duration-fast, 150ms);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-nav__dropdown:hover .glass-nav__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .glass-nav__dropdown-link {
+    display: block;
+    padding: 0.625rem 1rem;
+    color: var(--text-secondary);
+    font-family: var(--font-body, sans-serif);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-weight-medium, 500);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: background var(--duration-fast, 150ms), color var(--duration-fast, 150ms);
+  }
+
+  .glass-nav__dropdown-link:hover {
+    background: var(--bg-green, rgba(74, 155, 74, 0.08));
+    color: var(--color-green-primary, #4A9B4A);
+  }
+
+  /* Mobile: group label */
+  .mobile-nav-panel__group-label {
+    display: block;
+    color: var(--text-secondary);
+    font-family: var(--font-body, sans-serif);
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--font-weight-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-2, 0.5rem) 0 0;
+    opacity: 0.6;
+    list-style: none;
+  }
+
+  .mobile-nav-panel__link--child {
+    padding-left: var(--space-4, 1rem);
+  }
+
+  /* Desktop: hide mobile nav panel, show desktop nav */
+  @media (min-width: 769px) {
+    .mobile-nav-panel {
+      display: none;
+    }
+  }
+
+  /* Mobile: hide desktop nav */
+  @media (max-width: 768px) {
+    .glass-nav__desktop-nav {
+      display: none;
+    }
+  }
+
+  .glass-nav__cta--desktop {
+    display: inline-flex;
+  }
+
+  .glass-nav__cta--mobile {
+    display: inline-flex;
+    margin-top: var(--space-4, 1rem);
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .glass-nav__cta--desktop {
+      display: none;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .glass-nav__cta--mobile {
+      display: none;
+    }
+  }
+</style>

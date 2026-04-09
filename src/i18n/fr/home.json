@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "HUGGO — Commande WhatsApp commerçants | 0% commission",
+    "description": "Transformez WhatsApp en canal de vente pour votre commerce. Assistant IA 24/7, 0% commission, opérationnel en quelques minutes. Demandez une démo."
+  },
+  "hero": {
+    "title": "Vos clients commandent par WhatsApp. Vous encaissez sans commission.",
+    "subtitle": "HUGGO donne à votre commerce son propre assistant IA sur WhatsApp. Il prend les commandes, recommande vos produits, fidélise vos clients — 24h/24, 7j/7. Vous êtes opérationnel en quelques minutes.",
+    "baseline": "You chat, You go!",
+    "cta-primary": "Demander une démo",
+    "cta-secondary": "Je suis distributeur / réseau — Nous contacter",
+    "micro-text": "Rappel sous 24h · Sans engagement"
+  },
+  "stats": {
+    "title": "Les chiffres parlent."
+  },
+  "logos": {
+    "title": "Compatible avec vos outils"
+  },
+  "benefits": {
+    "title": "Ce que HUGGO change pour votre commerce.",
+    "items": [
+      {
+        "title": "Gardez 100% de vos marges.",
+        "subtitle": "Canal direct, zéro commission",
+        "description": "WhatsApp est un canal direct entre vous et vos clients. Pas de plateforme intermédiaire, pas de commission. Vos ventes vous appartiennent.",
+        "proof": "0% de commission vs 20-30% sur les plateformes de livraison."
+      },
+      {
+        "title": "Un vendeur qui ne dort jamais.",
+        "subtitle": "Assistant IA, 24h/24",
+        "description": "Votre assistant prend les commandes, recommande vos produits et relance les paniers abandonnés. Même à 23h, même le dimanche.",
+        "proof": "15M de commandes traitées depuis mars 2025."
+      },
+      {
+        "title": "Photo de votre carte, et c'est parti.",
+        "subtitle": "Opérationnel en quelques minutes",
+        "description": "Pas de développeur, pas de formation, pas de matériel. Prenez votre carte en photo ou synchronisez votre caisse : HUGGO crée votre assistant automatiquement.",
+        "proof": "0 à 30% de clientèle digitalisée en 1 mois."
+      },
+      {
+        "title": "WhatsApp, borne, caisse, site : un seul panier.",
+        "subtitle": "Panier synchronisé partout",
+        "description": "Votre client commence sa commande sur WhatsApp, la modifie en boutique, paie comme il veut. Tout est synchronisé en temps réel avec votre caisse.",
+        "proof": "Connecté aux principaux systèmes de caisse via HubRise et Orisha Distribution."
+      }
+    ]
+  },
+  "offers": {
+    "title": "HUGGO s'adapte à votre activité.",
+    "items": [
+      {
+        "title": "Commerçants",
+        "description": "Boulangerie, restaurant, traiteur, épicerie, caviste, bar, déco, habillement — votre assistant IA prend les commandes et fidélise vos clients réguliers.",
+        "cta": "Découvrir l'offre Retail →",
+        "link": "retail"
+      },
+      {
+        "title": "Réseaux & Franchises",
+        "description": "Un assistant IA par point de vente, une vision réseau consolidée. Déployez HUGGO sur 50, 200 ou 500 points de vente simultanément.",
+        "cta": "Découvrir l'offre Franchise →",
+        "link": "franchise"
+      },
+      {
+        "title": "Collectivités & Circuit court",
+        "description": "Producteurs locaux, commerces itinérants, communes sans commerce de proximité. HUGGO crée un canal de vente directe par WhatsApp, sans infrastructure.",
+        "cta": "Découvrir l'offre Collectivity →",
+        "link": "collectivity"
+      }
+    ]
+  },
+  "how-it-works-summary": {
+    "title": "Opérationnel en 4 étapes.",
+    "steps": [
+      {
+        "title": "Trouvez votre commerce",
+        "description": "HUGGO localise votre établissement sur Google Business."
+      },
+      {
+        "title": "Importez vos produits",
+        "description": "Photo de votre carte ou synchronisation directe depuis votre caisse."
+      },
+      {
+        "title": "Votre assistant est créé",
+        "description": "L'IA configure un assistant WhatsApp personnalisé pour votre commerce."
+      },
+      {
+        "title": "Vos clients commandent",
+        "description": "Votre numéro est publié sur Google Business. Les commandes arrivent."
+      }
+    ],
+    "cta": "Voir le fonctionnement détaillé →"
+  },
+  "social-proof": {
+    "title": "Ils font tourner HUGGO au quotidien.",
+    "testimonial-placeholder": "Emplacement réservé pour témoignage commerçant.",
+    "partners": {
+      "title": "Construit avec les meilleurs.",
+      "items": [
+        { "name": "Google Cloud Platform", "description": "Infrastructure et IA" },
+        { "name": "Orisha Distribution", "description": "Synchronisation ERP" },
+        { "name": "Centrale Paris/France", "description": "Modèle prédictif" },
+        { "name": "Contodeo", "description": "Paiement intégré" }
+      ]
+    }
+  },
+  "mascotte": {
+    "text": "Une question ? Écrivez-nous directement sur WhatsApp. On vous répond comme on aime : vite et bien.",
+    "cta": "Discuter sur WhatsApp →"
+  },
+  "faq": {
+    "title": "Vos questions, nos réponses.",
+    "items": [
+      {
+        "question": "Mes clients ne sont pas technophiles, ils n'utiliseront jamais ça.",
+        "answer": "Vos clients utilisent déjà WhatsApp — 95% des smartphones en France l'ont installé. Ils n'ont rien à télécharger, rien à apprendre. Ils envoient un message, comme ils le font 50 fois par jour. Résultat : 60% de la clientèle digitalisée en 3 mois, y compris chez des commerçants dont les clients n'avaient jamais commandé en ligne."
+      },
+      {
+        "question": "WhatsApp, c'est personnel. Pas pour commander.",
+        "answer": "WhatsApp Business est aujourd'hui le canal commercial le plus utilisé au monde. Vos clients préfèrent envoyer un message plutôt que téléphoner ou faire la queue. Les chiffres le confirment : 15 millions de commandes traitées via HUGGO depuis mars 2025."
+      },
+      {
+        "question": "C'est cher, j'ai déjà un site internet.",
+        "answer": "Un site internet ne prend pas de commandes automatiquement, ne recommande pas de produits, ne relance pas les paniers abandonnés. HUGGO le fait 24h/24 sans embaucher. Et contrairement aux plateformes de livraison, zéro commission sur vos ventes. Résultat : +15 à +30% de panier moyen."
+      },
+      {
+        "question": "Je ne suis pas informaticien, c'est trop compliqué.",
+        "answer": "L'installation se fait en quelques minutes. Prenez votre carte en photo — l'IA s'occupe du reste. Pas de matériel, pas de formation, pas de développeur. Votre assistant est opérationnel le jour même."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Prêt à reprendre le contrôle de vos ventes ?",
+    "subtitle": "15 minutes de démo suffisent pour voir HUGGO en action sur votre commerce.",
+    "cta-primary": "Demander une démo",
+    "cta-secondary": "Nous contacter"
+  }
+}

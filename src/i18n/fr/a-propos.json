@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "À propos de HUGGO — Vision, partenaires, engagements",
+    "description": "HUGGO, filiale d'Atidgo, transforme WhatsApp en canal de vente pour les commerçants. Vision, partenaires technologiques, engagements RSE. Demandez une démo."
+  },
+  "hero": {
+    "title": "HUGGO, l'assistant IA qui rapproche les commerçants de leurs clients.",
+    "subtitle": "Né de la conviction que WhatsApp est le canal naturel du commerce de proximité. Construit pour les commerçants qui veulent reprendre le contrôle de leur relation client — sans complexité, sans commission.",
+    "cta-primary": "Demander une démo"
+  },
+  "vision": {
+    "title": "Pourquoi HUGGO existe.",
+    "description": "Le commerce de proximité nourrit les quartiers, anime les villages, crée du lien. Mais chaque année, des commerçants perdent du terrain face à des plateformes qui captent leurs clients et prélèvent leurs marges.\n\nHUGGO est né d'un constat : WhatsApp est déjà installé sur 95% des smartphones français. Vos clients l'utilisent 50 fois par jour. Le canal existe — il suffit de le transformer en canal de vente.\n\nC'est ce que fait HUGGO : un assistant IA personnalisé pour chaque commerçant, capable de prendre des commandes, recommander des produits, et fidéliser les clients. Directement dans une conversation WhatsApp. Sans app à télécharger, sans compte à créer, sans commission à reverser."
+  },
+  "company": {
+    "title": "Construit sur des bases solides.",
+    "description": "HUGGO est une filiale d'Atidgo, spécialiste des technologies conversationnelles et de l'intelligence artificielle appliquée au commerce. Cette filiation apporte à HUGGO une infrastructure technique éprouvée, un réseau de partenaires technologiques et un historique de 50 millions d'euros de données transactionnelles qualifiées.\n\nHUGGO est l'entité entièrement dédiée au commerce de proximité : la technologie d'Atidgo, concentrée sur les besoins des commerçants et de leurs clients."
+  },
+  "partners": {
+    "title": "Nos partenaires technologiques.",
+    "items": [
+      { "name": "Google Cloud Platform", "description": "Infrastructure cloud et intelligence artificielle. HUGGO est construit sur GCP pour la scalabilité, la fiabilité et les capacités IA." },
+      { "name": "Centrale Paris / France", "description": "Partenariat académique pour le développement du modèle prédictif (croisement météo / événements locaux)." },
+      { "name": "ACSEO", "description": "Intégrateur technique. Partenaire de développement depuis la conception de la plateforme." },
+      { "name": "Orisha Distribution", "description": "Synchronisation ERP (produits, stocks, commandes). L'interface avec les systèmes de caisse existants." },
+      { "name": "Contodeo", "description": "Paiement intégré. Multi-méthodes dans la conversation WhatsApp." }
+    ]
+  },
+  "numbers": {
+    "title": "HUGGO en chiffres.",
+    "items": [
+      { "value": "15M", "label": "de commandes traitées depuis mars 2025" },
+      { "value": "50M€", "label": "d'historique transactionnel qualifié (data IA)" },
+      { "value": "3", "label": "distributeurs CHR déployant HUGGO à l'échelle nationale" },
+      { "value": "~50", "label": "intégrations disponibles via HubRise" }
+    ]
+  },
+  "csr": {
+    "title": "Six engagements concrets.",
+    "items": [
+      { "title": "Anti-gaspi", "description": "Les pré-commandes permettent au commerçant de produire au plus juste. Moins de surplus, moins de pertes, moins de gaspillage." },
+      { "title": "Inclusion digitale", "description": "HUGGO fonctionne sur WhatsApp — l'app la plus répandue en France. Pas d'apprentissage, pas de compte à créer. Accessible aux personnes âgées, aux non-technophiles, aux touristes." },
+      { "title": "Commerce local", "description": "Chaque commande via HUGGO va directement au commerçant. Pas de plateforme intermédiaire, pas de commission. Le chiffre d'affaires reste local." },
+      { "title": "Circuit court", "description": "Via HUGGO Collectivity, les producteurs locaux vendent en direct à leurs consommateurs. Du champ à l'assiette, sans détour." },
+      { "title": "Qualité de vie", "description": "Moins de files d'attente pour le client. Moins de stress opérationnel pour le commerçant. Les pré-commandes lissent l'activité et réduisent les pics." },
+      { "title": "Accessibilité", "description": "Commander depuis chez soi, sans se déplacer, sans contrainte horaire. Pour les personnes à mobilité réduite, les aidants, les familles éloignées des commerces." }
+    ]
+  },
+  "final-cta": {
+    "title": "Rejoignez les commerçants qui transforment leur relation client.",
+    "cta-primary": "Demander une démo",
+    "cta-secondary": "Nous contacter"
+  }
+}

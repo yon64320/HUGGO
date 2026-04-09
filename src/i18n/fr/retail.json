@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "title": "HUGGO Retail — Assistant WhatsApp commerçants | 0% commission",
+    "description": "HUGGO transforme WhatsApp en canal de vente pour votre commerce. Panier synchronisé, 0% commission, opérationnel en quelques minutes. Demandez une démo."
+  },
+  "hero": {
+    "title": "Votre assistant IA sur WhatsApp. Commandes, paiements, fidélisation — sans commission.",
+    "subtitle": "HUGGO donne à votre commerce un assistant intelligent sur WhatsApp qui prend les commandes, recommande vos produits et fidélise vos clients. Opérationnel en quelques minutes, sans compétence technique.",
+    "cta-primary": "Demander une démo",
+    "micro-text": "15 minutes · Rappel sous 24h"
+  },
+  "pain-points": {
+    "title": "Vous reconnaissez ces situations ?",
+    "items": [
+      {
+        "title": "Les plateformes prennent vos marges.",
+        "description": "Chaque commande sur une plateforme de livraison vous coûte 20 à 30% de commission. À la fin du mois, c'est votre rentabilité qui s'évapore."
+      },
+      {
+        "title": "Les pics d'activité vous submergent.",
+        "description": "Midi, vendredi soir, jours de marché : la file d'attente s'allonge, le téléphone sonne, les commandes se perdent. Vos clients repartent."
+      },
+      {
+        "title": "La digitalisation vous semble inaccessible.",
+        "description": "Créer un site, développer une app, paramétrer un système de commande… Vous n'avez ni le temps, ni le budget, ni l'envie de devenir informaticien."
+      }
+    ]
+  },
+  "huggo-answer": {
+    "title": "HUGGO résout ces trois problèmes à la fois.",
+    "items": [
+      {
+        "title": "0% de commission. Vos marges restent les vôtres.",
+        "description": "WhatsApp est un canal direct. Pas de plateforme intermédiaire, pas de prélèvement à chaque commande. Vous conservez 100% de vos marges sur un abonnement mensuel fixe."
+      },
+      {
+        "title": "Un assistant IA qui absorbe les pics.",
+        "description": "Votre assistant HUGGO prend les commandes 24h/24 — y compris pendant le coup de feu. Il recommande, encaisse, confirme. Vos clients commandent à l'avance, vous préparez sereinement.",
+        "proof": "15M de commandes traitées, même en pics d'activité."
+      },
+      {
+        "title": "Opérationnel en quelques minutes, sans rien installer.",
+        "description": "Photo de votre carte, synchronisation de votre caisse, et votre assistant WhatsApp est en ligne. Pas d'app à développer, pas de site à maintenir.",
+        "proof": "0 à 30% de clientèle digitalisée en 1 mois."
+      }
+    ]
+  },
+  "features": {
+    "title": "Choisissez le palier qui correspond à votre commerce.",
+    "tiers": [
+      {
+        "name": "Essentiel",
+        "tagline": "L'indispensable pour commencer à vendre sur WhatsApp.",
+        "features": [
+          "Commande conversationnelle (vos clients commandent par message)",
+          "Panier et paiement intégré (Contodeo)",
+          "QR code Click & Collect",
+          "Suivi de commande en temps réel",
+          "Historique des commandes",
+          "Fiches clients automatiques"
+        ],
+        "cta": "Demander un devis →"
+      },
+      {
+        "name": "Smart",
+        "tagline": "L'intelligence qui fait la différence.",
+        "features": [
+          "Tout le palier Essentiel, plus :",
+          "Recommandations produits (vente additionnelle et croisée)",
+          "Mémoire client : \"Comme d'habitude ?\" en un message",
+          "Push promotions (déstockage, nouveautés)",
+          "Relance automatique des paniers abandonnés"
+        ],
+        "cta": "Demander un devis →"
+      },
+      {
+        "name": "Marketing",
+        "tagline": "Anticipez la demande. Ciblez vos clients.",
+        "features": [
+          "Tout le palier Smart, plus :",
+          "Bannières publicitaires générées par IA",
+          "Modèle prédictif : croisement météo + événements locaux pour anticiper la demande",
+          "Ciblage client par comportement d'achat",
+          "Demande automatique d'avis Google après commande"
+        ],
+        "cta": "Demander un devis →"
+      },
+      {
+        "name": "Analytics",
+        "tagline": "Les données pour piloter votre activité.",
+        "addon": true,
+        "features": [
+          "Chiffre d'affaires détaillé par canal HUGGO",
+          "Panier moyen et taux de conversion",
+          "Heures de commande (optimisation planning)",
+          "Performance des campagnes promotionnelles",
+          "Recommandations de mise en avant produits"
+        ],
+        "cta": "Demander un devis →"
+      }
+    ]
+  },
+  "basket-360": {
+    "title": "Un seul panier, partout.",
+    "description": "Votre client commence sa commande sur WhatsApp. Il passe en boutique, modifie son panier sur la borne. Il paie en caisse, par Apple Pay ou par carte. Peu importe le canal : le panier est le même, synchronisé en temps réel.",
+    "channels": "WhatsApp · Borne en magasin · iPad · Caisse · Site web · Paiement (Apple Pay, Google Pay, Stripe, Contodeo)",
+    "note": "HUGGO se connecte à votre caisse existante — pas de changement d'infrastructure. Compatible avec les principaux systèmes de caisse via HubRise et Orisha Distribution."
+  },
+  "results": {
+    "title": "Des résultats mesurables dès le premier mois.",
+    "items": [
+      { "value": "+15 à +30%", "label": "de panier moyen par rapport à une app mobile classique" },
+      { "value": "60%", "label": "de clientèle digitalisée en 3 mois — y compris les non-technophiles" },
+      { "value": "15M", "label": "de commandes traitées via HUGGO depuis mars 2025" }
+    ]
+  },
+  "testimonial": {
+    "title": "Rejoignez les commerçants qui reprennent le contrôle de leurs ventes.",
+    "fallback": "15M de commandes traitées. 3 distributeurs CHR qui déploient HUGGO à l'échelle nationale."
+  },
+  "faq": {
+    "title": "Vos questions sur l'offre Retail.",
+    "items": [
+      {
+        "question": "Mes clients préfèrent venir en boutique.",
+        "answer": "HUGGO renforce le lien avec votre boutique. Vos clients pré-commandent, récupèrent en Click & Collect, retrouvent leur \"comme d'habitude\" en un message. Moins de file d'attente, plus de passages en magasin."
+      },
+      {
+        "question": "J'utilise déjà une plateforme de livraison.",
+        "answer": "HUGGO ne remplace pas la livraison — il crée un canal direct pour votre clientèle régulière. Celle qui vient chercher, qui commande pour midi, qui repasse chaque semaine. Ces clients-là, vous les gardez sans reverser 25% de commission."
+      },
+      {
+        "question": "Je ne suis pas informaticien.",
+        "answer": "L'installation prend quelques minutes. Photo de votre carte, synchronisation de votre caisse : l'IA s'occupe du reste. Aucune compétence technique requise."
+      },
+      {
+        "question": "Mes clients n'ont pas WhatsApp.",
+        "answer": "95% des smartphones en France ont WhatsApp installé. Vos clients n'ont rien à télécharger, aucun compte à créer. Ils envoient un message — c'est tout."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Prêt à essayer ?",
+    "subtitle": "Demandez une démo personnalisée — 15 minutes suffisent pour voir HUGGO en action sur votre commerce.",
+    "cta-primary": "Demander une démo",
+    "cta-secondary": "Voir les tarifs →"
+  }
+}

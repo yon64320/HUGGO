@@ -1,0 +1,64 @@
+---
+interface Props {
+  direction?: 'up' | 'down' | 'left' | 'right';
+  delay?: number;
+  duration?: number;
+  class?: string;
+}
+
+const { direction = 'up', delay = 0, duration = 0.6, class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={['scroll-reveal', className]}
+  data-direction={direction}
+  style={`--sr-delay: ${delay}s; --sr-duration: ${duration}s;`}
+>
+  <slot />
+</div>
+
+<style is:global>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition-property: opacity, transform;
+    transition-duration: var(--sr-duration, 0.6s);
+    transition-delay: var(--sr-delay, 0s);
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-reveal[data-direction="down"] { transform: translateY(-30px); }
+  .scroll-reveal[data-direction="left"] { transform: translateX(30px); }
+  .scroll-reveal[data-direction="right"] { transform: translateX(-30px); }
+
+  .scroll-reveal.is-visible {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: '0px 0px 0px 0px' }
+  );
+
+  document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

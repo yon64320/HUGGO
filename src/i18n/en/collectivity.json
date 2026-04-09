@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "HUGGO Collectivity — Local Commerce via WhatsApp",
+    "description": "62% of French municipalities have no shops. HUGGO connects producers and consumers via WhatsApp. Short supply chain, anti-waste."
+  },
+  "hero": {
+    "title": "Local commerce, even where there are no shops left.",
+    "subtitle": "HUGGO connects local producers and consumers via WhatsApp. No commercial space, no e-commerce site, no infrastructure. Just a message to order.",
+    "cta-primary": "Contact us",
+    "micro-text": "Local authority or producer project — let's talk"
+  },
+  "problematic": {
+    "title": "Rural France is losing its shops.",
+    "stats": [
+      { "value": "400,000+", "label": "farms in France" },
+      { "value": "62%", "label": "of municipalities have no access to any shop" },
+      { "value": "6 million", "label": "French people live more than 7 minutes by car from a food store" },
+      { "value": "10,000", "label": "mobile vendor trucks serve the country" }
+    ]
+  },
+  "solution": {
+    "title": "Three ways to bring back local commerce.",
+    "cases": [
+      {
+        "title": "The producer selling direct.",
+        "description": "Your market gardener, your cheesemaker, your beekeeper: they produce nearby, but selling is still complicated. With HUGGO, their customers order via WhatsApp and pick up at the farm or collection point."
+      },
+      {
+        "title": "The mobile vendor with pre-orders.",
+        "description": "The bread truck comes on Tuesday. Customers pre-order on WhatsApp: no waste, no shortages. The vendor prepares exactly what was ordered."
+      },
+      {
+        "title": "The municipality running a \"digital market.\"",
+        "description": "Multiple local producers, one WhatsApp channel. Residents order; a weekly pickup point is organized. The municipality recreates commercial activity — without opening a store."
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Why WhatsApp is the right channel for rural areas.",
+    "items": [
+      {
+        "title": "No infrastructure needed.",
+        "description": "No commercial space, no e-commerce site, no dedicated payment terminal. A smartphone and WhatsApp are enough."
+      },
+      {
+        "title": "A channel everyone knows.",
+        "description": "95% of smartphones have WhatsApp. Nothing to download, no account to create. Accessible to non-tech-savvy users, elderly people, and passing tourists.",
+        "proof": "60% digitization in 3 months, among historically non-tech-savvy customers."
+      },
+      {
+        "title": "Direct producer-to-consumer link.",
+        "description": "The producer sells, the consumer buys. No middleman, no commission, no platform. The supply chain is as short as it gets."
+      }
+    ]
+  },
+  "rse": {
+    "title": "Real impact, not intentions.",
+    "items": [
+      { "title": "Anti-waste", "description": "Pre-orders let the producer prepare only what's sold. Less waste, less surplus, less unnecessary transport." },
+      { "title": "Digital inclusion", "description": "HUGGO runs on WhatsApp — an app 95% of French people already have. No learning curve, no extra account. Ordering is as simple as texting a friend." },
+      { "title": "Strengthened local commerce", "description": "Every order through HUGGO goes directly to the merchant. No middleman platform, no commission. Revenue stays in the neighborhood, the village, the municipality." },
+      { "title": "Short supply chain", "description": "From producer to consumer, no unnecessary steps. The distance from field to plate is measured in kilometers, not warehouses." },
+      { "title": "Accessibility", "description": "Order without traveling, without queuing, without time constraints. For people with reduced mobility, elderly people, families in remote areas." }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions — Collectivity",
+    "items": [
+      {
+        "question": "The rural population isn't connected.",
+        "answer": "WhatsApp is installed on 95% of French smartphones. Nothing to download. HUGGO has already digitized 60% of the customer base of merchants whose clients had never ordered online — proof that the digital divide is a perceived barrier, not a real one."
+      },
+      {
+        "question": "We don't have a tech budget.",
+        "answer": "No infrastructure needed: no premises, no hardware, no developer. An affordable monthly subscription, no commission on sales. The investment comes down to a smartphone and an internet connection."
+      },
+      {
+        "question": "Local producers already have their sales channels.",
+        "answer": "HUGGO complements — it doesn't replace. Pre-orders reduce waste, expand the customer base beyond the weekly market, and enable sales on days the market is closed."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Let's build a local commerce channel together.",
+    "subtitle": "Whether you're a producer, local authority, or mobile vendor — let's talk about what HUGGO can do for your area.",
+    "cta-primary": "Contact us",
+    "cta-secondary": "Request a demo"
+  }
+}

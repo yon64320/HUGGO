@@ -1,0 +1,251 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SEOHead from '../../components/astro/SEOHead.astro';
+import CTASection from '../../components/astro/CTASection.astro';
+import FAQ from '../../components/astro/FAQ.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'fr';
+
+// Meta
+const metaTitle = await t(locale, 'retail', 'meta.title');
+const metaDescription = await t(locale, 'retail', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'retail', 'hero.title');
+const heroSubtitle = await t(locale, 'retail', 'hero.subtitle');
+const heroCta = await t(locale, 'retail', 'hero.cta-primary');
+const heroMicroText = await t(locale, 'retail', 'hero.micro-text');
+
+// Pain points
+const painTitle = await t(locale, 'retail', 'pain-points.title');
+const painItems = [];
+for (let i = 0; i < 3; i++) {
+  painItems.push({
+    title: await t(locale, 'retail', `pain-points.items.${i}.title`),
+    description: await t(locale, 'retail', `pain-points.items.${i}.description`),
+  });
+}
+
+// HUGGO answer
+const answerTitle = await t(locale, 'retail', 'huggo-answer.title');
+const answerItems = [];
+for (let i = 0; i < 3; i++) {
+  const item: any = {
+    title: await t(locale, 'retail', `huggo-answer.items.${i}.title`),
+    description: await t(locale, 'retail', `huggo-answer.items.${i}.description`),
+  };
+  const proof = await t(locale, 'retail', `huggo-answer.items.${i}.proof`);
+  if (proof !== `huggo-answer.items.${i}.proof`) item.proof = proof;
+  answerItems.push(item);
+}
+
+// Features
+const featuresTitle = await t(locale, 'retail', 'features.title');
+const tiers = [];
+for (let ti = 0; ti < 4; ti++) {
+  const features = [];
+  let fi = 0;
+  while (true) {
+    const f = await t(locale, 'retail', `features.tiers.${ti}.features.${fi}`);
+    if (f === `features.tiers.${ti}.features.${fi}`) break;
+    features.push(f);
+    fi++;
+  }
+  tiers.push({
+    name: await t(locale, 'retail', `features.tiers.${ti}.name`),
+    tagline: await t(locale, 'retail', `features.tiers.${ti}.tagline`),
+    features,
+    cta: await t(locale, 'retail', `features.tiers.${ti}.cta`),
+  });
+}
+
+// Basket 360
+const basketTitle = await t(locale, 'retail', 'basket-360.title');
+const basketDescription = await t(locale, 'retail', 'basket-360.description');
+const basketChannels = await t(locale, 'retail', 'basket-360.channels');
+const basketNote = await t(locale, 'retail', 'basket-360.note');
+
+// Results
+const resultsTitle = await t(locale, 'retail', 'results.title');
+const resultItems = [];
+for (let i = 0; i < 3; i++) {
+  resultItems.push({
+    value: await t(locale, 'retail', `results.items.${i}.value`),
+    label: await t(locale, 'retail', `results.items.${i}.label`),
+  });
+}
+
+// Testimonial
+const testimonialTitle = await t(locale, 'retail', 'testimonial.title');
+const testimonialFallback = await t(locale, 'retail', 'testimonial.fallback');
+
+// FAQ
+const faqTitle = await t(locale, 'retail', 'faq.title');
+const faqItems = [];
+for (let i = 0; i < 4; i++) {
+  faqItems.push({
+    question: await t(locale, 'retail', `faq.items.${i}.question`),
+    answer: await t(locale, 'retail', `faq.items.${i}.answer`),
+  });
+}
+
+// Final CTA
+const ctaTitle = await t(locale, 'retail', 'final-cta.title');
+const ctaSubtitle = await t(locale, 'retail', 'final-cta.subtitle');
+const ctaPrimary = await t(locale, 'retail', 'final-cta.cta-primary');
+const ctaSecondary = await t(locale, 'retail', 'final-cta.cta-secondary');
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/fr/' },
+  { name: 'Retail', url: 'https://www.huggo.app/fr/retail/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="retail" jsonLd={[breadcrumb]} />
+
+  <!-- 1. HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">{heroTitle}</h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-2xl mx-auto">{heroSubtitle}</p>
+          <a href="/fr/contact" class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-dark)] transition-colors">{heroCta}</a>
+          <p class="mt-3 text-sm text-[var(--text-secondary)] opacity-70">{heroMicroText}</p>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PAIN POINTS -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12 md:mb-16">{painTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {painItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HUGGO ANSWER -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12 md:mb-16">{answerTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {answerItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-[var(--text-secondary)] leading-relaxed mb-3">{item.description}</p>
+              {item.proof && <p class="text-sm text-[var(--color-green-primary)] italic">{item.proof}</p>}
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURE TIERS -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12 md:mb-16">{featuresTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {tiers.map((tier, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-8 hover:shadow-lg transition-shadow h-full">
+              <h3 class="text-xl font-bold text-[var(--text-primary)] mb-1">{tier.name}</h3>
+              <p class="text-sm text-[var(--color-green-primary)] font-medium mb-4">{tier.tagline}</p>
+              <ul class="space-y-3 mb-6">
+                {tier.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-[var(--color-green-primary)] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span class="text-[var(--text-primary)] text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="/fr/contact" class="inline-flex items-center text-[var(--color-green-primary)] font-semibold hover:underline text-sm">{tier.cta}</a>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BASKET 360 -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-8">{basketTitle}</h2>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed text-center mb-6">{basketDescription}</p>
+        <p class="text-sm text-[var(--color-green-primary)] text-center font-medium mb-6">{basketChannels}</p>
+        <p class="text-sm text-[var(--text-secondary)] text-center italic">{basketNote}</p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- 6. RESULTS -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12">{resultsTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {resultItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="text-center">
+              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{item.value}</p>
+              <p class="text-sm text-[var(--text-secondary)]">{item.label}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. TESTIMONIAL -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <ScrollReveal>
+        <h3 class="text-xl font-bold text-[var(--text-primary)] mb-4">{testimonialTitle}</h3>
+        <p class="text-[var(--text-secondary)]">{testimonialFallback}</p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <div class="bg-[var(--bg-beige)]">
+    <ScrollReveal>
+      <FAQ items={faqItems} title={faqTitle} />
+    </ScrollReveal>
+  </div>
+
+  <!-- 9. PRE-FOOTER CTA -->
+  <ScrollReveal>
+    <CTASection
+      title={ctaTitle}
+      subtitle={ctaSubtitle}
+      ctaText={ctaPrimary}
+      ctaHref="/fr/contact"
+      secondaryCtaText={ctaSecondary}
+      secondaryCtaHref="/fr/tarifs"
+    />
+  </ScrollReveal>
+</PageLayout>

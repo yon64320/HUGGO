@@ -1,0 +1,87 @@
+---
+import { locales, defaultLocale } from '@i18n/config';
+import { getAlternateLinks } from '@i18n/utils';
+import type { Locale } from '@i18n/config';
+
+interface Props {
+  locale: Locale;
+  page: string;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { locale, page, jsonLd = [] } = Astro.props;
+
+const siteUrl = (Astro.site?.origin || import.meta.env.SITE || 'https://www.huggo.app').replace(/\/$/, '');
+
+const alternateLinks = getAlternateLinks(page);
+
+/** Build a fully-qualified URL from a relative path. */
+function buildFullUrl(href: string): string {
+  if (href.startsWith('http')) return href;
+  return `${siteUrl}${href}`;
+}
+
+// x-default points to the French version (default locale)
+const defaultLink = alternateLinks.find((l) => l.locale === defaultLocale);
+const xDefaultHref = defaultLink ? buildFullUrl(defaultLink.href) : `${siteUrl}/`;
+
+// Breadcrumb schema: Home > Current page
+const breadcrumbItems: Array<{
+  '@type': string;
+  position: number;
+  name: string;
+  item: string;
+}> = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'HUGGO',
+    item: `${siteUrl}/${locale}/`,
+  },
+];
+
+if (page !== 'home') {
+  const pageNames: Record<string, Record<Locale, string>> = {
+    retail: { fr: 'Retail', en: 'Retail' },
+    franchise: { fr: 'Franchise', en: 'Franchise' },
+    collectivity: { fr: 'Collectivit\u00E9s', en: 'Collectivities' },
+    'how-it-works': { fr: 'Comment \u00E7a marche', en: 'How it works' },
+    pricing: { fr: 'Tarifs', en: 'Pricing' },
+    about: { fr: '\u00C0 propos', en: 'About' },
+    contact: { fr: 'Contact', en: 'Contact' },
+  };
+
+  const currentAlternate = alternateLinks.find((l) => l.locale === locale);
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: pageNames[page]?.[locale] ?? page,
+    item: currentAlternate ? buildFullUrl(currentAlternate.href) : '',
+  });
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems,
+};
+
+const allSchemas = [breadcrumbSchema, ...jsonLd];
+---
+
+<!-- Hreflang alternate links for every supported locale -->
+{alternateLinks.map((link) => (
+  <link
+    rel="alternate"
+    hreflang={link.locale}
+    href={buildFullUrl(link.href)}
+  />
+))}
+
+<!-- x-default hreflang (points to default locale / French) -->
+<link rel="alternate" hreflang="x-default" href={xDefaultHref} />
+
+<!-- JSON-LD structured data -->
+{allSchemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

@@ -1,0 +1,273 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SEOHead from '@components/astro/SEOHead.astro';
+import FeatureCard from '@components/astro/FeatureCard.astro';
+import CTASection from '@components/astro/CTASection.astro';
+import FAQ from '@components/astro/FAQ.astro';
+import ScrollReveal from '@components/animations/ScrollReveal.astro';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'en';
+
+// Meta
+const metaTitle = await t(locale, 'collectivity', 'meta.title');
+const metaDescription = await t(locale, 'collectivity', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'collectivity', 'hero.title');
+const heroSubtitle = await t(locale, 'collectivity', 'hero.subtitle');
+const heroCta = await t(locale, 'collectivity', 'hero.cta-primary');
+const heroMicroText = await t(locale, 'collectivity', 'hero.micro-text');
+
+// Problematic / Stats (4 items, no description)
+const problematicTitle = await t(locale, 'collectivity', 'problematic.title');
+const statItems = [
+  {
+    value: await t(locale, 'collectivity', 'problematic.stats.0.value'),
+    label: await t(locale, 'collectivity', 'problematic.stats.0.label'),
+  },
+  {
+    value: await t(locale, 'collectivity', 'problematic.stats.1.value'),
+    label: await t(locale, 'collectivity', 'problematic.stats.1.label'),
+  },
+  {
+    value: await t(locale, 'collectivity', 'problematic.stats.2.value'),
+    label: await t(locale, 'collectivity', 'problematic.stats.2.label'),
+  },
+  {
+    value: await t(locale, 'collectivity', 'problematic.stats.3.value'),
+    label: await t(locale, 'collectivity', 'problematic.stats.3.label'),
+  },
+];
+
+// Solution cases (3 scenarios)
+const solutionTitle = await t(locale, 'collectivity', 'solution.title');
+const solutionCases = [
+  {
+    title: await t(locale, 'collectivity', 'solution.cases.0.title'),
+    description: await t(locale, 'collectivity', 'solution.cases.0.description'),
+    icon: 'globe',
+  },
+  {
+    title: await t(locale, 'collectivity', 'solution.cases.1.title'),
+    description: await t(locale, 'collectivity', 'solution.cases.1.description'),
+    icon: 'users',
+  },
+  {
+    title: await t(locale, 'collectivity', 'solution.cases.2.title'),
+    description: await t(locale, 'collectivity', 'solution.cases.2.description'),
+    icon: 'chat',
+  },
+];
+
+// Benefits (3 items with optional proof)
+const benefitsTitle = await t(locale, 'collectivity', 'benefits.title');
+const benefitItems = [];
+for (let i = 0; i < 3; i++) {
+  const item: any = {
+    title: await t(locale, 'collectivity', `benefits.items.${i}.title`),
+    description: await t(locale, 'collectivity', `benefits.items.${i}.description`),
+    icon: ['trending-up', 'shield', 'users'][i],
+  };
+  const proof = await t(locale, 'collectivity', `benefits.items.${i}.proof`);
+  if (proof !== `benefits.items.${i}.proof`) item.proof = proof;
+  benefitItems.push(item);
+}
+
+// RSE impact (5 items)
+const rseTitle = await t(locale, 'collectivity', 'rse.title');
+const rseItems = [
+  {
+    title: await t(locale, 'collectivity', 'rse.items.0.title'),
+    description: await t(locale, 'collectivity', 'rse.items.0.description'),
+  },
+  {
+    title: await t(locale, 'collectivity', 'rse.items.1.title'),
+    description: await t(locale, 'collectivity', 'rse.items.1.description'),
+  },
+  {
+    title: await t(locale, 'collectivity', 'rse.items.2.title'),
+    description: await t(locale, 'collectivity', 'rse.items.2.description'),
+  },
+  {
+    title: await t(locale, 'collectivity', 'rse.items.3.title'),
+    description: await t(locale, 'collectivity', 'rse.items.3.description'),
+  },
+  {
+    title: await t(locale, 'collectivity', 'rse.items.4.title'),
+    description: await t(locale, 'collectivity', 'rse.items.4.description'),
+  },
+];
+
+// FAQ (3 items)
+const faqTitle = await t(locale, 'collectivity', 'faq.title');
+const faqItems = [
+  {
+    question: await t(locale, 'collectivity', 'faq.items.0.question'),
+    answer: await t(locale, 'collectivity', 'faq.items.0.answer'),
+  },
+  {
+    question: await t(locale, 'collectivity', 'faq.items.1.question'),
+    answer: await t(locale, 'collectivity', 'faq.items.1.answer'),
+  },
+  {
+    question: await t(locale, 'collectivity', 'faq.items.2.question'),
+    answer: await t(locale, 'collectivity', 'faq.items.2.answer'),
+  },
+];
+
+// Final CTA (dual)
+const finalCtaTitle = await t(locale, 'collectivity', 'final-cta.title');
+const finalCtaSubtitle = await t(locale, 'collectivity', 'final-cta.subtitle');
+const finalCtaPrimary = await t(locale, 'collectivity', 'final-cta.cta-primary');
+const finalCtaSecondary = await t(locale, 'collectivity', 'final-cta.cta-secondary');
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/en/' },
+  { name: 'Collectivity', url: 'https://www.huggo.app/en/collectivity/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="collectivity" jsonLd={[breadcrumb]} />
+
+  <!-- ========== HERO ========== -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <span class="inline-block text-sm font-semibold text-[var(--color-green-primary)] tracking-wide uppercase mb-4">Collectivity</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+            {heroTitle}
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-2xl mx-auto">
+            {heroSubtitle}
+          </p>
+          <a
+            href="/en/contact"
+            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-dark)] transition-colors"
+          >
+            {heroCta}
+          </a>
+          <p class="mt-4 text-sm text-[var(--text-secondary)] opacity-70">{heroMicroText}</p>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLEMATIC STATS (4 items) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {problematicTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {statItems.map((stat, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{stat.value}</p>
+              <p class="text-lg font-semibold text-[var(--text-primary)]">{stat.label}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOLUTION CASES (3 scenarios) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {solutionTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {solutionCases.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <FeatureCard title={item.title} description={item.description} icon={item.icon} />
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BENEFITS (3 items with proof) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {benefitsTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {benefitItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] hover:shadow-md transition-shadow">
+              <FeatureCard title={item.title} description={item.description} icon={item.icon} />
+              {item.proof && (
+                <p class="mt-4 text-sm text-[var(--color-green-primary)] font-medium italic">{item.proof}</p>
+              )}
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RSE IMPACT (5 items) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {rseTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {rseItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-primary)] rounded-2xl p-6 border border-[var(--border-color)] hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">{item.title}</h3>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ (3 items) ========== -->
+  <div class="bg-[var(--bg-beige)]">
+    <ScrollReveal>
+      <FAQ title={faqTitle} items={faqItems} />
+    </ScrollReveal>
+  </div>
+
+  <!-- ========== PRE-FOOTER CTA (dual) ========== -->
+  <ScrollReveal>
+    <CTASection
+      title={finalCtaTitle}
+      subtitle={finalCtaSubtitle}
+      ctaText={finalCtaPrimary}
+      ctaHref="/en/contact"
+      secondaryCtaText={finalCtaSecondary}
+      secondaryCtaHref="/en/how-it-works"
+    />
+  </ScrollReveal>
+</PageLayout>

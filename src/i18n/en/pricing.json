@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "HUGGO Pricing — Feature Tiers | 0% Commission",
+    "description": "Discover HUGGO tiers: Essentials, Smart, Marketing, Analytics. Zero commission on sales. Request a personalized quote within 24h."
+  },
+  "hero": {
+    "title": "A tier for every business.",
+    "subtitle": "Pricing tailored to your activity and volume. Zero commission on your sales, whichever tier you choose.",
+    "cta-primary": "Request a quote",
+    "micro-text": "Personalized quote within 24h"
+  },
+  "tiers": {
+    "title": "Four tiers, one promise: zero commission."
+  },
+  "included": {
+    "title": "No matter your tier, these fundamentals are included.",
+    "items": [
+      "Zero commission on all your sales — flat monthly subscription",
+      "POS sync — HUGGO connects to your existing POS system",
+      "Multi-method payment — Apple Pay, Google Pay, Stripe, Contodeo",
+      "Updates included — your assistant evolves at no extra cost"
+    ]
+  },
+  "roi": {
+    "title": "ROI is visible from month one.",
+    "items": [
+      {
+        "title": "+15 to +30% average basket.",
+        "description": "Your customers order more when friction disappears. Product recommendations, customer memory, cart follow-up: HUGGO increases the average ticket naturally."
+      },
+      {
+        "title": "0% commission vs 20-30% on platforms.",
+        "description": "On €5,000 monthly revenue through a delivery platform, you give back €1,000 to €1,500 in commissions. With HUGGO: zero."
+      },
+      {
+        "title": "Live the same day.",
+        "description": "No weeks of setup, no developer to pay. Your WhatsApp assistant goes live in minutes."
+      }
+    ]
+  },
+  "network": {
+    "title": "Managing a network of 50+ locations?",
+    "description": "Dedicated pricing, volume-based. A dedicated account manager to build your tailored proposal.",
+    "cta": "Contact us →"
+  },
+  "faq": {
+    "title": "Frequently asked questions — Pricing",
+    "items": [
+      {
+        "question": "Why aren't prices shown?",
+        "answer": "Because pricing is adapted to your activity, volume, and vertical (retail, franchise, collectivity). We prefer offering you a fair quote rather than a generic price. Response within 24h."
+      },
+      {
+        "question": "Are there commissions on sales?",
+        "answer": "No. No commission, no percentage taken from your sales. The subscription is monthly and flat."
+      },
+      {
+        "question": "Can I change tiers?",
+        "answer": "Yes. You can upgrade at any time, with no service interruption."
+      },
+      {
+        "question": "What does it cost for a network?",
+        "answer": "Network pricing is volume-based and decreases with the number of locations. Contact our sales team for a tailored quote."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Get your quote within 24h.",
+    "subtitle": "Tell us about your business — we'll send a tailored quote, no strings attached.",
+    "cta-primary": "Request a quote",
+    "cta-secondary": "Request a demo"
+  }
+}

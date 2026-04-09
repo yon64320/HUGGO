@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "retail": "Retail",
+    "franchise": "Franchise",
+    "collectivity": "Collectivité",
+    "how-it-works": "Comment ça marche",
+    "pricing": "Tarifs",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "cta": {
+    "request-demo": "Demander une démo",
+    "contact-us": "Nous contacter",
+    "learn-more": "En savoir plus",
+    "request-quote": "Demander un devis",
+    "see-pricing": "Voir les tarifs",
+    "chat-whatsapp": "Discuter sur WhatsApp"
+  },
+  "header-cta": "Demander une démo",
+  "micro-text": {
+    "demo": "Rappel sous 24h · Sans engagement",
+    "quote": "Devis personnalisé sous 24h"
+  },
+  "footer": {
+    "legal-mention": "HUGGO, filiale d'Atidgo",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales",
+    "copyright": "© {year} HUGGO. Tous droits réservés.",
+    "tagline": "You chat, You go!"
+  },
+  "meta": {
+    "site-name": "HUGGO",
+    "default-description": "Transformez WhatsApp en canal de vente pour votre commerce. Assistant IA 24/7, 0% commission, opérationnel en quelques minutes. Demandez une démo."
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "HUGGO Collectivity — Commerce local par WhatsApp",
+    "description": "62% des communes françaises n'ont plus de commerce. HUGGO connecte producteurs et consommateurs par WhatsApp. Circuit court, anti-gaspi, inclusion digitale."
+  },
+  "hero": {
+    "title": "Le commerce de proximité, même là où il n'y a plus de commerce.",
+    "subtitle": "HUGGO connecte producteurs locaux et consommateurs par WhatsApp. Pas de local commercial, pas de site e-commerce, pas d'infrastructure. Juste un message pour commander.",
+    "cta-primary": "Nous contacter",
+    "micro-text": "Projet collectivité ou producteur — parlons-en"
+  },
+  "problematic": {
+    "title": "La France rurale perd ses commerces.",
+    "stats": [
+      { "value": "400 000+", "label": "exploitations agricoles en France" },
+      { "value": "62%", "label": "des communes n'ont accès à aucun commerce" },
+      { "value": "6 millions", "label": "de Français vivent à plus de 7 minutes en voiture d'un commerce alimentaire" },
+      { "value": "10 000", "label": "camions de commerces itinérants sillonnent le territoire" }
+    ]
+  },
+  "solution": {
+    "title": "Trois façons de recréer du commerce local.",
+    "cases": [
+      {
+        "title": "Le producteur qui vend en direct.",
+        "description": "Votre maraîcher, votre fromager, votre apiculteur : ils produisent à côté, mais vendre reste compliqué. Avec HUGGO, leurs clients commandent par WhatsApp et récupèrent à la ferme ou au point de retrait."
+      },
+      {
+        "title": "Le commerce itinérant avec pré-commandes.",
+        "description": "Le camion-boulanger passe le mardi. Ses clients commandent à l'avance par WhatsApp : pas de gaspillage, pas de manque. Il prépare exactement ce qui a été demandé."
+      },
+      {
+        "title": "La commune qui organise un \"marché digital\".",
+        "description": "Plusieurs producteurs locaux, un seul canal WhatsApp. Les habitants commandent, un point de retrait collectif est organisé chaque semaine. La commune recrée du lien commercial sans ouvrir de local."
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Pourquoi WhatsApp est le bon canal pour le rural.",
+    "items": [
+      {
+        "title": "Pas d'infrastructure requise.",
+        "description": "Pas de local commercial, pas de site e-commerce, pas de terminal de paiement dédié. Un smartphone et WhatsApp suffisent."
+      },
+      {
+        "title": "Un canal que tout le monde connaît.",
+        "description": "95% des smartphones ont WhatsApp. Pas d'app à télécharger, pas de compte à créer. Accessible aux non-technophiles, aux personnes âgées, aux touristes de passage.",
+        "proof": "60% de digitalisation en 3 mois, sur une clientèle historiquement non-technophile."
+      },
+      {
+        "title": "Lien direct producteur-consommateur.",
+        "description": "Le producteur vend, le consommateur achète. Pas d'intermédiaire, pas de commission, pas de plateforme. Le circuit est aussi court que possible."
+      }
+    ]
+  },
+  "rse": {
+    "title": "Un impact concret, pas des intentions.",
+    "items": [
+      { "title": "Anti-gaspi", "description": "Les pré-commandes permettent au producteur de ne préparer que ce qui est vendu. Moins de pertes, moins de surplus, moins de transport inutile." },
+      { "title": "Inclusion digitale", "description": "HUGGO fonctionne sur WhatsApp — une app que 95% des Français possèdent déjà. Aucun apprentissage, aucun compte supplémentaire. Commander est aussi simple qu'envoyer un message à un ami." },
+      { "title": "Commerce local renforcé", "description": "Chaque commande via HUGGO va directement au commerçant. Pas de plateforme intermédiaire, pas de commission. Le chiffre d'affaires reste dans le quartier, dans le village, dans la commune." },
+      { "title": "Circuit court", "description": "Du producteur au consommateur, sans étape superflue. La distance entre la production et l'assiette se mesure en kilomètres, pas en entrepôts." },
+      { "title": "Accessibilité", "description": "Commander sans se déplacer, sans faire la queue, sans contrainte horaire. Pour les personnes à mobilité réduite, les personnes âgées, les familles éloignées." }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes — Collectivité",
+    "items": [
+      {
+        "question": "La population rurale n'est pas connectée.",
+        "answer": "WhatsApp est installé sur 95% des smartphones français. Pas d'app à télécharger. HUGGO a déjà digitalisé 60% de la clientèle de commerçants dont les clients n'avaient jamais commandé en ligne — la preuve que la fracture numérique est un frein perçu, pas un frein réel."
+      },
+      {
+        "question": "On n'a pas de budget tech.",
+        "answer": "Pas d'infrastructure requise : pas de local, pas de matériel, pas de développeur. Un abonnement mensuel accessible, pas de commission sur les ventes. L'investissement se résume à un smartphone et une connexion internet."
+      },
+      {
+        "question": "Les producteurs locaux ont déjà leurs circuits de vente.",
+        "answer": "HUGGO complète, ne remplace pas. Les commandes anticipées réduisent les pertes, élargissent la clientèle au-delà du marché hebdomadaire, et permettent de vendre les jours où le marché est fermé."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Créons ensemble un canal de commerce local.",
+    "subtitle": "Que vous soyez producteur, collectivité ou commerce itinérant — parlons de ce que HUGGO peut faire pour votre territoire.",
+    "cta-primary": "Nous contacter",
+    "cta-secondary": "Demander une démo"
+  }
+}

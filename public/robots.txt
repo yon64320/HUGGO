@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://huggo.com/sitemap-index.xml

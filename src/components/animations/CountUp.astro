@@ -1,0 +1,49 @@
+---
+interface Props {
+  target: number;
+  suffix?: string;
+  duration?: number;
+  class?: string;
+}
+
+const { target, suffix = '', duration = 2, class: className = '' } = Astro.props;
+---
+
+<span
+  class:list={['count-up', className]}
+  data-target={target}
+  data-suffix={suffix}
+  data-duration={duration}
+>
+  0{suffix}
+</span>
+
+<script>
+  import { gsap, ScrollTrigger } from './gsap-init';
+
+  document.querySelectorAll('.count-up').forEach((el) => {
+    const target = parseFloat(el.getAttribute('data-target') || '0');
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = parseFloat(el.getAttribute('data-duration') || '2');
+
+    const obj = { value: 0 };
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(obj, {
+          value: target,
+          duration,
+          ease: 'power2.out',
+          onUpdate: () => {
+            // Use appropriate decimal formatting
+            const formatted = target % 1 === 0 ? Math.round(obj.value) : obj.value.toFixed(1);
+            el.textContent = `${formatted}${suffix}`;
+          },
+        });
+      },
+    });
+  });
+</script>

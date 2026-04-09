@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "How It Works — HUGGO | Onboarding in 4 Steps",
+    "description": "See how HUGGO works in 4 simple steps. From a photo of your menu to a live WhatsApp assistant, in minutes."
+  },
+  "hero": {
+    "title": "From zero to live in minutes.",
+    "subtitle": "No app to install. No developer to hire. Four steps, and your WhatsApp assistant takes its first orders.",
+    "cta-primary": "Request a demo",
+    "micro-text": "15 minutes to understand everything"
+  },
+  "onboarding": {
+    "title": "Four steps. That's it.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Find your store.",
+        "description": "HUGGO locates your business on Google Business. Your address, hours, photos — everything is pulled automatically."
+      },
+      {
+        "number": "02",
+        "title": "Import your products.",
+        "description": "Two options: take a photo of your menu — the AI reads it and builds your catalog. Or sync directly from your POS to keep the catalog always up to date."
+      },
+      {
+        "number": "03",
+        "title": "Your assistant is built.",
+        "description": "AI configures a personalized WhatsApp assistant for your store. It knows your products, prices, and hours. It's ready to serve your customers."
+      },
+      {
+        "number": "04",
+        "title": "Your customers start ordering.",
+        "description": "Your WhatsApp number goes live on Google Business. Your customers find you, scan your QR code, and order directly. Word of mouth does the rest."
+      }
+    ]
+  },
+  "demo-conversation": {
+    "title": "This is what your customers experience.",
+    "placeholder": "Visual simulation of a WhatsApp conversation to provide."
+  },
+  "basket-360": {
+    "title": "One basket. Every channel.",
+    "description": "Your customer adds a product on WhatsApp. In store, they update their order on the kiosk or iPad. They pay at the counter. The basket is the same, everywhere, in real time.",
+    "channels": "WhatsApp → In-store kiosk → iPad → POS → Website → Payment (Apple Pay, Google Pay, Stripe, Contodeo)",
+    "note": "HUGGO plugs into your existing POS. No hardware change, no migration. Compatible with the major POS systems on the market via HubRise and Orisha Distribution."
+  },
+  "video": {
+    "title": "See HUGGO in action.",
+    "cta": "Request a personalized demo →"
+  },
+  "results": {
+    "title": "What HUGGO actually changes.",
+    "items": [
+      { "value": "60%", "label": "customer base digitized in 3 months — even non-tech-savvy" },
+      { "value": "+15 to +30%", "label": "average basket vs mobile app" },
+      { "value": "15M", "label": "orders processed since March 2025" }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "Do I need a developer to set this up?",
+        "answer": "No. Four steps, no technical skills. Photo of your menu, POS sync, and your assistant goes live. No developer needed."
+      },
+      {
+        "question": "What if my POS isn't compatible?",
+        "answer": "HUGGO connects to the major POS systems on the market via HubRise and Orisha Distribution. If your POS is listed on HubRise, connection is automatic."
+      },
+      {
+        "question": "How will my customers know they can order on WhatsApp?",
+        "answer": "HUGGO automatically publishes your number on Google Business. A QR code for in-store display is generated. Your regulars discover it with their first order and spread the word."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Convinced? Take the next step.",
+    "subtitle": "Request your demo — 15 minutes to see HUGGO in action for your store.",
+    "cta-primary": "Request a demo",
+    "cta-secondary": "See pricing →"
+  }
+}

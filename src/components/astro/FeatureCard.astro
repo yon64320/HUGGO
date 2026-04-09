@@ -1,0 +1,98 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+
+/**
+ * Map icon name strings to inline SVG paths.
+ * Add more icons as needed.
+ */
+const icons: Record<string, string> = {
+  'chat': '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />',
+  'smartphone': '<rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" />',
+  'qr-code': '<rect x="2" y="2" width="8" height="8" rx="1" /><rect x="14" y="2" width="8" height="8" rx="1" /><rect x="2" y="14" width="8" height="8" rx="1" /><rect x="14" y="14" width="4" height="4" /><line x1="22" y1="14" x2="22" y2="14.01" /><line x1="22" y1="22" x2="22" y2="22.01" /><line x1="18" y1="22" x2="18" y2="22.01" />',
+  'bar-chart': '<line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" />',
+  'users': '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />',
+  'zap': '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />',
+  'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />',
+  'gift': '<polyline points="20 12 20 22 4 22 4 12" /><rect x="2" y="7" width="20" height="5" /><line x1="12" y1="22" x2="12" y2="7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />',
+  'trending-up': '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />',
+  'globe': '<circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />',
+  'link': '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />',
+  'mail': '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />',
+  'clock': '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
+};
+
+const svgContent = icons[icon] || icons['zap'];
+---
+
+<div class="feature-card">
+  <div class="feature-card__icon">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      set:html={svgContent}
+    />
+  </div>
+  <h3 class="feature-card__title">{title}</h3>
+  <p class="feature-card__desc">{description}</p>
+</div>
+
+<style>
+  .feature-card {
+    background: var(--bg-primary, #FFFFFF);
+    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+    border-radius: 1rem;
+    padding: var(--space-card-padding, 1.5rem);
+    transition: transform var(--duration-normal, 300ms) var(--ease-out-expo),
+                box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .feature-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    background: rgba(74, 155, 74, 0.1);
+    color: var(--color-green-primary, #4A9B4A);
+    margin-bottom: var(--space-4, 1rem);
+  }
+
+  :global([data-theme="dark"]) .feature-card__icon {
+    background: rgba(74, 155, 74, 0.15);
+  }
+
+  .feature-card__title {
+    font-family: var(--font-display, 'Sora', sans-serif);
+    font-size: var(--text-lg, 1.125rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--text-primary);
+    margin: 0 0 var(--space-2, 0.5rem);
+    line-height: var(--leading-snug, 1.3);
+  }
+
+  .feature-card__desc {
+    font-size: var(--text-sm, 0.875rem);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: var(--leading-relaxed, 1.75);
+  }
+</style>

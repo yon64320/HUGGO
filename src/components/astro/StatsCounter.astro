@@ -1,0 +1,117 @@
+---
+import { stats } from '@data/stats';
+import type { Locale } from '@i18n/config';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+}
+
+const { locale, title } = Astro.props;
+
+const defaultTitle: Record<Locale, string> = {
+  fr: 'Les chiffres parlent.',
+  en: 'The numbers speak.',
+};
+
+const displayTitle = title || defaultTitle[locale];
+---
+
+<section class="stats-section" aria-label={displayTitle}>
+  <div class="stats-inner">
+    <h2 class="stats-section__title">{displayTitle}</h2>
+
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div class="stat-card fade-up">
+          <div class="stat-card__number">
+            <span
+              class="stat-card__value"
+              data-countup-target={stat.value}
+              data-countup-suffix={stat.suffix}
+              {...(stat.prefix ? { 'data-countup-prefix': stat.prefix } : {})}
+            >
+              {stat.prefix || ''}{stat.value === 0 ? '0' : '0'}{stat.suffix}
+            </span>
+          </div>
+          <p class="stat-card__label">{stat.label[locale]}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    padding: var(--space-section-y, 5rem) var(--space-6, 1.5rem);
+  }
+
+  .stats-inner {
+    max-width: 80rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .stats-section__title {
+    font-family: var(--font-display, 'Sora', sans-serif);
+    font-size: var(--text-3xl, 2rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--text-primary);
+    margin: 0 0 var(--space-12, 3rem);
+    letter-spacing: var(--tracking-tight, -0.02em);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8, 2rem);
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6, 1.5rem);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6, 1.5rem);
+    }
+  }
+
+  .stat-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+    border-radius: 1rem;
+    padding: var(--space-8, 2rem) var(--space-6, 1.5rem);
+    transition: transform var(--duration-normal, 300ms) var(--ease-out-expo),
+                box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .stat-card__number {
+    margin-bottom: var(--space-2, 0.5rem);
+  }
+
+  .stat-card__value {
+    font-family: var(--font-display, 'Sora', sans-serif);
+    font-size: var(--text-4xl, 2.625rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-green-primary, #4A9B4A);
+    line-height: var(--leading-tight, 1.15);
+    letter-spacing: var(--tracking-tight, -0.02em);
+  }
+
+  .stat-card__label {
+    font-size: var(--text-sm, 0.875rem);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: var(--leading-normal, 1.6);
+  }
+</style>

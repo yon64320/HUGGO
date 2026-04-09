@@ -1,0 +1,278 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SEOHead from '@components/astro/SEOHead.astro';
+import CTASection from '@components/astro/CTASection.astro';
+import FAQ from '@components/astro/FAQ.astro';
+import ScrollReveal from '@components/animations/ScrollReveal.astro';
+import ConversationDemo from '@components/react/ConversationDemo';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'en';
+
+// Meta
+const metaTitle = await t(locale, 'how-it-works', 'meta.title');
+const metaDescription = await t(locale, 'how-it-works', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'how-it-works', 'hero.title');
+const heroSubtitle = await t(locale, 'how-it-works', 'hero.subtitle');
+const heroCta = await t(locale, 'how-it-works', 'hero.cta-primary');
+const heroMicroText = await t(locale, 'how-it-works', 'hero.micro-text');
+
+// Onboarding (4 steps)
+const onboardingTitle = await t(locale, 'how-it-works', 'onboarding.title');
+const onboardingSteps = [
+  {
+    number: await t(locale, 'how-it-works', 'onboarding.steps.0.number'),
+    title: await t(locale, 'how-it-works', 'onboarding.steps.0.title'),
+    description: await t(locale, 'how-it-works', 'onboarding.steps.0.description'),
+  },
+  {
+    number: await t(locale, 'how-it-works', 'onboarding.steps.1.number'),
+    title: await t(locale, 'how-it-works', 'onboarding.steps.1.title'),
+    description: await t(locale, 'how-it-works', 'onboarding.steps.1.description'),
+  },
+  {
+    number: await t(locale, 'how-it-works', 'onboarding.steps.2.number'),
+    title: await t(locale, 'how-it-works', 'onboarding.steps.2.title'),
+    description: await t(locale, 'how-it-works', 'onboarding.steps.2.description'),
+  },
+  {
+    number: await t(locale, 'how-it-works', 'onboarding.steps.3.number'),
+    title: await t(locale, 'how-it-works', 'onboarding.steps.3.title'),
+    description: await t(locale, 'how-it-works', 'onboarding.steps.3.description'),
+  },
+];
+
+// Demo conversation
+const demoTitle = await t(locale, 'how-it-works', 'demo-conversation.title');
+const demoDescription = await t(locale, 'how-it-works', 'demo-conversation.placeholder');
+
+// Basket 360
+const basket360Title = await t(locale, 'how-it-works', 'basket-360.title');
+const basket360Description = await t(locale, 'how-it-works', 'basket-360.description');
+const basket360Channels = await t(locale, 'how-it-works', 'basket-360.channels');
+const basket360Note = await t(locale, 'how-it-works', 'basket-360.note');
+
+// Video
+const videoTitle = await t(locale, 'how-it-works', 'video.title');
+const videoCta = await t(locale, 'how-it-works', 'video.cta');
+
+// Results (3 stats)
+const resultsTitle = await t(locale, 'how-it-works', 'results.title');
+const resultsStats = [
+  {
+    value: await t(locale, 'how-it-works', 'results.items.0.value'),
+    label: await t(locale, 'how-it-works', 'results.items.0.label'),
+  },
+  {
+    value: await t(locale, 'how-it-works', 'results.items.1.value'),
+    label: await t(locale, 'how-it-works', 'results.items.1.label'),
+  },
+  {
+    value: await t(locale, 'how-it-works', 'results.items.2.value'),
+    label: await t(locale, 'how-it-works', 'results.items.2.label'),
+  },
+];
+
+// FAQ (3 items)
+const faqTitle = await t(locale, 'how-it-works', 'faq.title');
+const faqItems = [
+  {
+    question: await t(locale, 'how-it-works', 'faq.items.0.question'),
+    answer: await t(locale, 'how-it-works', 'faq.items.0.answer'),
+  },
+  {
+    question: await t(locale, 'how-it-works', 'faq.items.1.question'),
+    answer: await t(locale, 'how-it-works', 'faq.items.1.answer'),
+  },
+  {
+    question: await t(locale, 'how-it-works', 'faq.items.2.question'),
+    answer: await t(locale, 'how-it-works', 'faq.items.2.answer'),
+  },
+];
+
+// Final CTA (dual)
+const finalCtaTitle = await t(locale, 'how-it-works', 'final-cta.title');
+const finalCtaSubtitle = await t(locale, 'how-it-works', 'final-cta.subtitle');
+const finalCtaPrimary = await t(locale, 'how-it-works', 'final-cta.cta-primary');
+const finalCtaSecondary = await t(locale, 'how-it-works', 'final-cta.cta-secondary');
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/en/' },
+  { name: 'How it works', url: 'https://www.huggo.app/en/how-it-works/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="how-it-works" jsonLd={[breadcrumb]} />
+
+  <!-- ========== HERO ========== -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+            {heroTitle}
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-2xl mx-auto">
+            {heroSubtitle}
+          </p>
+          <a
+            href="/en/contact"
+            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-dark)] transition-colors"
+          >
+            {heroCta}
+          </a>
+          <p class="mt-4 text-sm text-[var(--text-secondary)] opacity-70">{heroMicroText}</p>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4-STEP ONBOARDING ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {onboardingTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="relative">
+        <!-- Timeline line (desktop only) -->
+        <div class="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-[var(--color-green-primary)]/20" aria-hidden="true"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {onboardingSteps.map((step, i) => (
+            <ScrollReveal delay={i * 0.15}>
+              <div class="relative text-center lg:text-center">
+                <!-- Number badge -->
+                <div class="relative z-10 w-20 h-20 rounded-2xl bg-[var(--color-green-primary)] text-white flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[var(--color-green-primary)]/20">
+                  <span class="text-2xl font-bold">{step.number}</span>
+                </div>
+                <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{step.title}</h3>
+                <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{step.description}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DEMO CONVERSATION (placeholder) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {demoTitle}
+          </h2>
+          <p class="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            {demoDescription}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <div class="max-w-lg mx-auto">
+          <ConversationDemo client:visible locale={locale} />
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ========== BASKET 360 ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-8">
+          {basket360Title}
+        </h2>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed text-center mb-6">
+          {basket360Description}
+        </p>
+        <p class="text-sm text-[var(--color-green-primary)] text-center font-medium mb-6">
+          {basket360Channels}
+        </p>
+        <p class="text-sm text-[var(--text-secondary)] text-center italic">
+          {basket360Note}
+        </p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO (placeholder) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {videoTitle}
+          </h2>
+          <p class="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            {videoCta}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <div class="max-w-3xl mx-auto aspect-video bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-color)] flex items-center justify-center">
+          <!-- Video placeholder -->
+          <div class="text-center">
+            <svg class="w-16 h-16 text-[var(--color-green-primary)] mx-auto mb-4 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <p class="text-sm text-[var(--text-secondary)]">Video coming soon</p>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS (3 stats) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {resultsTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {resultsStats.map((stat, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{stat.value}</p>
+              <p class="text-lg font-semibold text-[var(--text-primary)]">{stat.label}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ (3 items) ========== -->
+  <div class="bg-[var(--bg-green)]">
+    <ScrollReveal>
+      <FAQ title={faqTitle} items={faqItems} />
+    </ScrollReveal>
+  </div>
+
+  <!-- ========== PRE-FOOTER CTA (dual) ========== -->
+  <ScrollReveal>
+    <CTASection
+      title={finalCtaTitle}
+      subtitle={finalCtaSubtitle}
+      ctaText={finalCtaPrimary}
+      ctaHref="/en/contact"
+      secondaryCtaText={finalCtaSecondary}
+      secondaryCtaHref="/en/pricing"
+    />
+  </ScrollReveal>
+</PageLayout>

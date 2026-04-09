@@ -1,0 +1,69 @@
+---
+import { partners } from '@data/partners';
+import type { Locale } from '@i18n/config';
+
+interface Props {
+  locale?: Locale;
+  bg?: string;
+}
+
+const { locale = 'fr', bg } = Astro.props;
+
+const sectionTitle: Record<Locale, string> = {
+  fr: 'Compatible avec vos outils',
+  en: 'Works with your tools',
+};
+
+// Duplicate the partners list 3x for seamless infinite scroll
+const allLogos = [...partners, ...partners, ...partners];
+---
+
+<section class="logo-bar-section" aria-label={sectionTitle[locale]} style={bg ? `--logo-bar-bg: var(--bg-${bg})` : undefined}>
+  <h2 class="logo-bar-section__title">{sectionTitle[locale]}</h2>
+
+  <div class="logo-bar">
+    <div class="logo-bar__track">
+      {allLogos.map((partner) => (
+        <div class="logo-bar__item">
+          {partner.url ? (
+            <a href={partner.url} target="_blank" rel="noopener noreferrer" aria-label={partner.name}>
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                width="120"
+                height="40"
+                loading="lazy"
+                onerror={`this.onerror=null;this.parentNode.innerHTML='<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="rgba(128,128,128,0.15)"/><text x="60" y="24" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(128,128,128,0.6)">${partner.name}</text></svg>'`}
+              />
+            </a>
+          ) : (
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              width="120"
+              height="40"
+              loading="lazy"
+              onerror={`this.onerror=null;this.parentNode.innerHTML='<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="rgba(128,128,128,0.15)"/><text x="60" y="24" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(128,128,128,0.6)">${partner.name}</text></svg>'`}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-bar-section {
+    padding: var(--space-12, 3rem) 0;
+    text-align: center;
+  }
+
+  .logo-bar-section__title {
+    font-family: var(--font-display, 'Sora', sans-serif);
+    font-size: var(--text-lg, 1.125rem);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--text-secondary);
+    letter-spacing: var(--tracking-wide, 0.025em);
+    margin: 0 0 var(--space-8, 2rem);
+  }
+</style>

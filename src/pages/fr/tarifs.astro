@@ -1,0 +1,233 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SEOHead from '../../components/astro/SEOHead.astro';
+import PricingTier from '../../components/astro/PricingTier.astro';
+import CTASection from '../../components/astro/CTASection.astro';
+import FAQ from '../../components/astro/FAQ.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
+import FeatureCard from '../../components/astro/FeatureCard.astro';
+import { pricingTiers } from '../../data/pricing-tiers';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'fr';
+
+// Meta
+const metaTitle = await t(locale, 'tarifs', 'meta.title');
+const metaDescription = await t(locale, 'tarifs', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'tarifs', 'hero.title');
+const heroSubtitle = await t(locale, 'tarifs', 'hero.subtitle');
+const heroCtaPrimary = await t(locale, 'tarifs', 'hero.cta-primary');
+const heroMicroText = await t(locale, 'tarifs', 'hero.micro-text');
+
+// Tiers title
+const tiersTitle = await t(locale, 'tarifs', 'tiers.title');
+
+// Included fundamentals
+const includedTitle = await t(locale, 'tarifs', 'included.title');
+const includedItems = [
+  await t(locale, 'tarifs', 'included.items.0'),
+  await t(locale, 'tarifs', 'included.items.1'),
+  await t(locale, 'tarifs', 'included.items.2'),
+  await t(locale, 'tarifs', 'included.items.3'),
+];
+
+// ROI
+const roiTitle = await t(locale, 'tarifs', 'roi.title');
+const roiItems = [
+  {
+    title: await t(locale, 'tarifs', 'roi.items.0.title'),
+    description: await t(locale, 'tarifs', 'roi.items.0.description'),
+  },
+  {
+    title: await t(locale, 'tarifs', 'roi.items.1.title'),
+    description: await t(locale, 'tarifs', 'roi.items.1.description'),
+  },
+  {
+    title: await t(locale, 'tarifs', 'roi.items.2.title'),
+    description: await t(locale, 'tarifs', 'roi.items.2.description'),
+  },
+];
+
+// Network
+const networkTitle = await t(locale, 'tarifs', 'network.title');
+const networkDescription = await t(locale, 'tarifs', 'network.description');
+const networkCta = await t(locale, 'tarifs', 'network.cta');
+
+// FAQ
+const faqTitle = await t(locale, 'tarifs', 'faq.title');
+const faqItems = [
+  {
+    question: await t(locale, 'tarifs', 'faq.items.0.question'),
+    answer: await t(locale, 'tarifs', 'faq.items.0.answer'),
+  },
+  {
+    question: await t(locale, 'tarifs', 'faq.items.1.question'),
+    answer: await t(locale, 'tarifs', 'faq.items.1.answer'),
+  },
+  {
+    question: await t(locale, 'tarifs', 'faq.items.2.question'),
+    answer: await t(locale, 'tarifs', 'faq.items.2.answer'),
+  },
+  {
+    question: await t(locale, 'tarifs', 'faq.items.3.question'),
+    answer: await t(locale, 'tarifs', 'faq.items.3.answer'),
+  },
+];
+
+// Final CTA
+const finalCtaTitle = await t(locale, 'tarifs', 'final-cta.title');
+const finalCtaSubtitle = await t(locale, 'tarifs', 'final-cta.subtitle');
+const finalCtaPrimary = await t(locale, 'tarifs', 'final-cta.cta-primary');
+const finalCtaSecondary = await t(locale, 'tarifs', 'final-cta.cta-secondary');
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/fr/' },
+  { name: 'Tarifs', url: 'https://www.huggo.app/fr/tarifs/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="pricing" jsonLd={[breadcrumb]} />
+
+  <!-- ========== HERO ========== -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+            {heroTitle}
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8">
+            {heroSubtitle}
+          </p>
+          <a
+            href="/fr/contact"
+            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-full font-semibold hover:bg-[var(--color-green-dark)] transition-colors shadow-lg"
+          >
+            {heroCtaPrimary}
+          </a>
+          <p class="text-sm text-[var(--text-secondary)] mt-3 opacity-70">
+            {heroMicroText}
+          </p>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING TIERS ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {tiersTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {pricingTiers.map((tier, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <PricingTier tier={tier} locale={locale} />
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INCLUDED FUNDAMENTALS ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {includedTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {includedItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="flex items-start gap-4 bg-[var(--bg-secondary)] rounded-2xl p-6 border border-[var(--border-color)]">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <p class="text-[var(--text-primary)] leading-relaxed">{item}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ROI ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {roiTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {roiItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NETWORK OFFER ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <ScrollReveal>
+        <div class="bg-[var(--bg-secondary)] rounded-2xl p-10 md:p-12 border border-[var(--border-color)]">
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--text-primary)] tracking-tight mb-4">
+            {networkTitle}
+          </h2>
+          <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">
+            {networkDescription}
+          </p>
+          <a
+            href="/fr/contact"
+            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-full font-semibold hover:bg-[var(--color-green-dark)] transition-colors shadow-lg"
+          >
+            {networkCta}
+          </a>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <div class="bg-[var(--bg-beige)]">
+    <FAQ items={faqItems} title={faqTitle} />
+  </div>
+
+  <!-- ========== FINAL CTA ========== -->
+  <ScrollReveal>
+    <CTASection
+      title={finalCtaTitle}
+      subtitle={finalCtaSubtitle}
+      ctaText={finalCtaPrimary}
+      ctaHref="/fr/contact"
+      secondaryCtaText={finalCtaSecondary}
+      secondaryCtaHref="/fr/contact"
+      variant="primary"
+    />
+  </ScrollReveal>
+</PageLayout>

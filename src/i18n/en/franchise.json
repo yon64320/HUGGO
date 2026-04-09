@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "HUGGO Franchise — WhatsApp Deployment for Networks",
+    "description": "Deploy HUGGO across your franchise network. One AI assistant per location, consolidated analytics, centralized management. Contact us."
+  },
+  "hero": {
+    "title": "Deploy HUGGO across your entire network. One AI assistant per location.",
+    "subtitle": "Each franchisee gets their own WhatsApp assistant, personalized to their store. You maintain full network oversight: consolidated analytics, centralized management, phased or simultaneous rollout.",
+    "cta-primary": "Contact us",
+    "micro-text": "Network pricing on request"
+  },
+  "network-problems": {
+    "title": "Managing a franchise network also means managing its inconsistencies.",
+    "items": [
+      {
+        "title": "Uneven rollout.",
+        "description": "Each location adopts its own tools. The result: no unified view, no client standard, no comparable data."
+      },
+      {
+        "title": "Fragmented analytics.",
+        "description": "Data is scattered across POS systems, platforms, and spreadsheets. Comparing 200 locations on a single dashboard? Not possible."
+      },
+      {
+        "title": "Inconsistent customer experience.",
+        "description": "A customer orders easily at one location, struggles at another. Your brand loses coherence."
+      }
+    ]
+  },
+  "huggo-for-networks": {
+    "title": "One network, one platform, one standard.",
+    "items": [
+      {
+        "title": "Simultaneous rollout, location by location.",
+        "description": "Activate HUGGO across 50, 200, or 500 locations. Each franchisee gets their AI assistant in minutes — local menu, local hours, local promotions.",
+        "proof": "3 CHR distributors already deploy HUGGO nationwide."
+      },
+      {
+        "title": "Consolidated network analytics.",
+        "description": "A single dashboard: revenue per location, average basket, conversion rate, campaign performance. Network view + individual view."
+      },
+      {
+        "title": "Local personalization under central control.",
+        "description": "Each location has its own menu, schedule, and promotions. Headquarters maintains control over branding, standards, and reporting."
+      }
+    ]
+  },
+  "network-features": {
+    "title": "Built for networks.",
+    "items": [
+      { "title": "Batch onboarding", "description": "Activate dozens of locations in a single operation." },
+      { "title": "Centralized management", "description": "Configuration, updates, and promotions from headquarters." },
+      { "title": "Consolidated reporting", "description": "Revenue, average basket, conversion rate — by network and by location." },
+      { "title": "Local personalization", "description": "Menu, hours, pricing, and promotions tailored to each franchisee." },
+      { "title": "Multi-language", "description": "Each assistant adapts to the local customer language." }
+    ]
+  },
+  "impact": {
+    "title": "Results at scale.",
+    "items": [
+      { "value": "15M", "label": "orders processed through HUGGO" },
+      { "value": "3", "label": "CHR distributors deploying HUGGO nationwide" },
+      { "value": "60%", "label": "customer base digitized within 3 months per location" }
+    ]
+  },
+  "testimonial": {
+    "title": "3 CHR distributors already trust HUGGO for their nationwide network.",
+    "fallback": "Distributor logos to provide."
+  },
+  "faq": {
+    "title": "Frequently asked questions — Franchise",
+    "items": [
+      {
+        "question": "How do we deploy across 200 locations?",
+        "answer": "HUGGO offers batch onboarding. Each location is activated with its own menu, hours, and local settings. Rollout can be phased (by zone) or simultaneous. Our team manages the launch with you."
+      },
+      {
+        "question": "Each franchisee has their own menu and hours.",
+        "answer": "Each location gets its own personalized AI assistant — menu, hours, pricing, promotions. Headquarters retains control over network standards and consolidated reporting."
+      },
+      {
+        "question": "What network reporting do you offer?",
+        "answer": "A single dashboard with network-level and per-location views: revenue, average basket, conversion rate, order hours, campaign performance."
+      },
+      {
+        "question": "Is pricing adapted to volume?",
+        "answer": "Pricing is volume-based and decreases with the number of locations. Contact our sales team for a network quote."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Let's talk about your rollout.",
+    "subtitle": "Our sales team will present HUGGO and build a proposal tailored to the size of your network.",
+    "cta-primary": "Contact us",
+    "cta-secondary": "Request a demo"
+  }
+}

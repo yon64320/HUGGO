@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Animation Tokens – HUGGO Design System
+   ========================================================================== */
+
+:root {
+  /* Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+
+  /* Easing curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* -----------------------------------------------------------------------
+   Fade-up – used for scroll-triggered entrance animations.
+   Apply the `.fade-up` class to any element and toggle `.is-visible`
+   when it enters the viewport (via IntersectionObserver).
+   ----------------------------------------------------------------------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children with increasing delay */
+.fade-up-stagger > *:nth-child(1) { transition-delay: 0ms; }
+.fade-up-stagger > *:nth-child(2) { transition-delay: 80ms; }
+.fade-up-stagger > *:nth-child(3) { transition-delay: 160ms; }
+.fade-up-stagger > *:nth-child(4) { transition-delay: 240ms; }
+.fade-up-stagger > *:nth-child(5) { transition-delay: 320ms; }
+.fade-up-stagger > *:nth-child(6) { transition-delay: 400ms; }
+
+/* -----------------------------------------------------------------------
+   Reduced-motion preference
+   ----------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+  }
+}

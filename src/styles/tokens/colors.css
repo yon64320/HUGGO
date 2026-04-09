@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Color Tokens – HUGGO Design System
+   ========================================================================== */
+
+/* Brand colors (invariant across themes) */
+:root {
+  --color-green-primary: #4A9B4A;
+  --color-green-light: #5CB85C;
+  --color-green-dark: #3A7D3A;
+
+  --color-orange-accent: #F5920A;
+  --color-orange-light: #FFB347;
+  --color-orange-dark: #D47B08;
+}
+
+/* Light mode (default) */
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAF8;
+  --text-primary: #1A1A2E;
+  --text-secondary: #4A5568;
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-blur: 16px;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-glass: rgba(0, 0, 0, 0.06);
+  --bg-green: #EEF6EE;
+  --bg-beige: #F7F3EB;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --bg-primary: #0F0F1A;
+  --bg-secondary: #1A1A2E;
+  --text-primary: #F7FAFC;
+  --text-secondary: #CBD5E0;
+  --glass-bg: rgba(15, 15, 26, 0.80);
+  --glass-blur: 16px;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-glass: rgba(255, 255, 255, 0.06);
+  --bg-green: #0E1A11;
+  --bg-beige: #1A1610;
+}

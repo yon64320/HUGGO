@@ -1,0 +1,102 @@
+---
+import { locales, localeNames } from '@i18n/config';
+import type { Locale } from '@i18n/config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+/**
+ * Derive the alternate-locale URL from the current page URL.
+ * Swaps the locale segment in the path, preserving the rest of the URL structure.
+ */
+function getAlternatePath(targetLocale: Locale): string {
+  const path = Astro.url.pathname;
+  const segments = path.split('/').filter(Boolean);
+
+  // If the first segment is a known locale, replace it
+  if (segments.length > 0 && locales.includes(segments[0] as Locale)) {
+    segments[0] = targetLocale;
+  } else {
+    // No locale prefix found; prepend the target locale
+    segments.unshift(targetLocale);
+  }
+
+  return '/' + segments.join('/') + '/';
+}
+
+const localeLabels: Record<Locale, string> = {
+  fr: 'FR',
+  en: 'EN',
+};
+---
+
+<nav class="lang-switcher" aria-label={locale === 'fr' ? 'Changer de langue' : 'Change language'}>
+  {locales.map((loc, index) => (
+    <>
+      {index > 0 && <span class="lang-switcher__separator" aria-hidden="true">|</span>}
+      {loc === locale ? (
+        <span
+          class="lang-switcher__link lang-switcher__link--active"
+          aria-current="true"
+          aria-label={localeNames[loc]}
+        >
+          {localeLabels[loc]}
+        </span>
+      ) : (
+        <a
+          href={getAlternatePath(loc)}
+          class="lang-switcher__link"
+          hreflang={loc}
+          lang={loc}
+          aria-label={`Switch to ${localeNames[loc]}`}
+        >
+          {localeLabels[loc]}
+        </a>
+      )}
+    </>
+  ))}
+</nav>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1, 0.25rem);
+  }
+
+  .lang-switcher__separator {
+    color: var(--text-secondary);
+    opacity: 0.4;
+    font-size: var(--text-sm, 0.875rem);
+    user-select: none;
+  }
+
+  .lang-switcher__link {
+    font-family: var(--font-body, sans-serif);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+    border-radius: 0.25rem;
+    transition: color var(--duration-fast, 150ms),
+                background var(--duration-fast, 150ms);
+  }
+
+  .lang-switcher__link:hover {
+    color: var(--color-green-primary, #4A9B4A);
+  }
+
+  .lang-switcher__link--active {
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-green-primary, #4A9B4A);
+    text-decoration-thickness: 2px;
+    cursor: default;
+  }
+</style>

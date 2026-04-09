@@ -1,0 +1,261 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SEOHead from '../../components/astro/SEOHead.astro';
+import FeatureCard from '../../components/astro/FeatureCard.astro';
+import CTASection from '../../components/astro/CTASection.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'en';
+
+// Meta
+const metaTitle = await t(locale, 'about', 'meta.title');
+const metaDescription = await t(locale, 'about', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'about', 'hero.title');
+const heroSubtitle = await t(locale, 'about', 'hero.subtitle');
+const heroCtaPrimary = await t(locale, 'about', 'hero.cta-primary');
+
+// Vision
+const visionTitle = await t(locale, 'about', 'vision.title');
+const visionDescription = await t(locale, 'about', 'vision.description');
+
+// Company (Atidgo)
+const companyTitle = await t(locale, 'about', 'company.title');
+const companyDescription = await t(locale, 'about', 'company.description');
+
+// Partners (5 items)
+const partnersTitle = await t(locale, 'about', 'partners.title');
+const partnerItems = [
+  {
+    name: await t(locale, 'about', 'partners.items.0.name'),
+    description: await t(locale, 'about', 'partners.items.0.description'),
+  },
+  {
+    name: await t(locale, 'about', 'partners.items.1.name'),
+    description: await t(locale, 'about', 'partners.items.1.description'),
+  },
+  {
+    name: await t(locale, 'about', 'partners.items.2.name'),
+    description: await t(locale, 'about', 'partners.items.2.description'),
+  },
+  {
+    name: await t(locale, 'about', 'partners.items.3.name'),
+    description: await t(locale, 'about', 'partners.items.3.description'),
+  },
+  {
+    name: await t(locale, 'about', 'partners.items.4.name'),
+    description: await t(locale, 'about', 'partners.items.4.description'),
+  },
+];
+
+// Numbers (4 stats)
+const numbersTitle = await t(locale, 'about', 'numbers.title');
+const numberItems = [
+  {
+    value: await t(locale, 'about', 'numbers.items.0.value'),
+    label: await t(locale, 'about', 'numbers.items.0.label'),
+  },
+  {
+    value: await t(locale, 'about', 'numbers.items.1.value'),
+    label: await t(locale, 'about', 'numbers.items.1.label'),
+  },
+  {
+    value: await t(locale, 'about', 'numbers.items.2.value'),
+    label: await t(locale, 'about', 'numbers.items.2.label'),
+  },
+  {
+    value: await t(locale, 'about', 'numbers.items.3.value'),
+    label: await t(locale, 'about', 'numbers.items.3.label'),
+  },
+];
+
+// CSR (6 items)
+const csrTitle = await t(locale, 'about', 'csr.title');
+const csrItems = [
+  {
+    title: await t(locale, 'about', 'csr.items.0.title'),
+    description: await t(locale, 'about', 'csr.items.0.description'),
+  },
+  {
+    title: await t(locale, 'about', 'csr.items.1.title'),
+    description: await t(locale, 'about', 'csr.items.1.description'),
+  },
+  {
+    title: await t(locale, 'about', 'csr.items.2.title'),
+    description: await t(locale, 'about', 'csr.items.2.description'),
+  },
+  {
+    title: await t(locale, 'about', 'csr.items.3.title'),
+    description: await t(locale, 'about', 'csr.items.3.description'),
+  },
+  {
+    title: await t(locale, 'about', 'csr.items.4.title'),
+    description: await t(locale, 'about', 'csr.items.4.description'),
+  },
+  {
+    title: await t(locale, 'about', 'csr.items.5.title'),
+    description: await t(locale, 'about', 'csr.items.5.description'),
+  },
+];
+
+// Final CTA
+const finalCtaTitle = await t(locale, 'about', 'final-cta.title');
+const finalCtaPrimary = await t(locale, 'about', 'final-cta.cta-primary');
+const finalCtaSecondary = await t(locale, 'about', 'final-cta.cta-secondary');
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/en/' },
+  { name: 'About', url: 'https://www.huggo.app/en/about/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="about" jsonLd={[breadcrumb]} />
+
+  <!-- ========== HERO ========== -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+            {heroTitle}
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8">
+            {heroSubtitle}
+          </p>
+          <a
+            href="/en/contact"
+            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-full font-semibold hover:bg-[var(--color-green-dark)] transition-colors shadow-lg"
+          >
+            {heroCtaPrimary}
+          </a>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VISION / MISSION ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-8">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight mb-6">
+            {visionTitle}
+          </h2>
+        </div>
+        <div class="text-lg text-[var(--text-secondary)] leading-relaxed whitespace-pre-line max-w-3xl mx-auto">
+          {visionDescription}
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ========== COMPANY (ATIDGO) ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-8">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight mb-6">
+            {companyTitle}
+          </h2>
+        </div>
+        <div class="text-lg text-[var(--text-secondary)] leading-relaxed whitespace-pre-line max-w-3xl mx-auto">
+          {companyDescription}
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ========== PARTNERS ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {partnersTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {partnerItems.map((partner, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] text-center hover:shadow-md transition-shadow h-full">
+              <div class="w-16 h-16 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-[var(--color-green-primary)] font-bold text-lg">
+                  {partner.name.split(' ')[0].substring(0, 3).toUpperCase()}
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">{partner.name}</h3>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{partner.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NUMBERS ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {numbersTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        {numberItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="text-center">
+              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{item.value}</p>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.label}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CSR / RSE ========== -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+            {csrTitle}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {csrItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <ScrollReveal>
+    <CTASection
+      title={finalCtaTitle}
+      ctaText={finalCtaPrimary}
+      ctaHref="/en/contact"
+      secondaryCtaText={finalCtaSecondary}
+      secondaryCtaHref="/en/contact"
+      variant="primary"
+    />
+  </ScrollReveal>
+</PageLayout>

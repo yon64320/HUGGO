@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "HUGGO Franchise — Déploiement WhatsApp réseau | Analytics",
+    "description": "Déployez HUGGO sur tout votre réseau de franchises. Un assistant IA par point de vente, analytics consolidés, gestion centralisée. Contactez-nous."
+  },
+  "hero": {
+    "title": "Déployez HUGGO sur tout votre réseau. Un assistant IA par point de vente.",
+    "subtitle": "Chaque franchisé dispose de son propre assistant WhatsApp, personnalisé à son commerce. Vous gardez la main sur l'ensemble du réseau : analytics consolidés, gestion centralisée, déploiement progressif ou simultané.",
+    "cta-primary": "Nous contacter",
+    "micro-text": "Tarification réseau sur demande"
+  },
+  "network-problems": {
+    "title": "Gérer un réseau de franchises, c'est aussi gérer ses incohérences.",
+    "items": [
+      {
+        "title": "Déploiement hétérogène.",
+        "description": "Chaque point de vente adopte ses propres outils. Résultat : pas de vision d'ensemble, pas de standard client, pas de données comparables."
+      },
+      {
+        "title": "Analytics fragmentés.",
+        "description": "Les données sont dispersées entre les caisses, les plateformes, les tableurs. Impossible de comparer la performance de 200 points de vente sur un même tableau de bord."
+      },
+      {
+        "title": "Expérience client non uniforme.",
+        "description": "Un client commande facilement dans un point de vente, galère dans un autre. Votre marque perd en cohérence."
+      }
+    ]
+  },
+  "huggo-for-networks": {
+    "title": "Un réseau, une plateforme, un standard.",
+    "items": [
+      {
+        "title": "Déploiement simultané, point par point.",
+        "description": "Activez HUGGO sur 50, 200 ou 500 points de vente. Chaque franchisé obtient son assistant IA en quelques minutes — menu local, horaires locaux, promotions locales.",
+        "proof": "3 distributeurs CHR déploient déjà HUGGO à l'échelle nationale."
+      },
+      {
+        "title": "Analytics réseau consolidés.",
+        "description": "Un tableau de bord unique : chiffre d'affaires par point de vente, panier moyen, taux de conversion, performance des campagnes. Vue réseau + vue individuelle."
+      },
+      {
+        "title": "Personnalisation locale sous contrôle central.",
+        "description": "Chaque point de vente a son propre menu, ses horaires, ses promotions. Le siège garde la main sur la marque, les standards et les reportings."
+      }
+    ]
+  },
+  "network-features": {
+    "title": "Conçu pour les réseaux.",
+    "items": [
+      { "title": "Onboarding batch", "description": "Activez des dizaines de points de vente en une opération." },
+      { "title": "Gestion centralisée", "description": "Paramétrage, mises à jour et promotions depuis le siège." },
+      { "title": "Reporting consolidé", "description": "CA, panier moyen, taux de conversion — par réseau et par point de vente." },
+      { "title": "Personnalisation locale", "description": "Menu, horaires, prix et promotions adaptés à chaque franchisé." },
+      { "title": "Multi-langue", "description": "Chaque assistant s'adapte à la langue de la clientèle locale." }
+    ]
+  },
+  "impact": {
+    "title": "Des résultats à l'échelle.",
+    "items": [
+      { "value": "15M", "label": "de commandes traitées via HUGGO" },
+      { "value": "3", "label": "distributeurs CHR déployant HUGGO à l'échelle nationale" },
+      { "value": "60%", "label": "de clientèle digitalisée en 3 mois par point de vente" }
+    ]
+  },
+  "testimonial": {
+    "title": "3 distributeurs CHR font déjà confiance à HUGGO pour leur réseau national.",
+    "fallback": "Logos distributeurs à fournir."
+  },
+  "faq": {
+    "title": "Questions fréquentes — Franchise",
+    "items": [
+      {
+        "question": "Comment déployer sur 200 points de vente ?",
+        "answer": "HUGGO propose un onboarding batch. Chaque point de vente est activé avec son menu, ses horaires et ses paramètres locaux. Le déploiement peut être progressif (par zone) ou simultané. Notre équipe pilote le lancement avec vous."
+      },
+      {
+        "question": "Chaque franchisé a son propre menu et ses horaires.",
+        "answer": "Chaque point de vente dispose de son assistant IA personnalisé — menu, horaires, prix, promotions. Le siège garde la main sur les standards réseau et les reportings consolidés."
+      },
+      {
+        "question": "Quel reporting réseau proposez-vous ?",
+        "answer": "Un tableau de bord unique avec vue réseau et vue par point de vente : chiffre d'affaires, panier moyen, taux de conversion, heures de commande, performance des campagnes."
+      },
+      {
+        "question": "Le pricing est-il adapté au volume ?",
+        "answer": "La tarification est dégressive selon le nombre de points de vente. Contactez notre équipe commerciale pour un devis réseau."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Discutons de votre déploiement.",
+    "subtitle": "Notre équipe commerciale vous présente HUGGO et construit une proposition adaptée à la taille de votre réseau.",
+    "cta-primary": "Nous contacter",
+    "cta-secondary": "Demander une démo"
+  }
+}

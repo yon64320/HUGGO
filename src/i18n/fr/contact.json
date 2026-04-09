@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Contact — Demandez une démo HUGGO | Sous 24h",
+    "description": "Demandez une démo personnalisée de HUGGO en 30 secondes. Commerçant ou distributeur, notre équipe vous rappelle sous 24h. Sans engagement."
+  },
+  "hero": {
+    "title": "Demandez votre démo en 30 secondes.",
+    "subtitle": "Notre équipe vous rappelle sous 24h pour une démo personnalisée de 15 minutes. Vous verrez HUGGO en action sur votre commerce."
+  },
+  "merchant-form": {
+    "title": "Vous êtes commerçant ? Demandez une démo.",
+    "fields": {
+      "name": { "label": "Votre nom", "placeholder": "Jean Dupont" },
+      "company": { "label": "Nom de votre commerce", "placeholder": "Boulangerie du Marché" },
+      "email": { "label": "Votre email professionnel", "placeholder": "jean@boulangerie.fr" },
+      "phone": { "label": "Votre téléphone", "placeholder": "06 12 34 56 78" },
+      "type": {
+        "label": "Vous êtes…",
+        "options": [
+          "Boulangerie / Pâtisserie",
+          "Restaurant / Traiteur",
+          "Épicerie / Alimentation",
+          "Caviste / Bar",
+          "Autre commerce"
+        ]
+      },
+      "message": { "label": "Message", "placeholder": "Dites-nous en plus sur votre activité (optionnel)" }
+    },
+    "submit": "Envoyer ma demande de démo",
+    "micro-text": "Nous vous rappelons sous 24h. Sans engagement.",
+    "success": "Merci ! Votre demande est envoyée. Notre équipe vous rappelle sous 24h pour planifier votre démo.",
+    "error": "Une erreur est survenue. Réessayez ou contactez-nous directement sur WhatsApp.",
+    "error-email": "Vérifiez votre adresse email.",
+    "error-phone": "Vérifiez votre numéro de téléphone.",
+    "error-required": "Ce champ est obligatoire.",
+    "loading": "Envoi en cours…"
+  },
+  "distributor-form": {
+    "title": "Vous êtes distributeur ou réseau ? Parlons de votre déploiement.",
+    "fields": {
+      "name": { "label": "Votre nom", "placeholder": "Marie Martin" },
+      "company": { "label": "Votre entreprise", "placeholder": "Groupe Distribution France" },
+      "email": { "label": "Votre email professionnel", "placeholder": "marie@groupe.fr" },
+      "message": { "label": "Votre message", "placeholder": "Nombre de points de vente, besoins spécifiques…" }
+    },
+    "submit": "Envoyer ma demande",
+    "micro-text": "Notre équipe commerciale vous recontacte rapidement.",
+    "success": "Merci ! Votre demande a été transmise à notre équipe commerciale. Nous revenons vers vous rapidement.",
+    "error": "Une erreur est survenue. Réessayez ou contactez-nous directement sur WhatsApp.",
+    "error-email": "Vérifiez votre adresse email.",
+    "error-required": "Ce champ est obligatoire.",
+    "loading": "Envoi en cours…"
+  },
+  "info": {
+    "title": "Ou contactez-nous directement.",
+    "email": "contact@huggo.com",
+    "address": "Paris, France",
+    "hours": "Lundi - Vendredi : 9h - 18h"
+  },
+  "reassurance": {
+    "items": [
+      { "title": "Sans engagement", "description": "Découvrez HUGGO sans vous engager. La démo est gratuite et sans obligation." },
+      { "title": "Démo de 15 minutes", "description": "En 15 minutes, vous voyez HUGGO en action sur votre type de commerce. Questions, cas d'usage, tarifs : on couvre tout." },
+      { "title": "Rappel sous 24h", "description": "Vous remplissez le formulaire, nous vous rappelons dans les 24 heures pour fixer un créneau." }
+    ]
+  }
+}

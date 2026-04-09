@@ -1,0 +1,214 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SEOHead from '../../components/astro/SEOHead.astro';
+import CTASection from '../../components/astro/CTASection.astro';
+import FAQ from '../../components/astro/FAQ.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
+import { t } from '../../i18n/utils';
+import { generateBreadcrumbSchema } from '../../lib/seo';
+
+const locale = 'fr';
+
+// Meta
+const metaTitle = await t(locale, 'franchise', 'meta.title');
+const metaDescription = await t(locale, 'franchise', 'meta.description');
+
+// Hero
+const heroTitle = await t(locale, 'franchise', 'hero.title');
+const heroSubtitle = await t(locale, 'franchise', 'hero.subtitle');
+const heroCta = await t(locale, 'franchise', 'hero.cta-primary');
+const heroMicroText = await t(locale, 'franchise', 'hero.micro-text');
+
+// Network problems
+const problemsTitle = await t(locale, 'franchise', 'network-problems.title');
+const problemItems = [];
+for (let i = 0; i < 3; i++) {
+  problemItems.push({
+    title: await t(locale, 'franchise', `network-problems.items.${i}.title`),
+    description: await t(locale, 'franchise', `network-problems.items.${i}.description`),
+  });
+}
+
+// HUGGO for networks
+const networkTitle = await t(locale, 'franchise', 'huggo-for-networks.title');
+const networkItems = [];
+for (let i = 0; i < 3; i++) {
+  const item: any = {
+    title: await t(locale, 'franchise', `huggo-for-networks.items.${i}.title`),
+    description: await t(locale, 'franchise', `huggo-for-networks.items.${i}.description`),
+  };
+  const proof = await t(locale, 'franchise', `huggo-for-networks.items.${i}.proof`);
+  if (proof !== `huggo-for-networks.items.${i}.proof`) item.proof = proof;
+  networkItems.push(item);
+}
+
+// Network features
+const featuresTitle = await t(locale, 'franchise', 'network-features.title');
+const featureItems = [];
+for (let i = 0; i < 5; i++) {
+  featureItems.push({
+    title: await t(locale, 'franchise', `network-features.items.${i}.title`),
+    description: await t(locale, 'franchise', `network-features.items.${i}.description`),
+  });
+}
+
+// Impact stats
+const impactTitle = await t(locale, 'franchise', 'impact.title');
+const impactItems = [];
+for (let i = 0; i < 3; i++) {
+  impactItems.push({
+    value: await t(locale, 'franchise', `impact.items.${i}.value`),
+    label: await t(locale, 'franchise', `impact.items.${i}.label`),
+  });
+}
+
+// Testimonial
+const testimonialTitle = await t(locale, 'franchise', 'testimonial.title');
+const testimonialFallback = await t(locale, 'franchise', 'testimonial.fallback');
+
+// FAQ
+const faqTitle = await t(locale, 'franchise', 'faq.title');
+const faqItems = [];
+for (let i = 0; i < 4; i++) {
+  faqItems.push({
+    question: await t(locale, 'franchise', `faq.items.${i}.question`),
+    answer: await t(locale, 'franchise', `faq.items.${i}.answer`),
+  });
+}
+
+// Final CTA
+const ctaTitle = await t(locale, 'franchise', 'final-cta.title');
+const ctaSubtitle = await t(locale, 'franchise', 'final-cta.subtitle');
+const ctaPrimary = await t(locale, 'franchise', 'final-cta.cta-primary');
+const ctaSecondary = await t(locale, 'franchise', 'final-cta.cta-secondary');
+
+// SEO
+const breadcrumb = generateBreadcrumbSchema([
+  { name: 'HUGGO', url: 'https://www.huggo.app/fr/' },
+  { name: 'Franchise', url: 'https://www.huggo.app/fr/franchise/' },
+]);
+---
+
+<PageLayout title={metaTitle} description={metaDescription} locale={locale}>
+  <SEOHead slot="head" locale={locale} page="franchise" jsonLd={[breadcrumb]} />
+
+  <!-- 1. HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <ScrollReveal>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">{heroTitle}</h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-2xl mx-auto">{heroSubtitle}</p>
+          <a href="/fr/contact" class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-dark)] transition-colors">{heroCta}</a>
+          <p class="mt-3 text-sm text-[var(--text-secondary)] opacity-70">{heroMicroText}</p>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. NETWORK PROBLEMS -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12 md:mb-16">{problemsTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {problemItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HUGGO FOR NETWORKS -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12 md:mb-16">{networkTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {networkItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-[var(--text-secondary)] leading-relaxed mb-3">{item.description}</p>
+              {item.proof && <p class="text-sm text-[var(--color-green-primary)] italic">{item.proof}</p>}
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. NETWORK FEATURES -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12 md:mb-16">{featuresTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featureItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.1}>
+            <div class="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-8 hover:shadow-lg transition-shadow h-full">
+              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+              <p class="text-[var(--text-secondary)] leading-relaxed text-sm">{item.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. IMPACT STATS -->
+  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight text-center mb-12">{impactTitle}</h2>
+      </ScrollReveal>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {impactItems.map((item, i) => (
+          <ScrollReveal delay={i * 0.15}>
+            <div class="text-center">
+              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{item.value}</p>
+              <p class="text-sm text-[var(--text-secondary)]">{item.label}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TESTIMONIAL -->
+  <section class="py-16 md:py-24 bg-[var(--bg-beige)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <ScrollReveal>
+        <h3 class="text-xl font-bold text-[var(--text-primary)] mb-4">{testimonialTitle}</h3>
+        <p class="text-[var(--text-secondary)]">{testimonialFallback}</p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <div class="bg-[var(--bg-green)]">
+    <ScrollReveal>
+      <FAQ items={faqItems} title={faqTitle} />
+    </ScrollReveal>
+  </div>
+
+  <!-- 8. PRE-FOOTER CTA -->
+  <ScrollReveal>
+    <CTASection
+      title={ctaTitle}
+      subtitle={ctaSubtitle}
+      ctaText={ctaPrimary}
+      ctaHref="/fr/contact"
+      secondaryCtaText={ctaSecondary}
+      secondaryCtaHref="/fr/tarifs"
+    />
+  </ScrollReveal>
+</PageLayout>

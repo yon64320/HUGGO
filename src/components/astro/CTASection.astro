@@ -1,0 +1,179 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  ctaText: string;
+  ctaHref: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  microText?: string;
+  variant?: 'primary' | 'secondary';
+}
+
+const { title, subtitle, ctaText, ctaHref, secondaryCtaText, secondaryCtaHref, microText, variant = 'primary' } = Astro.props;
+---
+
+<section class:list={['cta-section', `cta-section--${variant}`]}>
+  <div class="cta-section__inner">
+    <h2 class="cta-section__title">{title}</h2>
+    {subtitle && <p class="cta-section__subtitle">{subtitle}</p>}
+    <div class="cta-section__actions">
+      <a href={ctaHref} class:list={['cta-section__button', `cta-section__button--${variant}`]}>
+        {ctaText}
+      </a>
+      {secondaryCtaText && secondaryCtaHref && (
+        <a href={secondaryCtaHref} class="cta-section__button cta-section__button--outline">
+          {secondaryCtaText}
+        </a>
+      )}
+    </div>
+    {microText && <p class="cta-section__micro-text">{microText}</p>}
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding: var(--space-section-y, 5rem) var(--space-6, 1.5rem);
+    text-align: center;
+  }
+
+  .cta-section--primary {
+    background: linear-gradient(
+      135deg,
+      var(--color-green-dark, #3A7D3A) 0%,
+      var(--color-green-primary, #4A9B4A) 50%,
+      var(--color-green-light, #5CB85C) 100%
+    );
+    color: #ffffff;
+  }
+
+  .cta-section--secondary {
+    background: var(--bg-secondary, #F8FAF8);
+  }
+
+  .cta-section__inner {
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+
+  .cta-section__title {
+    font-family: var(--font-display, 'Sora', sans-serif);
+    font-size: var(--text-4xl, 2.625rem);
+    font-weight: var(--font-weight-bold, 700);
+    line-height: var(--leading-tight, 1.15);
+    letter-spacing: var(--tracking-tight, -0.02em);
+    margin: 0 0 var(--space-4, 1rem);
+  }
+
+  .cta-section--primary .cta-section__title {
+    color: #ffffff;
+  }
+
+  .cta-section--secondary .cta-section__title {
+    color: var(--text-primary);
+  }
+
+  .cta-section__subtitle {
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--leading-normal, 1.6);
+    margin: 0 0 var(--space-8, 2rem);
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  .cta-section--primary .cta-section__subtitle {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .cta-section--secondary .cta-section__subtitle {
+    color: var(--text-secondary);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4, 1rem);
+    flex-wrap: wrap;
+  }
+
+  .cta-section__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4, 1rem) var(--space-10, 2.5rem);
+    border-radius: 9999px;
+    font-family: var(--font-body, sans-serif);
+    font-size: var(--text-lg, 1.125rem);
+    font-weight: var(--font-weight-semibold, 600);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background var(--duration-fast, 150ms),
+      color var(--duration-fast, 150ms),
+      transform var(--duration-fast, 150ms),
+      box-shadow var(--duration-fast, 150ms);
+  }
+
+  .cta-section__button:hover {
+    transform: translateY(-2px);
+  }
+
+  .cta-section__button--primary {
+    background: #ffffff;
+    color: var(--color-green-dark, #3A7D3A);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  .cta-section__button--primary:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-section__button--secondary {
+    background: var(--color-green-primary, #4A9B4A);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(74, 155, 74, 0.3);
+  }
+
+  .cta-section__button--secondary:hover {
+    background: var(--color-green-dark, #3A7D3A);
+    box-shadow: 0 8px 24px rgba(74, 155, 74, 0.4);
+  }
+
+  .cta-section__button--outline {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+  }
+
+  .cta-section--secondary .cta-section__button--outline {
+    color: var(--color-green-primary, #4A9B4A);
+    border-color: var(--color-green-primary, #4A9B4A);
+  }
+
+  .cta-section__button--outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: none;
+  }
+
+  .cta-section--secondary .cta-section__button--outline:hover {
+    background: var(--color-green-primary, #4A9B4A);
+    color: #ffffff;
+  }
+
+  .cta-section__micro-text {
+    font-size: var(--text-sm, 0.875rem);
+    margin: var(--space-3, 0.75rem) 0 0;
+    opacity: 0.7;
+  }
+
+  .cta-section--primary .cta-section__micro-text {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .cta-section--secondary .cta-section__micro-text {
+    color: var(--text-secondary);
+  }
+</style>

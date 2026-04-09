@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Logo Bar – CSS-only infinite scroll
+   ========================================================================== */
+
+.logo-bar {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-block: var(--space-6, 1.5rem);
+}
+
+/* Fade edges for a polished look */
+.logo-bar::before,
+.logo-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-bar::before {
+  left: 0;
+  background: linear-gradient(to right, var(--logo-bar-bg, var(--bg-primary, #fff)), transparent);
+}
+
+.logo-bar::after {
+  right: 0;
+  background: linear-gradient(to left, var(--logo-bar-bg, var(--bg-primary, #fff)), transparent);
+}
+
+/* The scrolling track – expects 3x duplicated content so the loop is seamless */
+.logo-bar__track {
+  display: inline-flex;
+  gap: 3rem;
+  animation: scroll-logos 60s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+/* Pause on hover for accessibility */
+.logo-bar:hover .logo-bar__track {
+  animation-play-state: paused;
+}
+
+/* Individual logo items */
+.logo-bar__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-bar__item img {
+  height: 2.5rem;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.logo-bar__item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .logo-bar__track {
+    animation: none;
+  }
+}

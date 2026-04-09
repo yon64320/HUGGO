@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Contact — Request a HUGGO Demo | Within 24h",
+    "description": "Request a personalized HUGGO demo in 30 seconds. Retailer or distributor, our team calls you back within 24h. No commitment."
+  },
+  "hero": {
+    "title": "Request your demo in 30 seconds.",
+    "subtitle": "Our team calls you back within 24h for a personalized 15-minute demo. You'll see HUGGO in action for your store."
+  },
+  "merchant-form": {
+    "title": "You're a retailer? Request a demo.",
+    "fields": {
+      "name": { "label": "Your name", "placeholder": "John Smith" },
+      "company": { "label": "Your business name", "placeholder": "The Corner Bakery" },
+      "email": { "label": "Your professional email", "placeholder": "john@bakery.com" },
+      "phone": { "label": "Your phone number", "placeholder": "+33 6 12 34 56 78" },
+      "type": {
+        "label": "You are…",
+        "options": [
+          "Bakery / Pastry shop",
+          "Restaurant / Caterer",
+          "Grocery / Food store",
+          "Wine shop / Bar",
+          "Other retail"
+        ]
+      },
+      "message": { "label": "Message", "placeholder": "Tell us more about your business (optional)" }
+    },
+    "submit": "Send my demo request",
+    "micro-text": "We'll call you within 24h. No commitment.",
+    "success": "Thank you! Your request has been sent. Our team will call you within 24h to schedule your demo.",
+    "error": "An error occurred. Please try again or contact us directly on WhatsApp.",
+    "error-email": "Please check your email address.",
+    "error-phone": "Please check your phone number.",
+    "error-required": "This field is required.",
+    "loading": "Sending…"
+  },
+  "distributor-form": {
+    "title": "You're a distributor or network? Let's discuss your deployment.",
+    "fields": {
+      "name": { "label": "Your name", "placeholder": "Jane Martin" },
+      "company": { "label": "Your company", "placeholder": "Distribution Group France" },
+      "email": { "label": "Your professional email", "placeholder": "jane@group.com" },
+      "message": { "label": "Your message", "placeholder": "Number of locations, specific needs…" }
+    },
+    "submit": "Send my request",
+    "micro-text": "Our sales team will get back to you shortly.",
+    "success": "Thank you! Your request has been forwarded to our sales team. We'll get back to you shortly.",
+    "error": "An error occurred. Please try again or contact us directly on WhatsApp.",
+    "error-email": "Please check your email address.",
+    "error-required": "This field is required.",
+    "loading": "Sending…"
+  },
+  "info": {
+    "title": "Or contact us directly.",
+    "email": "contact@huggo.com",
+    "address": "Paris, France",
+    "hours": "Monday - Friday: 9am - 6pm CET"
+  },
+  "reassurance": {
+    "items": [
+      { "title": "No commitment", "description": "Discover HUGGO with no strings attached. The demo is free and without obligation." },
+      { "title": "15-minute demo", "description": "In 15 minutes, you see HUGGO in action for your type of business. Questions, use cases, pricing — we cover everything." },
+      { "title": "Callback within 24h", "description": "You fill out the form, we call you back within 24 hours to set a time." }
+    ]
+  }
+}

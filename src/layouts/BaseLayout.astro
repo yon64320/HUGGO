@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: 'fr' | 'en';
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const { title, description, locale, canonicalUrl, ogImage } = Astro.props;
+---
+<!doctype html>
+<html lang={locale} data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Dark mode (no FOUC) -->
+  <script is:inline>
+    (function() {
+      const theme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preload" href="/fonts/dm-sans-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/dm-sans-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- SEO base -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content={locale === 'fr' ? 'fr_FR' : 'en_US'} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <slot name="head" />
+
+  <!-- Global CSS loaded via frontmatter import -->
+</head>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] font-[var(--font-body)] antialiased">
+  <slot />
+
+  <!-- Analytics -->
+  {import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN && (
+    <script defer data-domain={import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js" is:inline></script>
+  )}
+</body>
+</html>

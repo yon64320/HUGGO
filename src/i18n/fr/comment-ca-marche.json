@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "Comment ça marche — HUGGO | Onboarding en 4 étapes",
+    "description": "Découvrez comment HUGGO fonctionne en 4 étapes simples. De la photo de votre carte à votre assistant WhatsApp opérationnel, en quelques minutes."
+  },
+  "hero": {
+    "title": "De zéro à opérationnel en quelques minutes.",
+    "subtitle": "Pas d'app à installer. Pas de développeur à embaucher. Quatre étapes, et votre assistant WhatsApp prend ses premières commandes.",
+    "cta-primary": "Demander une démo",
+    "micro-text": "15 minutes pour tout comprendre"
+  },
+  "onboarding": {
+    "title": "Quatre étapes. C'est tout.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Trouvez votre commerce.",
+        "description": "HUGGO localise votre établissement sur Google Business. Votre adresse, vos horaires, vos photos : tout est récupéré automatiquement."
+      },
+      {
+        "number": "02",
+        "title": "Importez vos produits.",
+        "description": "Deux options : prenez votre carte en photo — l'IA lit et crée votre catalogue. Ou synchronisez directement depuis votre caisse pour un catalogue toujours à jour."
+      },
+      {
+        "number": "03",
+        "title": "Votre assistant est créé.",
+        "description": "L'IA configure un assistant WhatsApp personnalisé pour votre commerce. Il connaît vos produits, vos prix, vos horaires. Il est prêt à répondre à vos clients."
+      },
+      {
+        "number": "04",
+        "title": "Vos clients commandent.",
+        "description": "Votre numéro WhatsApp est publié sur Google Business. Vos clients vous trouvent, scannent votre QR code, et commandent directement. Le bouche-à-oreille fait le reste."
+      }
+    ]
+  },
+  "demo-conversation": {
+    "title": "Voilà ce que vivent vos clients.",
+    "placeholder": "Simulation visuelle d'une conversation WhatsApp à fournir."
+  },
+  "basket-360": {
+    "title": "Un panier. Tous les canaux.",
+    "description": "Votre client ajoute un produit sur WhatsApp. En boutique, il modifie sa commande sur la borne ou l'iPad. Il paie en caisse. Le panier est le même, partout, en temps réel.",
+    "channels": "WhatsApp → Borne en magasin → iPad → Caisse → Site web → Paiement (Apple Pay, Google Pay, Stripe, Contodeo)",
+    "note": "HUGGO se branche sur votre caisse existante. Pas de changement de matériel, pas de migration. Compatible avec les principaux systèmes de caisse du marché via HubRise et Orisha Distribution."
+  },
+  "video": {
+    "title": "Voyez HUGGO en action.",
+    "cta": "Demander une démo personnalisée →"
+  },
+  "results": {
+    "title": "Ce que HUGGO change concrètement.",
+    "items": [
+      { "value": "60%", "label": "de clientèle digitalisée en 3 mois — même les non-technophiles" },
+      { "value": "+15 à +30%", "label": "de panier moyen par rapport à une app mobile" },
+      { "value": "15M", "label": "de commandes traitées depuis mars 2025" }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "question": "Il faut un développeur pour installer ça ?",
+        "answer": "Non. Quatre étapes, aucune compétence technique. Photo de votre carte, synchronisation de votre caisse, et votre assistant est en ligne. Aucun développeur nécessaire."
+      },
+      {
+        "question": "Et si ma caisse n'est pas compatible ?",
+        "answer": "HUGGO se connecte aux principaux systèmes de caisse du marché via HubRise et Orisha Distribution. Si votre caisse est référencée sur HubRise, la connexion est automatique."
+      },
+      {
+        "question": "Comment mes clients savent qu'ils peuvent commander sur WhatsApp ?",
+        "answer": "HUGGO publie automatiquement votre numéro sur Google Business. Un QR code à afficher en magasin est généré. Vos clients habitués le découvrent dès la première commande et en parlent autour d'eux."
+      }
+    ]
+  },
+  "final-cta": {
+    "title": "Convaincu ? Passez à l'action.",
+    "subtitle": "Demandez votre démo — 15 minutes pour voir HUGGO en action sur votre commerce.",
+    "cta-primary": "Demander une démo",
+    "cta-secondary": "Voir les tarifs →"
+  }
+}
