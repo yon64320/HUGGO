@@ -1,0 +1,7 @@
+MANUAL DOWNLOAD NEEDED: Barratio
+Company is defunct (deadpooled). Website barratio.com returns 403/SSL errors.
+Possible sources:
+- Wayback Machine: https://web.archive.org/web/*/barratio.com
+- LinkedIn: https://www.linkedin.com/company/barratio
+- Cached Google Images search
+Note: Company was a restaurant food cost management platform based in Paris, France.
