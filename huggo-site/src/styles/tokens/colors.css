@@ -1,27 +1,27 @@
 /* ==========================================================================
-   Color Tokens – HUGGO Design System — Mid-Century Modern Palette
+   Color Tokens – HUGGO Design System — Brand Palette
    ========================================================================== */
 
-/* MCM Core Palette */
+/* Brand Core Palette */
 :root {
-  /* 60% — Warm Neutrals */
-  --cream:     #F5EDD8;
-  --sand:      #EAD9BB;
-  --parchment: #F9F4EA;
-  --espresso:  #3D2314;
-  --walnut:    #6B3D25;
-  --caramel:   #9B6B4A;
+  /* 60% — Clean Neutrals */
+  --cream:     #FAFAFA;
+  --sand:      #F2F2F2;
+  --parchment: #FFFFFF;
+  --espresso:  #1A1A1A;
+  --walnut:    #4A4A4A;
+  --caramel:   #757575;
 
-  /* 30% — Sage Green */
-  --sage:       #5E7A5E;
-  --forest:     #3E5C40;
-  --sage-light: #8FAF82;
-  --moss:       #2D4430;
+  /* 30% — Brand Green */
+  --sage:       #4CAF50;
+  --forest:     #338A3E;
+  --sage-light: #66BB6A;
+  --moss:       #1B5E20;
 
-  /* 10% — Terracotta (CTAs and accents only) */
-  --terracotta: #C45A35;
-  --clay:       #A04228;
-  --sienna:     #D97A58;
+  /* 10% — Brand Orange (CTAs and accents only) */
+  --terracotta: #F7941D;
+  --clay:       #E8850A;
+  --sienna:     #FFB74D;
 
   /* Legacy aliases — backward compat with existing markup */
   --color-green-primary: var(--sage);
@@ -38,20 +38,20 @@
   --bg-secondary:       var(--sand);
   --text-primary:       var(--espresso);
   --text-secondary:     var(--walnut);
-  --border-color:       rgba(107, 61, 37, 0.18);
-  --border-color-glass: rgba(107, 61, 37, 0.12);
+  --border-color:       rgba(0, 0, 0, 0.12);
+  --border-color-glass: rgba(0, 0, 0, 0.08);
   --bg-green:           var(--sand);
   --bg-beige:           var(--parchment);
 }
 
-/* Dark mode — MCM warm dark (bois et cuir) */
+/* Dark mode */
 [data-theme="dark"] {
   --bg-primary:         var(--moss);
   --bg-secondary:       var(--forest);
   --text-primary:       var(--cream);
   --text-secondary:     var(--parchment);
-  --border-color:       rgba(245, 237, 216, 0.12);
-  --border-color-glass: rgba(245, 237, 216, 0.08);
-  --bg-green:           rgba(62, 92, 64, 0.4);
+  --border-color:       rgba(255, 255, 255, 0.12);
+  --border-color-glass: rgba(255, 255, 255, 0.08);
+  --bg-green:           rgba(51, 138, 62, 0.4);
   --bg-beige:           var(--forest);
 }

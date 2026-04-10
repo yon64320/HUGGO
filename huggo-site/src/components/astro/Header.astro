@@ -16,15 +16,13 @@ const ctaText = await t(locale, 'common', 'header-cta');
   <div class="glass-nav__inner">
     <!-- Logo -->
     <a href={`/${locale}/`} class="glass-nav__brand" aria-label="HUGGO - Accueil">
-      <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Chat bubble -->
-        <rect x="2" y="4" width="32" height="24" rx="6" fill="var(--color-green-primary, #4A9B4A)" />
-        <polygon points="10,28 16,34 18,28" fill="var(--color-green-primary, #4A9B4A)" />
-        <!-- HUGGO text inside bubble -->
-        <text x="18" y="20" text-anchor="middle" font-family="var(--font-display, serif)" font-size="10" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
-        <!-- HUGGO brand text -->
-        <text x="42" y="24" font-family="var(--font-display, serif)" font-size="18" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
-      </svg>
+      <img
+        src="/images/brand/logo-transparent.png"
+        alt="HUGGO"
+        width="180"
+        height="54"
+        class="header-logo"
+      />
     </a>
 
     <!-- Desktop navigation -->
@@ -237,6 +235,15 @@ const ctaText = await t(locale, 'common', 'header-cta');
     gap: var(--space-3, 0.75rem);
   }
 
+  /* Header logo — transparent PNG, proportional to nav text (~0.875rem) */
+  .header-logo {
+    display: block;
+    height: 2.25rem;
+    width: auto;
+    object-fit: contain;
+    /* white text + orange heart baked into PNG */
+  }
+
   /* Dark mode toggle button */
   .dark-mode-toggle {
     display: flex;
@@ -245,7 +252,7 @@ const ctaText = await t(locale, 'common', 'header-cta');
     width: 2.25rem;
     height: 2.25rem;
     background: none;
-    border: 1px solid rgba(249, 244, 234, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 3px;
     color: var(--parchment);
     cursor: pointer;
