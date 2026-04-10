@@ -23,7 +23,7 @@ const displayTitle = title || defaultTitle[locale];
 
     <div class="stats-grid">
       {stats.map((stat) => (
-        <div class="stat-card fade-up">
+        <div class="stat-card">
           <div class="stat-card__number">
             <span
               class="stat-card__value"
@@ -31,7 +31,7 @@ const displayTitle = title || defaultTitle[locale];
               data-countup-suffix={stat.suffix}
               {...(stat.prefix ? { 'data-countup-prefix': stat.prefix } : {})}
             >
-              {stat.prefix || ''}{stat.value === 0 ? '0' : '0'}{stat.suffix}
+              {stat.prefix || ''}0{stat.suffix}
             </span>
           </div>
           <p class="stat-card__label">{stat.label[locale]}</p>
@@ -40,6 +40,35 @@ const displayTitle = title || defaultTitle[locale];
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap, ScrollTrigger } from '../animations/gsap-init';
+
+  document.querySelectorAll('.stat-card__value[data-countup-target]').forEach((el) => {
+    const target = parseFloat(el.getAttribute('data-countup-target') || '0');
+    const suffix = el.getAttribute('data-countup-suffix') || '';
+    const prefix = el.getAttribute('data-countup-prefix') || '';
+
+    const obj = { value: 0 };
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(obj, {
+          value: target,
+          duration: 2,
+          ease: 'power2.out',
+          onUpdate: () => {
+            const formatted = target % 1 === 0 ? Math.round(obj.value) : obj.value.toFixed(1);
+            el.textContent = `${prefix}${formatted}${suffix}`;
+          },
+        });
+      },
+    });
+  });
+</script>
 
 <style>
   .stats-section {
