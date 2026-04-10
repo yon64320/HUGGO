@@ -83,16 +83,14 @@ const displayTitle = title || defaultTitle[locale];
 
   .stat-card {
     background: var(--bg-primary);
-    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
-    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
     padding: var(--space-8, 2rem) var(--space-6, 1.5rem);
-    transition: transform var(--duration-normal, 300ms) var(--ease-out-expo),
-                box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
+    transition: box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
   }
 
   .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 var(--walnut);
   }
 
   .stat-card__number {
@@ -103,7 +101,7 @@ const displayTitle = title || defaultTitle[locale];
     font-family: var(--font-display, 'Sora', sans-serif);
     font-size: var(--text-4xl, 2.625rem);
     font-weight: var(--font-weight-bold, 700);
-    color: var(--color-green-primary, #4A9B4A);
+    color: var(--forest);
     line-height: var(--leading-tight, 1.15);
     letter-spacing: var(--tracking-tight, -0.02em);
   }

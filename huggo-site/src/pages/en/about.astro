@@ -1,4 +1,4 @@
----
+﻿---
 import PageLayout from '../../layouts/PageLayout.astro';
 import SEOHead from '../../components/astro/SEOHead.astro';
 import FeatureCard from '../../components/astro/FeatureCard.astro';
@@ -117,11 +117,11 @@ const breadcrumb = generateBreadcrumbSchema([
   <SEOHead slot="head" locale={locale} page="about" jsonLd={[breadcrumb]} />
 
   <!-- ========== HERO ========== -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+  <section class="relative overflow-hidden bg-[var(--cream)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
       <div class="max-w-3xl mx-auto text-center">
         <ScrollReveal>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal text-[var(--text-primary)] leading-tight tracking-[0.02em] mb-6">
             {heroTitle}
           </h1>
           <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8">
@@ -129,7 +129,7 @@ const breadcrumb = generateBreadcrumbSchema([
           </p>
           <a
             href="/en/contact"
-            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-full font-semibold hover:bg-[var(--color-green-dark)] transition-colors shadow-lg"
+            class="inline-flex items-center justify-center bg-[var(--terracotta)] text-[var(--parchment)] px-8 py-4 rounded-[3px] font-medium uppercase tracking-[0.06em] hover:bg-[var(--clay)] transition-colors"
           >
             {heroCtaPrimary}
           </a>
@@ -143,7 +143,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight mb-6">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em] mb-6">
             {visionTitle}
           </h2>
         </div>
@@ -155,15 +155,15 @@ const breadcrumb = generateBreadcrumbSchema([
   </section>
 
   <!-- ========== COMPANY (ATIDGO) ========== -->
-  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+  <section class="py-16 md:py-24 bg-[var(--sage)]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight mb-6">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--cream)] tracking-[0.02em] mb-6">
             {companyTitle}
           </h2>
         </div>
-        <div class="text-lg text-[var(--text-secondary)] leading-relaxed whitespace-pre-line max-w-3xl mx-auto">
+        <div class="text-lg text-[var(--parchment)] leading-relaxed whitespace-pre-line max-w-3xl mx-auto">
           {companyDescription}
         </div>
       </ScrollReveal>
@@ -175,7 +175,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {partnersTitle}
           </h2>
         </div>
@@ -184,13 +184,13 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {partnerItems.map((partner, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] text-center hover:shadow-md transition-shadow h-full">
-              <div class="w-16 h-16 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mx-auto mb-4">
-                <span class="text-[var(--color-green-primary)] font-bold text-lg">
+            <div class="bg-[var(--bg-secondary)] rounded-[3px] p-8 border border-[var(--border-color)] text-center hover:shadow-md transition-shadow h-full">
+              <div class="w-16 h-16 rounded-full bg-[var(--sage)]/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-[var(--forest)] font-normal text-lg">
                   {partner.name.split(' ')[0].substring(0, 3).toUpperCase()}
                 </span>
               </div>
-              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">{partner.name}</h3>
+              <h3 class="text-lg font-normal text-[var(--text-primary)] mb-2">{partner.name}</h3>
               <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{partner.description}</p>
             </div>
           </ScrollReveal>
@@ -204,7 +204,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {numbersTitle}
           </h2>
         </div>
@@ -214,7 +214,7 @@ const breadcrumb = generateBreadcrumbSchema([
         {numberItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
             <div class="text-center">
-              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{item.value}</p>
+              <p class="text-4xl md:text-5xl font-normal text-[var(--forest)] mb-2">{item.value}</p>
               <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.label}</p>
             </div>
           </ScrollReveal>
@@ -228,7 +228,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {csrTitle}
           </h2>
         </div>
@@ -237,8 +237,8 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {csrItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
-              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+            <div class="bg-[var(--bg-secondary)] rounded-[3px] p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-lg font-normal text-[var(--text-primary)] mb-3">{item.title}</h3>
               <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
             </div>
           </ScrollReveal>

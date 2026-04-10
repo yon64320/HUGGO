@@ -1,4 +1,4 @@
----
+﻿---
 import PageLayout from '../../layouts/PageLayout.astro';
 import SEOHead from '../../components/astro/SEOHead.astro';
 import PricingTier from '../../components/astro/PricingTier.astro';
@@ -94,11 +94,11 @@ const breadcrumb = generateBreadcrumbSchema([
   <SEOHead slot="head" locale={locale} page="pricing" jsonLd={[breadcrumb]} />
 
   <!-- ========== HERO ========== -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+  <section class="relative overflow-hidden bg-[var(--cream)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
       <div class="max-w-3xl mx-auto text-center">
         <ScrollReveal>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal text-[var(--text-primary)] leading-tight tracking-[0.02em] mb-6">
             {heroTitle}
           </h1>
           <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8">
@@ -106,7 +106,7 @@ const breadcrumb = generateBreadcrumbSchema([
           </p>
           <a
             href="/en/contact"
-            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-full font-semibold hover:bg-[var(--color-green-dark)] transition-colors shadow-lg"
+            class="inline-flex items-center justify-center bg-[var(--terracotta)] text-[var(--parchment)] px-8 py-4 rounded-[3px] font-medium uppercase tracking-[0.06em] hover:bg-[var(--clay)] transition-colors"
           >
             {heroCtaPrimary}
           </a>
@@ -123,7 +123,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {tiersTitle}
           </h2>
         </div>
@@ -140,11 +140,11 @@ const breadcrumb = generateBreadcrumbSchema([
   </section>
 
   <!-- ========== INCLUDED FUNDAMENTALS ========== -->
-  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+  <section class="py-16 md:py-24 bg-[var(--sage)]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--cream)] tracking-[0.02em]">
             {includedTitle}
           </h2>
         </div>
@@ -153,9 +153,9 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {includedItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="flex items-start gap-4 bg-[var(--bg-secondary)] rounded-2xl p-6 border border-[var(--border-color)]">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-green-primary)]/10 flex items-center justify-center mt-0.5">
-                <svg class="w-4 h-4 text-[var(--color-green-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <div class="flex items-start gap-4 bg-[var(--bg-secondary)] rounded-[3px] p-6 border border-[var(--border-color)]">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--sage)]/10 flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-[var(--forest)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
@@ -172,7 +172,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {roiTitle}
           </h2>
         </div>
@@ -181,8 +181,8 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {roiItems.map((item, i) => (
           <ScrollReveal delay={i * 0.15}>
-            <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
-              <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{item.title}</h3>
+            <div class="bg-[var(--bg-primary)] rounded-[3px] p-8 border border-[var(--border-color)] h-full">
+              <h3 class="text-xl font-normal text-[var(--text-primary)] mb-3">{item.title}</h3>
               <p class="text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
             </div>
           </ScrollReveal>
@@ -195,8 +195,8 @@ const breadcrumb = generateBreadcrumbSchema([
   <section class="py-16 md:py-24 bg-[var(--bg-green)]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <ScrollReveal>
-        <div class="bg-[var(--bg-secondary)] rounded-2xl p-10 md:p-12 border border-[var(--border-color)]">
-          <h2 class="text-2xl md:text-3xl font-bold text-[var(--text-primary)] tracking-tight mb-4">
+        <div class="bg-[var(--bg-secondary)] rounded-[3px] p-10 md:p-12 border border-[var(--border-color)]">
+          <h2 class="text-2xl md:text-3xl font-normal text-[var(--text-primary)] tracking-[0.02em] mb-4">
             {networkTitle}
           </h2>
           <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">
@@ -204,7 +204,7 @@ const breadcrumb = generateBreadcrumbSchema([
           </p>
           <a
             href="/en/contact"
-            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-full font-semibold hover:bg-[var(--color-green-dark)] transition-colors shadow-lg"
+            class="inline-flex items-center justify-center bg-[var(--terracotta)] text-[var(--parchment)] px-8 py-4 rounded-[3px] font-medium uppercase tracking-[0.06em] hover:bg-[var(--clay)] transition-colors"
           >
             {networkCta}
           </a>

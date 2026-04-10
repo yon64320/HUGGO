@@ -1,42 +1,57 @@
 /* ==========================================================================
-   Color Tokens – HUGGO Design System
+   Color Tokens – HUGGO Design System — Mid-Century Modern Palette
    ========================================================================== */
 
-/* Brand colors (invariant across themes) */
+/* MCM Core Palette */
 :root {
-  --color-green-primary: #4A9B4A;
-  --color-green-light: #5CB85C;
-  --color-green-dark: #3A7D3A;
+  /* 60% — Warm Neutrals */
+  --cream:     #F5EDD8;
+  --sand:      #EAD9BB;
+  --parchment: #F9F4EA;
+  --espresso:  #3D2314;
+  --walnut:    #6B3D25;
+  --caramel:   #9B6B4A;
 
-  --color-orange-accent: #F5920A;
-  --color-orange-light: #FFB347;
-  --color-orange-dark: #D47B08;
+  /* 30% — Sage Green */
+  --sage:       #5E7A5E;
+  --forest:     #3E5C40;
+  --sage-light: #8FAF82;
+  --moss:       #2D4430;
+
+  /* 10% — Terracotta (CTAs and accents only) */
+  --terracotta: #C45A35;
+  --clay:       #A04228;
+  --sienna:     #D97A58;
+
+  /* Legacy aliases — backward compat with existing markup */
+  --color-green-primary: var(--sage);
+  --color-green-light:   var(--sage-light);
+  --color-green-dark:    var(--forest);
+  --color-orange-accent: var(--terracotta);
+  --color-orange-light:  var(--sienna);
+  --color-orange-dark:   var(--clay);
 }
 
 /* Light mode (default) */
 :root {
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8FAF8;
-  --text-primary: #1A1A2E;
-  --text-secondary: #4A5568;
-  --glass-bg: rgba(255, 255, 255, 0.72);
-  --glass-blur: 16px;
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-color-glass: rgba(0, 0, 0, 0.06);
-  --bg-green: #EEF6EE;
-  --bg-beige: #F7F3EB;
+  --bg-primary:         var(--cream);
+  --bg-secondary:       var(--sand);
+  --text-primary:       var(--espresso);
+  --text-secondary:     var(--walnut);
+  --border-color:       rgba(107, 61, 37, 0.18);
+  --border-color-glass: rgba(107, 61, 37, 0.12);
+  --bg-green:           var(--sand);
+  --bg-beige:           var(--parchment);
 }
 
-/* Dark mode */
+/* Dark mode — MCM warm dark (bois et cuir) */
 [data-theme="dark"] {
-  --bg-primary: #0F0F1A;
-  --bg-secondary: #1A1A2E;
-  --text-primary: #F7FAFC;
-  --text-secondary: #CBD5E0;
-  --glass-bg: rgba(15, 15, 26, 0.80);
-  --glass-blur: 16px;
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-glass: rgba(255, 255, 255, 0.06);
-  --bg-green: #0E1A11;
-  --bg-beige: #1A1610;
+  --bg-primary:         var(--moss);
+  --bg-secondary:       var(--forest);
+  --text-primary:       var(--cream);
+  --text-secondary:     var(--parchment);
+  --border-color:       rgba(245, 237, 216, 0.12);
+  --border-color-glass: rgba(245, 237, 216, 0.08);
+  --bg-green:           rgba(62, 92, 64, 0.4);
+  --bg-beige:           var(--forest);
 }

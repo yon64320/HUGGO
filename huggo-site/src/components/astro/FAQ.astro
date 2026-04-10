@@ -62,14 +62,14 @@ const faqSchema = generateFAQSchema(items);
 
   .faq-item {
     background: var(--bg-primary);
-    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
-    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
     overflow: hidden;
     transition: box-shadow var(--duration-normal, 300ms);
   }
 
   .faq-item[open] {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 4px 4px 0 var(--walnut);
   }
 
   .faq-item__question {
@@ -94,7 +94,7 @@ const faqSchema = generateFAQSchema(items);
     content: '+';
     font-size: 1.25rem;
     font-weight: 300;
-    color: var(--color-green-primary, #4A9B4A);
+    color: var(--forest);
     transition: transform var(--duration-fast, 150ms);
     flex-shrink: 0;
     margin-left: var(--space-4, 1rem);

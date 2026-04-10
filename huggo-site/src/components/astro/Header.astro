@@ -21,9 +21,9 @@ const ctaText = await t(locale, 'common', 'header-cta');
         <rect x="2" y="4" width="32" height="24" rx="6" fill="var(--color-green-primary, #4A9B4A)" />
         <polygon points="10,28 16,34 18,28" fill="var(--color-green-primary, #4A9B4A)" />
         <!-- HUGGO text inside bubble -->
-        <text x="18" y="20" text-anchor="middle" font-family="var(--font-display, 'Sora', sans-serif)" font-size="10" font-weight="700" fill="#ffffff">HUGGO</text>
+        <text x="18" y="20" text-anchor="middle" font-family="var(--font-display, serif)" font-size="10" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
         <!-- HUGGO brand text -->
-        <text x="42" y="24" font-family="var(--font-display, 'Sora', sans-serif)" font-size="18" font-weight="700" fill="var(--text-primary, #1A1A2E)">HUGGO</text>
+        <text x="42" y="24" font-family="var(--font-display, serif)" font-size="18" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
       </svg>
     </a>
 
@@ -245,16 +245,16 @@ const ctaText = await t(locale, 'common', 'header-cta');
     width: 2.25rem;
     height: 2.25rem;
     background: none;
-    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
-    border-radius: 0.5rem;
-    color: var(--text-secondary);
+    border: 1px solid rgba(249, 244, 234, 0.3);
+    border-radius: 3px;
+    color: var(--parchment);
     cursor: pointer;
     transition: color var(--duration-fast, 150ms), border-color var(--duration-fast, 150ms);
   }
 
   .dark-mode-toggle:hover {
-    color: var(--color-green-primary, #4A9B4A);
-    border-color: var(--color-green-primary, #4A9B4A);
+    color: var(--sage-light);
+    border-color: var(--sage-light);
   }
 
   /* Show/hide sun/moon based on theme */
@@ -266,12 +266,10 @@ const ctaText = await t(locale, 'common', 'header-cta');
     display: none;
   }
 
-  /* Mobile nav panel */
+  /* Mobile nav panel — flat sage, MCM style */
   .mobile-nav-panel {
-    background: var(--glass-bg, rgba(255, 255, 255, 0.72));
-    backdrop-filter: blur(var(--glass-blur, 16px));
-    -webkit-backdrop-filter: blur(var(--glass-blur, 16px));
-    border-bottom: 1px solid var(--border-color-glass, rgba(0, 0, 0, 0.06));
+    background: var(--sage);
+    border-bottom: 1px solid var(--forest);
     padding: var(--space-4, 1rem) var(--space-6, 1.5rem);
   }
 
@@ -286,7 +284,7 @@ const ctaText = await t(locale, 'common', 'header-cta');
 
   .mobile-nav-panel__link {
     display: block;
-    color: var(--text-secondary);
+    color: var(--parchment);
     font-family: var(--font-body, sans-serif);
     font-size: var(--text-base, 1rem);
     font-weight: var(--font-weight-medium, 500);
@@ -296,7 +294,7 @@ const ctaText = await t(locale, 'common', 'header-cta');
   }
 
   .mobile-nav-panel__link:hover {
-    color: var(--color-green-primary, #4A9B4A);
+    color: var(--cream);
   }
 
   /* Dropdown container */
@@ -325,18 +323,16 @@ const ctaText = await t(locale, 'common', 'header-cta');
     transform: rotate(180deg);
   }
 
-  /* Dropdown menu */
+  /* Dropdown menu — flat parchment, MCM style */
   .glass-nav__dropdown-menu {
     position: absolute;
     top: calc(100% + 0.75rem);
     left: 50%;
     transform: translateX(-50%);
     min-width: 12rem;
-    background: var(--glass-bg, rgba(255, 255, 255, 0.95));
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
-    border-radius: 0.75rem;
+    background: var(--parchment);
+    border: 1px solid var(--walnut);
+    border-radius: 3px;
     padding: 0.5rem;
     list-style: none;
     margin: 0;
@@ -344,7 +340,7 @@ const ctaText = await t(locale, 'common', 'header-cta');
     visibility: hidden;
     transform: translateX(-50%) translateY(-4px);
     transition: opacity var(--duration-fast, 150ms), visibility var(--duration-fast, 150ms), transform var(--duration-fast, 150ms);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 var(--walnut);
   }
 
   .glass-nav__dropdown:hover .glass-nav__dropdown-menu {
@@ -356,31 +352,30 @@ const ctaText = await t(locale, 'common', 'header-cta');
   .glass-nav__dropdown-link {
     display: block;
     padding: 0.625rem 1rem;
-    color: var(--text-secondary);
+    color: var(--espresso);
     font-family: var(--font-body, sans-serif);
     font-size: var(--text-sm, 0.875rem);
     font-weight: var(--font-weight-medium, 500);
     text-decoration: none;
-    border-radius: 0.5rem;
+    border-radius: 3px;
     transition: background var(--duration-fast, 150ms), color var(--duration-fast, 150ms);
   }
 
   .glass-nav__dropdown-link:hover {
-    background: var(--bg-green, rgba(74, 155, 74, 0.08));
-    color: var(--color-green-primary, #4A9B4A);
+    background: var(--sand);
+    color: var(--forest);
   }
 
   /* Mobile: group label */
   .mobile-nav-panel__group-label {
     display: block;
-    color: var(--text-secondary);
+    color: var(--sage-light);
     font-family: var(--font-body, sans-serif);
     font-size: var(--text-xs, 0.75rem);
     font-weight: var(--font-weight-semibold, 600);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: var(--space-2, 0.5rem) 0 0;
-    opacity: 0.6;
     list-style: none;
   }
 

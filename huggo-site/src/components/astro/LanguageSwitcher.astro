@@ -68,7 +68,7 @@ const localeLabels: Record<Locale, string> = {
   }
 
   .lang-switcher__separator {
-    color: var(--text-secondary);
+    color: var(--parchment);
     opacity: 0.4;
     font-size: var(--text-sm, 0.875rem);
     user-select: none;
@@ -78,24 +78,26 @@ const localeLabels: Record<Locale, string> = {
     font-family: var(--font-body, sans-serif);
     font-size: var(--text-sm, 0.875rem);
     font-weight: var(--font-weight-medium, 500);
-    color: var(--text-secondary);
+    color: var(--parchment);
     text-decoration: none;
     padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
-    border-radius: 0.25rem;
-    transition: color var(--duration-fast, 150ms),
-                background var(--duration-fast, 150ms);
+    border-radius: 3px;
+    opacity: 0.85;
+    transition: color var(--duration-fast, 150ms), opacity var(--duration-fast, 150ms);
   }
 
   .lang-switcher__link:hover {
-    color: var(--color-green-primary, #4A9B4A);
+    color: var(--sage-light);
+    opacity: 1;
   }
 
   .lang-switcher__link--active {
     font-weight: var(--font-weight-bold, 700);
-    color: var(--text-primary);
+    color: var(--cream);
+    opacity: 1;
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-color: var(--color-green-primary, #4A9B4A);
+    text-decoration-color: var(--sienna);
     text-decoration-thickness: 2px;
     cursor: default;
   }

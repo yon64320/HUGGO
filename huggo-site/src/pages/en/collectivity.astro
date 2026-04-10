@@ -1,4 +1,4 @@
----
+﻿---
 import PageLayout from '@layouts/PageLayout.astro';
 import SEOHead from '@components/astro/SEOHead.astro';
 import FeatureCard from '@components/astro/FeatureCard.astro';
@@ -134,12 +134,12 @@ const breadcrumb = generateBreadcrumbSchema([
   <SEOHead slot="head" locale={locale} page="collectivity" jsonLd={[breadcrumb]} />
 
   <!-- ========== HERO ========== -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+  <section class="relative overflow-hidden bg-[var(--cream)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
       <div class="max-w-3xl mx-auto text-center">
         <ScrollReveal>
-          <span class="inline-block text-sm font-semibold text-[var(--color-green-primary)] tracking-wide uppercase mb-4">Collectivity</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+          <span class="inline-block text-xs font-medium text-[var(--walnut)] tracking-[0.15em] uppercase mb-4">Collectivity</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal text-[var(--text-primary)] leading-tight tracking-[0.02em] mb-6">
             {heroTitle}
           </h1>
           <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-2xl mx-auto">
@@ -147,7 +147,7 @@ const breadcrumb = generateBreadcrumbSchema([
           </p>
           <a
             href="/en/contact"
-            class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-dark)] transition-colors"
+            class="inline-flex items-center justify-center bg-[var(--terracotta)] text-[var(--parchment)] px-8 py-4 rounded-[3px] font-medium uppercase tracking-[0.06em] hover:bg-[var(--clay)] transition-colors"
           >
             {heroCta}
           </a>
@@ -162,7 +162,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {problematicTitle}
           </h2>
         </div>
@@ -171,8 +171,8 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {statItems.map((stat, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
-              <p class="text-4xl md:text-5xl font-bold text-[var(--color-green-primary)] mb-2">{stat.value}</p>
+            <div class="bg-[var(--bg-secondary)] rounded-[3px] p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+              <p class="text-4xl md:text-5xl font-normal text-[var(--forest)] mb-2">{stat.value}</p>
               <p class="text-lg font-semibold text-[var(--text-primary)]">{stat.label}</p>
             </div>
           </ScrollReveal>
@@ -182,11 +182,11 @@ const breadcrumb = generateBreadcrumbSchema([
   </section>
 
   <!-- ========== SOLUTION CASES (3 scenarios) ========== -->
-  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+  <section class="py-16 md:py-24 bg-[var(--sage)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--cream)] tracking-[0.02em]">
             {solutionTitle}
           </h2>
         </div>
@@ -207,7 +207,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {benefitsTitle}
           </h2>
         </div>
@@ -216,10 +216,10 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {benefitItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="bg-[var(--bg-secondary)] rounded-[3px] p-8 border border-[var(--border-color)] hover:shadow-md transition-shadow">
               <FeatureCard title={item.title} description={item.description} icon={item.icon} />
               {item.proof && (
-                <p class="mt-4 text-sm text-[var(--color-green-primary)] font-medium italic">{item.proof}</p>
+                <p class="mt-4 text-sm text-[var(--forest)] font-medium italic">{item.proof}</p>
               )}
             </div>
           </ScrollReveal>
@@ -233,7 +233,7 @@ const breadcrumb = generateBreadcrumbSchema([
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {rseTitle}
           </h2>
         </div>
@@ -242,8 +242,8 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {rseItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-primary)] rounded-2xl p-6 border border-[var(--border-color)] hover:shadow-md transition-shadow">
-              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">{item.title}</h3>
+            <div class="bg-[var(--bg-primary)] rounded-[3px] p-6 border border-[var(--border-color)] hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-normal text-[var(--text-primary)] mb-2">{item.title}</h3>
               <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
             </div>
           </ScrollReveal>

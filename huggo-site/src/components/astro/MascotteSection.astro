@@ -18,10 +18,10 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
           <circle cx="60" cy="60" r="40" fill="var(--color-green-primary, #4A9B4A)" opacity="0.2" />
           <rect x="40" y="35" width="40" height="35" rx="8" fill="var(--color-green-primary, #4A9B4A)" />
           <polygon points="50,70 56,80 58,70" fill="var(--color-green-primary, #4A9B4A)" />
-          <text x="60" y="57" text-anchor="middle" font-family="'Sora', sans-serif" font-size="10" font-weight="700" fill="#ffffff">HUGGO</text>
+          <text x="60" y="57" text-anchor="middle" font-family="var(--font-display, serif)" font-size="10" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
           <!-- Eyes -->
-          <circle cx="50" cy="48" r="3" fill="#ffffff" />
-          <circle cx="70" cy="48" r="3" fill="#ffffff" />
+          <circle cx="50" cy="48" r="3" fill="var(--parchment, #F9F4EA)" />
+          <circle cx="70" cy="48" r="3" fill="var(--parchment, #F9F4EA)" />
           <circle cx="50" cy="48" r="1.5" fill="var(--color-green-dark, #3A7D3A)" />
           <circle cx="70" cy="48" r="1.5" fill="var(--color-green-dark, #3A7D3A)" />
         </svg>
@@ -70,7 +70,7 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
 
   .mascotte-text {
     font-size: var(--text-lg, 1.125rem);
-    color: var(--text-secondary);
+    color: var(--cream);
     line-height: var(--leading-relaxed, 1.7);
     margin: 0 0 var(--space-4, 1rem);
   }
@@ -81,8 +81,8 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
     gap: var(--space-2, 0.5rem);
     padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
     background: #25D366;
-    color: #ffffff;
-    border-radius: 9999px;
+    color: var(--parchment);
+    border-radius: 3px;
     font-weight: var(--font-weight-semibold, 600);
     font-size: var(--text-base, 1rem);
     text-decoration: none;

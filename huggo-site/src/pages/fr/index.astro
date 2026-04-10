@@ -1,4 +1,4 @@
----
+﻿---
 import PageLayout from '../../layouts/PageLayout.astro';
 import SEOHead from '../../components/astro/SEOHead.astro';
 import LogoBar from '../../components/astro/LogoBar.astro';
@@ -102,25 +102,25 @@ const siteSchema = generateWebSiteSchema(locale);
   <SEOHead slot="head" locale={locale} page="home" jsonLd={[orgSchema, siteSchema]} />
 
   <!-- ========== 1. HERO ========== -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-[var(--color-green-primary)]/10 via-transparent to-transparent">
+  <section class="relative overflow-hidden bg-[var(--cream)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <ScrollReveal direction="left">
           <div class="max-w-xl">
-            <span class="inline-block text-sm font-semibold text-[var(--color-green-primary)] tracking-wide uppercase mb-4">
+            <span class="inline-block text-xs font-medium text-[var(--walnut)] tracking-[0.15em] uppercase mb-4">
               {heroBaseline}
             </span>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight tracking-tight mb-6">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal text-[var(--text-primary)] leading-tight tracking-[0.02em] mb-6">
               {heroTitle}
             </h1>
             <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8">
               {heroSubtitle}
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-              <a href="/fr/contact" class="inline-flex items-center justify-center bg-[var(--color-green-primary)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-dark)] transition-colors text-center">
+              <a href="/fr/contact" class="inline-flex items-center justify-center bg-[var(--terracotta)] text-[var(--parchment)] px-8 py-4 rounded-[3px] font-medium uppercase tracking-[0.06em] hover:bg-[var(--clay)] transition-colors text-center">
                 {heroCta}
               </a>
-              <a href="/fr/contact" class="inline-flex items-center justify-center border-2 border-[var(--color-green-primary)] text-[var(--color-green-primary)] px-8 py-4 rounded-xl font-semibold hover:bg-[var(--color-green-primary)] hover:text-white transition-colors text-center text-sm">
+              <a href="/fr/contact" class="inline-flex items-center justify-center border border-[var(--walnut)] text-[var(--walnut)] px-8 py-4 rounded-[3px] font-semibold hover:bg-[var(--walnut)] hover:text-[var(--parchment)] transition-colors text-center text-sm">
                 {heroCtaSecondary}
               </a>
             </div>
@@ -135,7 +135,7 @@ const siteSchema = generateWebSiteSchema(locale);
         </ScrollReveal>
       </div>
     </div>
-    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-green-primary)]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] border-[6px] border-[var(--sage-light)] rounded-full pointer-events-none opacity-30" aria-hidden="true"></div>
   </section>
 
   <!-- ========== 2. STATS ========== -->
@@ -146,11 +146,13 @@ const siteSchema = generateWebSiteSchema(locale);
   </div>
 
   <!-- ========== 3. BENEFITS ========== -->
-  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-16 md:py-24 bg-[var(--sage)] relative overflow-hidden">
+    <!-- MCM geometric accent -->
+    <div class="absolute top-8 right-8 w-48 h-48 rounded-full border-4 border-[var(--forest)] opacity-30 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--cream)] tracking-[0.02em]">
             {benefitsTitle}
           </h2>
         </div>
@@ -159,11 +161,11 @@ const siteSchema = generateWebSiteSchema(locale);
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {benefits.map((b, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)] h-full">
-              <p class="text-sm font-semibold text-[var(--color-green-primary)] mb-2">{b.subtitle}</p>
-              <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{b.title}</h3>
-              <p class="text-[var(--text-secondary)] leading-relaxed mb-4">{b.description}</p>
-              <p class="text-sm text-[var(--color-green-primary)] italic">{b.proof}</p>
+            <div class="bg-[var(--cream)] rounded-[3px] p-8 border border-[var(--walnut)] h-full">
+              <p class="text-sm font-medium text-[var(--walnut)] mb-2">{b.subtitle}</p>
+              <h3 class="text-xl font-normal text-[var(--espresso)] mb-3">{b.title}</h3>
+              <p class="text-[var(--walnut)] leading-relaxed mb-4">{b.description}</p>
+              <p class="text-sm text-[var(--forest)] italic">{b.proof}</p>
             </div>
           </ScrollReveal>
         ))}
@@ -172,7 +174,7 @@ const siteSchema = generateWebSiteSchema(locale);
   </section>
 
   <!-- ========== 4b. LOGO BAR ========== -->
-  <div class="bg-[var(--bg-beige)]">
+  <div class="bg-[var(--sand)]">
     <LogoBar locale={locale} bg="beige" />
   </div>
 
@@ -181,7 +183,7 @@ const siteSchema = generateWebSiteSchema(locale);
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {offersTitle}
           </h2>
         </div>
@@ -190,10 +192,10 @@ const siteSchema = generateWebSiteSchema(locale);
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {offers.map((offer, i) => (
           <ScrollReveal delay={i * 0.15}>
-            <div class="bg-[var(--bg-primary)] rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-[var(--border-color)] flex flex-col h-full">
-              <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{offer.title}</h3>
+            <div class="bg-[var(--bg-primary)] rounded-[3px] p-8 border border-[var(--walnut)] hover:shadow-md transition-shadow flex flex-col h-full">
+              <h3 class="text-xl font-normal text-[var(--text-primary)] mb-3">{offer.title}</h3>
               <p class="text-[var(--text-secondary)] leading-relaxed mb-6 flex-grow">{offer.description}</p>
-              <a href={`/fr/${offer.link === 'collectivity' ? 'collectivite' : offer.link}`} class="inline-flex items-center text-[var(--color-green-primary)] font-semibold hover:underline">
+              <a href={`/fr/${offer.link === 'collectivity' ? 'collectivite' : offer.link}`} class="inline-flex items-center text-[var(--forest)] font-semibold hover:underline">
                 {offer.cta}
               </a>
             </div>
@@ -204,11 +206,11 @@ const siteSchema = generateWebSiteSchema(locale);
   </section>
 
   <!-- ========== 6. HOW IT WORKS SUMMARY ========== -->
-  <section class="py-16 md:py-24 bg-[var(--bg-green)]">
+  <section class="py-16 md:py-24 bg-[var(--sand)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--espresso)] tracking-[0.02em]">
             {hiwTitle}
           </h2>
         </div>
@@ -218,21 +220,21 @@ const siteSchema = generateWebSiteSchema(locale);
         {hiwSteps.map((step, i) => (
           <ScrollReveal delay={i * 0.15}>
             <div class="relative text-center">
-              <div class="w-16 h-16 rounded-full bg-[var(--color-green-primary)] text-white flex items-center justify-center mx-auto mb-6">
-                <span class="text-2xl font-bold">{String(i + 1).padStart(2, '0')}</span>
+              <div class="w-16 h-16 rounded-full bg-[var(--sage)] text-[var(--parchment)] flex items-center justify-center mx-auto mb-6">
+                <span class="text-2xl font-normal">{String(i + 1).padStart(2, '0')}</span>
               </div>
               {i < 3 && (
-                <div class="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-[var(--color-green-primary)]/20" aria-hidden="true" />
+                <div class="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-[var(--walnut)]/20" aria-hidden="true" />
               )}
-              <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">{step.title}</h3>
-              <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{step.description}</p>
+              <h3 class="text-lg font-normal text-[var(--espresso)] mb-2">{step.title}</h3>
+              <p class="text-sm text-[var(--walnut)] leading-relaxed">{step.description}</p>
             </div>
           </ScrollReveal>
         ))}
       </div>
 
       <div class="text-center mt-10">
-        <a href="/fr/comment-ca-marche" class="inline-flex items-center text-[var(--color-green-primary)] font-semibold hover:underline">
+        <a href="/fr/comment-ca-marche" class="inline-flex items-center text-[var(--forest)] font-semibold hover:underline">
           {hiwCta}
         </a>
       </div>
@@ -244,7 +246,7 @@ const siteSchema = generateWebSiteSchema(locale);
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-normal text-[var(--text-primary)] tracking-[0.02em]">
             {socialTitle}
           </h2>
         </div>
@@ -252,17 +254,17 @@ const siteSchema = generateWebSiteSchema(locale);
 
       <ScrollReveal>
         <div class="max-w-3xl mx-auto mb-16">
-          <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)] text-center">
+          <div class="bg-[var(--bg-primary)] rounded-[3px] p-8 border border-[var(--border-color)] text-center">
             <p class="text-[var(--text-secondary)] italic">Emplacement réservé pour témoignage commerçant.</p>
           </div>
         </div>
       </ScrollReveal>
 
       <ScrollReveal delay={0.2}>
-        <h3 class="text-xl font-bold text-[var(--text-primary)] text-center mb-8">{partnersSubtitle}</h3>
+        <h3 class="text-xl font-normal text-[var(--text-primary)] text-center mb-8">{partnersSubtitle}</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
           {techPartners.map((partner) => (
-            <div class="bg-[var(--bg-primary)] rounded-xl p-6 text-center border border-[var(--border-color)]">
+            <div class="bg-[var(--bg-primary)] rounded-[3px] p-6 text-center border border-[var(--border-color)]">
               <p class="font-semibold text-[var(--text-primary)] text-sm mb-1">{partner.name}</p>
               <p class="text-xs text-[var(--text-secondary)]">{partner.description}</p>
             </div>
@@ -273,7 +275,7 @@ const siteSchema = generateWebSiteSchema(locale);
   </section>
 
   <!-- ========== 8. MASCOTTE ========== -->
-  <div class="bg-[var(--bg-green)]">
+  <div class="bg-[var(--sage)]">
     <ScrollReveal>
       <MascotteSection text={mascotteText} ctaText={mascotteCta} ctaHref="#" />
     </ScrollReveal>
