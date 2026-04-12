@@ -3,9 +3,10 @@ interface Props {
   title: string;
   description: string;
   icon: string;
+  glass?: boolean;
 }
 
-const { title, description, icon } = Astro.props;
+const { title, description, icon, glass = false } = Astro.props;
 
 /**
  * Map icon name strings to inline SVG paths.
@@ -30,7 +31,7 @@ const icons: Record<string, string> = {
 const svgContent = icons[icon] || icons['zap'];
 ---
 
-<div class="feature-card">
+<div class:list={['feature-card', { 'feature-card--glass': glass }]}>
   <div class="feature-card__icon">
     <svg
       width="24"
@@ -51,20 +52,52 @@ const svgContent = icons[icon] || icons['zap'];
 
 <style>
   .feature-card {
+    position: relative;
+    overflow: hidden;
     background: var(--sand);
     border: 1px solid var(--walnut);
-    border-radius: 3px;
+    border-radius: var(--radius-card, 14px);
     padding: var(--space-card-padding, 1.5rem);
-    transition: box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow);
+    transition:
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.35) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .feature-card > * {
+    position: relative;
+    z-index: 2;
   }
 
   .feature-card:hover {
-    box-shadow: 4px 4px 0 var(--walnut);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .feature-card--glass {
+    background: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 
   :global([data-theme="dark"]) .feature-card {
     background: var(--forest);
     border-color: var(--sage);
+  }
+
+  :global([data-theme="dark"]) .feature-card::before {
+    background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.08) 0%, transparent 60%);
   }
 
   :global([data-theme="dark"]) .feature-card:hover {
@@ -77,7 +110,7 @@ const svgContent = icons[icon] || icons['zap'];
     justify-content: center;
     width: 3rem;
     height: 3rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm, 8px);
     background: rgba(94, 122, 94, 0.12);
     color: var(--sage);
     margin-bottom: var(--space-4, 1rem);

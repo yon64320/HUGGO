@@ -53,12 +53,21 @@
   --color-bg-green:      var(--bg-green);
   --color-bg-beige:      var(--bg-beige);
 
-  /* MCM flat shadows — override Tailwind defaults */
-  --shadow-sm: 2px 2px 0 var(--walnut);
-  --shadow:    4px 4px 0 var(--walnut);
-  --shadow-md: 4px 4px 0 var(--walnut);
-  --shadow-lg: 4px 4px 0 var(--walnut);
-  --shadow-xl: 6px 6px 0 var(--walnut);
+  /* Layered elevation shadows (3-layer depth) */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06), 0 4px 8px rgba(0,0,0,0.04);
+  --shadow:     0 1px 3px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-md:  0 2px 4px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.06), 0 16px 32px rgba(0,0,0,0.06);
+  --shadow-lg:  0 4px 8px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.06);
+  --shadow-xl:  0 8px 16px rgba(0,0,0,0.03), 0 24px 48px rgba(0,0,0,0.05), 0 48px 96px rgba(0,0,0,0.05);
+
+  /* Inner light highlights */
+  --shadow-inset-highlight: inset 0 1px 0 0 rgba(255,255,255,0.5);
+  --shadow-inset-highlight-subtle: inset 0 1px 0 0 rgba(255,255,255,0.25);
+
+  /* Radius tokens */
+  --radius-card: 14px;
+  --radius-btn: 10px;
+  --radius-sm: 8px;
 }
 
 /* -----------------------------------------------------------------------

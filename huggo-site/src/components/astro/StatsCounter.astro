@@ -111,15 +111,36 @@ const displayTitle = title || defaultTitle[locale];
   }
 
   .stat-card {
+    position: relative;
+    overflow: hidden;
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 3px;
+    border-radius: var(--radius-card, 14px);
     padding: var(--space-8, 2rem) var(--space-6, 1.5rem);
-    transition: box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow);
+    transition:
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.35) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .stat-card > * {
+    position: relative;
+    z-index: 2;
   }
 
   .stat-card:hover {
-    box-shadow: 4px 4px 0 var(--walnut);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg);
+    transform: translateY(-4px);
   }
 
   .stat-card__number {

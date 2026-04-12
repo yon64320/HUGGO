@@ -61,15 +61,35 @@ const faqSchema = generateFAQSchema(items);
   }
 
   .faq-item {
+    position: relative;
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 3px;
+    border-radius: var(--radius-card, 14px);
     overflow: hidden;
-    transition: box-shadow var(--duration-normal, 300ms);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-sm);
+    transition:
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
+  }
+
+  .faq-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.35) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .faq-item > * {
+    position: relative;
+    z-index: 2;
   }
 
   .faq-item[open] {
-    box-shadow: 4px 4px 0 var(--walnut);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-md);
+    transform: translateY(-2px);
   }
 
   .faq-item__question {
