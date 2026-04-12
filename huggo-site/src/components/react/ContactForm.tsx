@@ -175,7 +175,7 @@ export default function ContactForm({ locale, formType }: Props) {
   if (status === 'success') {
     return (
       <div
-        className="rounded-[3px] border border-sage/20 bg-sage/5 p-8 text-center"
+        className="huggo-card text-center"
         role="alert"
       >
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sage/10">
@@ -197,7 +197,7 @@ export default function ContactForm({ locale, formType }: Props) {
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="inline-flex items-center rounded-[3px] bg-terracotta px-5 py-2.5 text-sm font-medium uppercase tracking-[0.08em] text-parchment transition hover:bg-clay focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+          className="btn-primary-inline text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
         >
           {t.sendAnother}
         </button>
@@ -207,7 +207,7 @@ export default function ContactForm({ locale, formType }: Props) {
 
   /* -- Shared input classes -- */
   const inputBase =
-    'w-full rounded-[3px] border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/50 transition focus:border-sage focus:ring-2 focus:ring-sage/20 focus:outline-none';
+    'w-full rounded-[10px] border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/50 transition focus:border-sage focus:ring-2 focus:ring-sage/20 focus:outline-none';
   const errorInput = 'border-red-500 focus:border-red-500 focus:ring-red-500/20';
   const labelClass = 'mb-1.5 block text-sm font-medium text-[var(--text-primary)]';
   const errorMsg = 'mt-1 text-xs text-red-500';
@@ -394,7 +394,7 @@ export default function ContactForm({ locale, formType }: Props) {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-[3px] bg-terracotta px-6 py-3 text-sm font-medium uppercase tracking-[0.08em] text-parchment transition hover:bg-clay focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn-primary-inline w-full gap-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === 'submitting' && (
           <svg

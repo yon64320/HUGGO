@@ -1,1 +1,248 @@
-/* Button component styles */
+/* ==========================================================================
+   Buttons – premium hi-tech elevation
+   ========================================================================== */
+
+/* -----------------------------------------------------------------------
+   Primary CTA — gradient sienna→terracotta→clay (3-stop)
+   ----------------------------------------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+  background: linear-gradient(135deg, var(--sienna) 0%, var(--terracotta) 50%, var(--clay) 100%);
+  color: var(--parchment);
+  border: none;
+  border-radius: var(--radius-btn, 10px);
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-weight-medium, 500);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-inset-highlight), 0 2px 8px rgba(247, 148, 29, 0.25);
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium),
+    background var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-inset-highlight), 0 4px 16px rgba(247, 148, 29, 0.35), 0 0 24px rgba(247, 148, 29, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Large variant */
+.btn-primary--lg {
+  padding: var(--space-4, 1rem) var(--space-10, 2.5rem);
+  font-size: var(--text-base, 1rem);
+}
+
+.btn-primary--lg:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* -----------------------------------------------------------------------
+   Primary Inline — hero CTA replacement (larger padding)
+   ----------------------------------------------------------------------- */
+.btn-primary-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--sienna) 0%, var(--terracotta) 50%, var(--clay) 100%);
+  color: var(--parchment);
+  border: none;
+  border-radius: var(--radius-btn, 10px);
+  font-family: var(--font-body, sans-serif);
+  font-weight: var(--font-weight-medium, 500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-inset-highlight), 0 2px 8px rgba(247, 148, 29, 0.25);
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium),
+    background var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.btn-primary-inline:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-inset-highlight), 0 4px 16px rgba(247, 148, 29, 0.35), 0 0 24px rgba(247, 148, 29, 0.2);
+}
+
+.btn-primary-inline:active {
+  transform: translateY(0);
+}
+
+/* -----------------------------------------------------------------------
+   Outline — border walnut
+   ----------------------------------------------------------------------- */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+  background: transparent;
+  color: var(--walnut);
+  border: 1.5px solid var(--walnut);
+  border-radius: var(--radius-btn, 10px);
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-weight-medium, 500);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium),
+    background var(--duration-hover, 250ms) var(--ease-premium),
+    color var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.btn-outline:hover {
+  background: var(--walnut);
+  color: var(--parchment);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(74, 74, 74, 0.12);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* -----------------------------------------------------------------------
+   Outline Inline — hero secondary replacement (larger padding)
+   ----------------------------------------------------------------------- */
+.btn-outline-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--walnut);
+  border: 1px solid var(--walnut);
+  border-radius: var(--radius-btn, 10px);
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-weight-semibold, 600);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium),
+    background var(--duration-hover, 250ms) var(--ease-premium),
+    color var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.btn-outline-inline:hover {
+  background: var(--walnut);
+  color: var(--parchment);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(74, 74, 74, 0.12);
+}
+
+.btn-outline-inline:active {
+  transform: translateY(0);
+}
+
+/* -----------------------------------------------------------------------
+   WhatsApp — 3-stop green gradient
+   ----------------------------------------------------------------------- */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+  background: linear-gradient(135deg, #2EE06F 0%, #25D366 50%, #1DA851 100%);
+  color: var(--parchment);
+  border: none;
+  border-radius: var(--radius-btn, 10px);
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: var(--text-base, 1rem);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-inset-highlight), 0 2px 8px rgba(37, 211, 102, 0.3);
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-inset-highlight), 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp:active {
+  transform: translateY(0);
+}
+
+/* -----------------------------------------------------------------------
+   Nav button — compact, no rest shadow
+   ----------------------------------------------------------------------- */
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  padding: var(--space-2, 0.5rem) var(--space-5, 1.25rem);
+  border: none;
+  border-radius: var(--radius-sm, 8px);
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-weight-medium, 500);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium),
+    background var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.btn-nav:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3), 0 0 16px rgba(247, 148, 29, 0.15);
+}
+
+.btn-nav:active {
+  transform: translateY(0);
+}
+
+/* -----------------------------------------------------------------------
+   Accessibility: disable transforms for reduced motion
+   ----------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary--lg:hover,
+  .btn-primary-inline,
+  .btn-primary-inline:hover,
+  .btn-primary-inline:active,
+  .btn-outline,
+  .btn-outline:hover,
+  .btn-outline:active,
+  .btn-outline-inline,
+  .btn-outline-inline:hover,
+  .btn-outline-inline:active,
+  .btn-whatsapp,
+  .btn-whatsapp:hover,
+  .btn-whatsapp:active,
+  .btn-nav,
+  .btn-nav:hover,
+  .btn-nav:active {
+    transform: none;
+  }
+}

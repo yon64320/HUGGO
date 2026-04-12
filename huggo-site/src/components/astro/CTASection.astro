@@ -110,7 +110,7 @@ const { title, subtitle, ctaText, ctaHref, secondaryCtaText, secondaryCtaHref, m
     align-items: center;
     justify-content: center;
     padding: var(--space-4, 1rem) var(--space-10, 2.5rem);
-    border-radius: 3px;
+    border-radius: var(--radius-btn, 10px);
     font-family: var(--font-body, sans-serif);
     font-size: var(--text-base, 1rem);
     font-weight: var(--font-weight-medium, 500);
@@ -118,27 +118,40 @@ const { title, subtitle, ctaText, ctaHref, secondaryCtaText, secondaryCtaHref, m
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
-    transition: background var(--duration-fast, 150ms), color var(--duration-fast, 150ms);
+    transition:
+      background var(--duration-hover, 250ms) var(--ease-premium),
+      color var(--duration-hover, 250ms) var(--ease-premium),
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
+  }
+
+  .cta-section__button:active {
+    transform: translateY(0);
   }
 
   /* On primary (sage) section: parchment button */
   .cta-section__button--primary {
     background: var(--parchment);
     color: var(--espresso);
+    box-shadow: var(--shadow);
   }
 
   .cta-section__button--primary:hover {
     background: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   /* On secondary (parchment) section: terracotta CTA */
   .cta-section__button--secondary {
-    background: var(--terracotta);
+    background: linear-gradient(135deg, var(--sienna) 0%, var(--terracotta) 50%, var(--clay) 100%);
     color: var(--parchment);
+    box-shadow: var(--shadow-inset-highlight), 0 2px 8px rgba(247, 148, 29, 0.25);
   }
 
   .cta-section__button--secondary:hover {
-    background: var(--clay);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-inset-highlight), 0 4px 16px rgba(247, 148, 29, 0.35), 0 0 24px rgba(247, 148, 29, 0.2);
   }
 
   /* Outline variant */
@@ -156,6 +169,8 @@ const { title, subtitle, ctaText, ctaHref, secondaryCtaText, secondaryCtaHref, m
   .cta-section__button--outline:hover {
     background: var(--parchment);
     color: var(--espresso);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   .cta-section--secondary .cta-section__button--outline:hover {

@@ -80,18 +80,25 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
     align-items: center;
     gap: var(--space-2, 0.5rem);
     padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
-    background: #25D366;
+    background: linear-gradient(135deg, #2EE06F 0%, #25D366 50%, #1DA851 100%);
     color: var(--parchment);
-    border-radius: 3px;
+    border-radius: var(--radius-btn, 10px);
     font-weight: var(--font-weight-semibold, 600);
     font-size: var(--text-base, 1rem);
     text-decoration: none;
-    transition: background var(--duration-fast, 150ms), transform var(--duration-fast, 150ms);
+    box-shadow: var(--shadow-inset-highlight), 0 2px 8px rgba(37, 211, 102, 0.3);
+    transition:
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
   }
 
   .mascotte-cta:hover {
-    background: #1DA851;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-inset-highlight), 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.2);
+  }
+
+  .mascotte-cta:active {
+    transform: translateY(0);
   }
 
   @media (max-width: 640px) {

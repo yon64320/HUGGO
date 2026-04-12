@@ -70,14 +70,21 @@
   font-weight: var(--font-weight-medium, 500);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.85;
-  transition: opacity var(--duration-fast, 150ms), color var(--duration-fast, 150ms);
+  transition: color var(--duration-fast, 150ms), text-shadow var(--duration-fast, 150ms);
 }
 
-.glass-nav__link:hover,
+.glass-nav__link:hover {
+  color: var(--parchment);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
 .glass-nav__link[aria-current="page"] {
-  opacity: 1;
-  color: var(--sage-light);
+  color: var(--parchment);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(255, 255, 255, 0.7);
 }
 
 /* CTA button inside nav — terracotta, MCM style */
@@ -89,7 +96,7 @@
   background: var(--terracotta);
   color: var(--parchment);
   border: none;
-  border-radius: 3px;
+  border-radius: var(--radius-sm, 8px);
   font-family: var(--font-body, sans-serif);
   font-size: var(--text-sm, 0.875rem);
   font-weight: var(--font-weight-medium, 500);
@@ -97,11 +104,16 @@
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--duration-fast, 150ms);
+  transition:
+    background var(--duration-hover, 250ms) var(--ease-premium),
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium);
 }
 
 .glass-nav__cta:hover {
   background: var(--clay);
+  box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3), 0 0 20px rgba(247, 148, 29, 0.15);
+  transform: translateY(-1px);
 }
 
 /* -----------------------------------------------------------------------

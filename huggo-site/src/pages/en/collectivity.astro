@@ -147,7 +147,7 @@ const breadcrumb = generateBreadcrumbSchema([
           </p>
           <a
             href="/en/contact"
-            class="inline-flex items-center justify-center bg-[var(--terracotta)] text-[var(--parchment)] px-8 py-4 rounded-[3px] font-medium uppercase tracking-[0.06em] hover:bg-[var(--clay)] transition-colors"
+            class="btn-primary-inline"
           >
             {heroCta}
           </a>
@@ -171,7 +171,7 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {statItems.map((stat, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-secondary)] rounded-[3px] p-8 text-center border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="huggo-card huggo-card--secondary huggo-card--hover text-center">
               <p class="text-4xl md:text-5xl font-normal text-[var(--forest)] mb-2">{stat.value}</p>
               <p class="text-lg font-semibold text-[var(--text-primary)]">{stat.label}</p>
             </div>
@@ -216,7 +216,7 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {benefitItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-secondary)] rounded-[3px] p-8 border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="huggo-card huggo-card--secondary huggo-card--hover">
               <FeatureCard title={item.title} description={item.description} icon={item.icon} />
               {item.proof && (
                 <p class="mt-4 text-sm text-[var(--forest)] font-medium italic">{item.proof}</p>
@@ -242,7 +242,7 @@ const breadcrumb = generateBreadcrumbSchema([
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {rseItems.map((item, i) => (
           <ScrollReveal delay={i * 0.1}>
-            <div class="bg-[var(--bg-primary)] rounded-[3px] p-6 border border-[var(--border-color)] hover:shadow-md transition-shadow">
+            <div class="huggo-card huggo-card--hover p-6">
               <h3 class="text-lg font-normal text-[var(--text-primary)] mb-2">{item.title}</h3>
               <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
             </div>

@@ -1,1 +1,126 @@
-/* Card component styles */
+/* ==========================================================================
+   Card surface – premium hi-tech elevation
+   ========================================================================== */
+
+/* -----------------------------------------------------------------------
+   Base card surface
+   ----------------------------------------------------------------------- */
+.card-surface {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card, 14px);
+  background: var(--sand);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow);
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.card-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.35) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-surface:hover {
+  box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* Highlighted variant — terracotta gradient border + glow */
+.card-surface--highlighted {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--sand), var(--sand)) padding-box,
+    linear-gradient(135deg, var(--sienna), var(--terracotta), var(--clay)) border-box;
+  box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow), 0 4px 16px rgba(247, 148, 29, 0.15);
+}
+
+.card-surface--highlighted:hover {
+  box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg), 0 8px 24px rgba(247, 148, 29, 0.2), 0 0 32px rgba(247, 148, 29, 0.2);
+}
+
+/* -----------------------------------------------------------------------
+   HUGGO Card utility — inline card replacement
+   ----------------------------------------------------------------------- */
+.huggo-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+  border-radius: var(--radius-card, 14px);
+  padding: var(--space-8, 2rem);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow);
+  transition:
+    box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+    transform var(--duration-hover, 250ms) var(--ease-premium);
+}
+
+.huggo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.35) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content sits above the radial highlight */
+.huggo-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Background variants */
+.huggo-card--secondary {
+  background: var(--bg-secondary);
+}
+
+.huggo-card--cream {
+  background: var(--cream);
+  border-color: var(--walnut);
+}
+
+/* Hover variant */
+.huggo-card--hover:hover {
+  box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg), 0 0 20px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+/* -----------------------------------------------------------------------
+   Glass modifier — frosted card on colored backgrounds
+   ----------------------------------------------------------------------- */
+.huggo-card--glass {
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* -----------------------------------------------------------------------
+   Dark mode adjustments
+   ----------------------------------------------------------------------- */
+[data-theme="dark"] .card-surface::before,
+[data-theme="dark"] .huggo-card::before {
+  background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.08) 0%, transparent 60%);
+}
+
+/* -----------------------------------------------------------------------
+   Accessibility: disable transforms for reduced motion
+   ----------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .card-surface,
+  .card-surface:hover,
+  .card-surface--highlighted,
+  .card-surface--highlighted:hover,
+  .huggo-card--hover,
+  .huggo-card--hover:hover {
+    transform: none;
+  }
+}

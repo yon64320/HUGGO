@@ -227,15 +227,22 @@ const sectionTitles: Record<string, Record<Locale, string>> = {
     justify-content: center;
     width: 2.25rem;
     height: 2.25rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm, 8px);
     background: var(--forest);
     color: var(--parchment);
-    transition: background var(--duration-fast, 150ms), color var(--duration-fast, 150ms);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-sm);
+    transition:
+      background var(--duration-hover, 250ms) var(--ease-premium),
+      color var(--duration-hover, 250ms) var(--ease-premium),
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
   }
 
   .footer-social__link:hover {
     background: var(--sage);
     color: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-md), 0 0 16px rgba(76, 175, 80, 0.15);
   }
 
   .footer-copyright {

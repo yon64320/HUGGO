@@ -58,23 +58,46 @@ const popularLabel: Record<Locale, string> = {
     flex-direction: column;
     background: var(--sand);
     border: 1px solid var(--walnut);
-    border-radius: 3px;
+    border-radius: var(--radius-card, 14px);
     padding: var(--space-8, 2rem);
     position: relative;
-    transition: box-shadow var(--duration-normal, 300ms) var(--ease-out-expo);
+    overflow: hidden;
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow);
+    transition:
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.35) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .pricing-card > * {
+    position: relative;
+    z-index: 2;
   }
 
   .pricing-card:hover {
-    box-shadow: 4px 4px 0 var(--walnut);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg);
+    transform: translateY(-4px);
   }
 
   .pricing-card--highlighted {
-    border-color: var(--terracotta);
-    border-width: 2px;
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--sand), var(--sand)) padding-box,
+      linear-gradient(135deg, var(--sienna), var(--terracotta), var(--clay)) border-box;
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow), 0 4px 16px rgba(247, 148, 29, 0.15);
   }
 
   .pricing-card--highlighted:hover {
-    box-shadow: 4px 4px 0 var(--terracotta);
+    box-shadow: var(--shadow-inset-highlight-subtle), var(--shadow-lg), 0 8px 24px rgba(247, 148, 29, 0.2), 0 0 32px rgba(247, 148, 29, 0.2);
   }
 
   .pricing-card__badge {
@@ -90,7 +113,7 @@ const popularLabel: Record<Locale, string> = {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: var(--space-1, 0.25rem) var(--space-4, 1rem);
-    border-radius: 3px;
+    border-radius: var(--radius-sm, 8px);
     white-space: nowrap;
   }
 
@@ -163,7 +186,7 @@ const popularLabel: Record<Locale, string> = {
     width: 100%;
     padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
     border: 1.5px solid var(--walnut);
-    border-radius: 3px;
+    border-radius: var(--radius-btn, 10px);
     font-family: var(--font-body, sans-serif);
     font-size: var(--text-sm, 0.875rem);
     font-weight: var(--font-weight-medium, 500);
@@ -173,22 +196,33 @@ const popularLabel: Record<Locale, string> = {
     background: transparent;
     text-decoration: none;
     cursor: pointer;
-    transition: background var(--duration-fast, 150ms), color var(--duration-fast, 150ms);
+    box-shadow: var(--shadow-sm);
+    transition:
+      background var(--duration-hover, 250ms) var(--ease-premium),
+      color var(--duration-hover, 250ms) var(--ease-premium),
+      box-shadow var(--duration-hover, 250ms) var(--ease-premium),
+      transform var(--duration-hover, 250ms) var(--ease-premium);
   }
 
   .pricing-card__cta:hover {
     background: var(--walnut);
     color: var(--parchment);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .pricing-card__cta:active {
+    transform: translateY(0);
   }
 
   .pricing-card__cta--primary {
-    background: var(--terracotta);
+    background: linear-gradient(135deg, var(--sienna) 0%, var(--terracotta) 50%, var(--clay) 100%);
     color: var(--parchment);
     border-color: var(--terracotta);
+    box-shadow: var(--shadow-inset-highlight), 0 2px 8px rgba(247, 148, 29, 0.25);
   }
 
   .pricing-card__cta--primary:hover {
-    background: var(--clay);
-    border-color: var(--clay);
+    box-shadow: var(--shadow-inset-highlight), 0 4px 16px rgba(247, 148, 29, 0.35), 0 0 24px rgba(247, 148, 29, 0.2);
   }
 </style>
