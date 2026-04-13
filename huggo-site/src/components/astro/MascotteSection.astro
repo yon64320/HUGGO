@@ -3,29 +3,33 @@ interface Props {
   text: string;
   ctaText: string;
   ctaHref?: string;
+  imageSrc?: string;
 }
 
-const { text, ctaText, ctaHref = '#' } = Astro.props;
+const { text, ctaText, ctaHref = '#', imageSrc } = Astro.props;
 ---
 
 <section class="mascotte-section">
   <div class="mascotte-inner">
-    <!-- Mascot visual placeholder -->
+    <!-- Mascot visual -->
     <div class="mascotte-visual">
-      <div class="mascotte-placeholder" aria-hidden="true">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="60" r="56" fill="var(--color-green-primary, #4A9B4A)" opacity="0.12" />
-          <circle cx="60" cy="60" r="40" fill="var(--color-green-primary, #4A9B4A)" opacity="0.2" />
-          <rect x="40" y="35" width="40" height="35" rx="8" fill="var(--color-green-primary, #4A9B4A)" />
-          <polygon points="50,70 56,80 58,70" fill="var(--color-green-primary, #4A9B4A)" />
-          <text x="60" y="57" text-anchor="middle" font-family="var(--font-display, serif)" font-size="10" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
-          <!-- Eyes -->
-          <circle cx="50" cy="48" r="3" fill="var(--parchment, #F9F4EA)" />
-          <circle cx="70" cy="48" r="3" fill="var(--parchment, #F9F4EA)" />
-          <circle cx="50" cy="48" r="1.5" fill="var(--color-green-dark, #3A7D3A)" />
-          <circle cx="70" cy="48" r="1.5" fill="var(--color-green-dark, #3A7D3A)" />
-        </svg>
-      </div>
+      {imageSrc ? (
+        <img src={imageSrc} alt="Mascotte HUGGO" class="mascotte-img" width="200" height="200" loading="lazy" />
+      ) : (
+        <div class="mascotte-placeholder" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="var(--color-green-primary, #4A9B4A)" opacity="0.12" />
+            <circle cx="60" cy="60" r="40" fill="var(--color-green-primary, #4A9B4A)" opacity="0.2" />
+            <rect x="40" y="35" width="40" height="35" rx="8" fill="var(--color-green-primary, #4A9B4A)" />
+            <polygon points="50,70 56,80 58,70" fill="var(--color-green-primary, #4A9B4A)" />
+            <text x="60" y="57" text-anchor="middle" font-family="var(--font-display, serif)" font-size="10" font-weight="700" fill="var(--parchment, #F9F4EA)">HUGGO</text>
+            <circle cx="50" cy="48" r="3" fill="var(--parchment, #F9F4EA)" />
+            <circle cx="70" cy="48" r="3" fill="var(--parchment, #F9F4EA)" />
+            <circle cx="50" cy="48" r="1.5" fill="var(--color-green-dark, #3A7D3A)" />
+            <circle cx="70" cy="48" r="1.5" fill="var(--color-green-dark, #3A7D3A)" />
+          </svg>
+        </div>
+      )}
     </div>
 
     <!-- Text + CTA -->
@@ -43,7 +47,7 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
 
 <style>
   .mascotte-section {
-    padding: var(--space-12, 3rem) var(--space-6, 1.5rem);
+    padding: var(--space-16, 4rem) var(--space-6, 1.5rem);
     background: transparent;
   }
 
@@ -52,11 +56,20 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
     margin-inline: auto;
     display: flex;
     align-items: center;
-    gap: var(--space-8, 2rem);
+    gap: var(--space-10, 2.5rem);
   }
 
   .mascotte-visual {
     flex-shrink: 0;
+  }
+
+  .mascotte-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid var(--forest, #2D5A2D);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
   }
 
   .mascotte-placeholder {
@@ -105,6 +118,11 @@ const { text, ctaText, ctaHref = '#' } = Astro.props;
     .mascotte-inner {
       flex-direction: column;
       text-align: center;
+    }
+
+    .mascotte-img {
+      width: 130px;
+      height: 130px;
     }
   }
 </style>

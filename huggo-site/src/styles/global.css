@@ -17,6 +17,7 @@
 @import "./components/whatsapp-button.css";
 @import "./components/buttons.css";
 @import "./components/cards.css";
+@import "./components/hero-zoom.css";
 
 /* -----------------------------------------------------------------------
    Register MCM colors with Tailwind via @theme

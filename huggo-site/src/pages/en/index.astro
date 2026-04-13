@@ -9,6 +9,7 @@ import FAQ from '../../components/astro/FAQ.astro';
 import MascotteSection from '../../components/astro/MascotteSection.astro';
 import ScrollReveal from '../../components/animations/ScrollReveal.astro';
 import HeroPhone3D from '../../components/react/HeroPhone3D.tsx';
+import HeroPhoneZoom from '../../components/react/HeroPhoneZoom.tsx';
 import { t } from '../../i18n/utils';
 import { generateOrganizationSchema, generateWebSiteSchema } from '../../lib/seo';
 
@@ -130,7 +131,7 @@ const siteSchema = generateWebSiteSchema(locale);
 
         <ScrollReveal direction="right" delay={0.2}>
           <div class="w-full h-[400px] md:h-[500px] lg:h-[600px]">
-            <HeroPhone3D client:only="react" />
+            <!-- HeroPhone3D désactivé temporairement -->
           </div>
         </ScrollReveal>
       </div>
@@ -277,7 +278,7 @@ const siteSchema = generateWebSiteSchema(locale);
   <!-- ========== 8. MASCOTTE ========== -->
   <div class="bg-[var(--sage)]">
     <ScrollReveal>
-      <MascotteSection text={mascotteText} ctaText={mascotteCta} ctaHref="#" />
+      <MascotteSection text={mascotteText} ctaText={mascotteCta} ctaHref="#" imageSrc="/images/brand/mascotte-nobg.png" />
     </ScrollReveal>
   </div>
 

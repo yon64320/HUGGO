@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Hero Phone Zoom – Scroll-driven 3D animation
+   ========================================================================== */
+
+.hero-zoom-runway {
+  position: relative;
+  height: 300vh;
+  background: var(--cream);
+}
+
+.hero-zoom-text {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--header-height));
+  padding: 2rem;
+  transition: opacity 0.1s linear;
+}
+
+.hero-zoom-canvas-container {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+/* Mobile & reduced-motion: static fallback */
+.hero-zoom-static { display: none; }
+
+@media (max-width: 767px) {
+  .hero-zoom-runway { height: auto; }
+  .hero-zoom-static { display: block; }
+  .hero-zoom-text { position: relative; top: 0; min-height: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom-runway { height: auto; }
+  .hero-zoom-static { display: block; }
+  .hero-zoom-canvas-container { display: none; }
+  .hero-zoom-text { position: relative; top: 0; min-height: auto; }
+}

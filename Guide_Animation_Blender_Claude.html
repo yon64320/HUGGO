@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide Animation 3D Blender — Référence Prompting Claude Code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --bg:          #0e0e1a;
+  --bg-surface:  #151525;
+  --bg-card:     #1c1c32;
+  --bg-card-alt: #22223a;
+  --bg-code:     #181830;
+  --bg-elevated: #2a2a48;
+  --border:      #2e2e4e;
+  --border-glow: #3a3a5e;
+
+  --text:        #d8dae5;
+  --text-dim:    #8a8ca0;
+  --text-bright: #f0f0f8;
+
+  --green:       #4ade80;
+  --green-dim:   #2a7a4a;
+  --blue:        #60a5fa;
+  --blue-dim:    #2a4a7a;
+  --amber:       #fbbf24;
+  --amber-dim:   #6a5010;
+  --red:         #f87171;
+  --purple:      #a78bfa;
+
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body:    'Outfit', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Consolas', monospace;
+
+  --nav-h: 56px;
+  --section-gap: 6rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 1.5rem); }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(74, 222, 128, .25); color: #fff; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-glow); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green-dim); }
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════════
+   BACKGROUND ATMOSPHERE
+   ═══════════════════════════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(74, 222, 128, .04), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(96, 165, 250, .03), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid overlay */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(14, 14, 26, .85);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  display: flex; align-items: center;
+  padding: 0 2rem;
+  gap: 1.5rem;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800; font-size: .95rem;
+  color: var(--text-bright);
+  letter-spacing: -.02em;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: .5rem;
+}
+.nav-logo .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+.nav-links {
+  display: flex; gap: .25rem; margin-left: auto;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  font-size: .78rem; font-weight: 500;
+  padding: .35rem .7rem; border-radius: 6px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  transition: all .2s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--green); background: rgba(74,222,128,.08);
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════════════════ */
+.container { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+main { padding-top: calc(var(--nav-h) + 2rem); padding-bottom: 4rem; }
+
+section { margin-bottom: var(--section-gap); }
+section > .section-inner { /* for collapsible */ }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════ */
+.hero {
+  text-align: center;
+  padding: 5rem 0 4rem;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -2rem; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(74,222,128,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.2);
+  border-radius: 100px; padding: .3rem 1rem;
+  font-size: .75rem; font-weight: 600; color: var(--green);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase; letter-spacing: .08em;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--text-bright);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: .75rem;
+}
+.hero h1 span { color: var(--green); }
+.hero .subtitle {
+  font-size: 1.15rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  max-width: 600px; margin: 0 auto 2rem;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+}
+.hero-tags span {
+  font-size: .72rem; font-weight: 500;
+  padding: .25rem .65rem; border-radius: 5px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION HEADERS
+   ═══════════════════════════════════════════════════════════════ */
+.section-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  user-select: none;
+}
+.section-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 1.1rem;
+  color: var(--bg); flex-shrink: 0;
+}
+.section-num.green  { background: var(--green); }
+.section-num.blue   { background: var(--blue); }
+.section-num.amber  { background: var(--amber); }
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -.02em;
+}
+.section-header .toggle-icon {
+  margin-left: auto; font-size: 1.2rem; color: var(--text-dim);
+  transition: transform .3s;
+}
+.section-header.collapsed .toggle-icon { transform: rotate(-90deg); }
+
+.section-sub {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--text-bright);
+  margin: 2.5rem 0 1rem;
+  padding-left: .75rem;
+  border-left: 3px solid var(--green);
+}
+.section-sub.blue  { border-color: var(--blue); }
+.section-sub.amber { border-color: var(--amber); }
+
+/* ═══════════════════════════════════════════════════════════════
+   CARDS
+   ═══════════════════════════════════════════════════════════════ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.3rem;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.3);
+}
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: .95rem;
+  margin-bottom: .5rem;
+}
+.card-title.green  { color: var(--green); }
+.card-title.blue   { color: var(--blue); }
+.card-title.amber  { color: var(--amber); }
+.card-title.purple { color: var(--purple); }
+.card p, .card li {
+  font-size: .85rem; color: var(--text-dim); line-height: 1.55;
+}
+.card ul { padding-left: 1.1rem; }
+.card li { margin-bottom: .2rem; }
+.card .prompt-hint {
+  margin-top: .6rem; padding-top: .5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: .75rem;
+  color: var(--blue);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLES
+   ═══════════════════════════════════════════════════════════════ */
+.table-wrap {
+  overflow-x: auto; border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: .82rem;
+}
+thead th {
+  background: var(--bg-surface);
+  color: var(--green);
+  font-weight: 600; text-align: left;
+  padding: .65rem .85rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0;
+  white-space: nowrap;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+tbody tr { transition: background .15s; }
+tbody tr:nth-child(odd) { background: var(--bg-card); }
+tbody tr:nth-child(even) { background: var(--bg-card-alt); }
+tbody tr:hover { background: var(--bg-elevated); }
+td {
+  padding: .55rem .85rem;
+  border-bottom: 1px solid rgba(46,46,78,.5);
+  vertical-align: top;
+}
+td:first-child { font-weight: 600; color: var(--text-bright); white-space: nowrap; }
+td.prompt { font-family: var(--font-mono); font-size: .76rem; color: var(--blue); }
+
+/* ═══════════════════════════════════════════════════════════════
+   CODE BLOCKS
+   ═══════════════════════════════════════════════════════════════ */
+.code-block {
+  position: relative;
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  overflow-x: auto;
+}
+.code-block pre {
+  font-family: var(--font-mono);
+  font-size: .8rem; line-height: 1.7;
+  color: var(--green);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.code-block .comment { color: var(--text-dim); }
+.code-block .copy-btn {
+  position: absolute; top: .6rem; right: .6rem;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: .7rem; font-family: var(--font-mono);
+  padding: .25rem .55rem; border-radius: 5px;
+  cursor: pointer; transition: all .2s;
+  opacity: 0;
+}
+.code-block:hover .copy-btn { opacity: 1; }
+.code-block .copy-btn:hover { color: var(--green); border-color: var(--green); }
+.code-block .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROMPT TEMPLATES
+   ═══════════════════════════════════════════════════════════════ */
+.template-grid { display: flex; flex-direction: column; gap: .75rem; }
+.template-item {
+  display: grid; grid-template-columns: 130px 1fr; gap: .75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .85rem 1rem;
+  align-items: start;
+  transition: border-color .2s;
+  cursor: pointer;
+  position: relative;
+}
+.template-item:hover { border-color: var(--border-glow); }
+.template-item::after {
+  content: 'Copier';
+  position: absolute; top: .6rem; right: .6rem;
+  font-size: .65rem; font-family: var(--font-mono);
+  color: var(--text-dim); background: var(--bg-elevated);
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: .15rem .4rem; opacity: 0; transition: opacity .2s;
+}
+.template-item:hover::after { opacity: 1; }
+.template-item.copied::after { content: 'Copié ✓'; color: var(--green); border-color: var(--green); opacity: 1; }
+.template-name {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: .82rem; padding-top: .1rem;
+}
+.template-name.green  { color: var(--green); }
+.template-name.blue   { color: var(--blue); }
+.template-name.amber  { color: var(--amber); }
+.template-text {
+  font-family: var(--font-mono); font-size: .78rem;
+  color: var(--text); line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANTI-PATTERNS
+   ═══════════════════════════════════════════════════════════════ */
+.anti-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: .75rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.anti-bad .label { color: var(--red); font-weight: 700; font-size: .85rem; margin-bottom: .25rem; }
+.anti-bad .reason { font-size: .78rem; color: var(--text-dim); margin-top: .25rem; }
+.anti-good .label { color: var(--green); font-weight: 700; font-size: .85rem; margin-bottom: .25rem; }
+.anti-good code {
+  font-family: var(--font-mono); font-size: .76rem; color: var(--green);
+  background: rgba(74,222,128,.06); padding: .15rem .35rem; border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PIPELINE STEPS
+   ═══════════════════════════════════════════════════════════════ */
+.pipeline {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  margin-bottom: 2rem;
+}
+.pipeline-step {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.25rem;
+  position: relative;
+  transition: border-color .2s, transform .2s;
+}
+.pipeline-step:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+.pipeline-step .step-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  font-family: var(--font-display); font-weight: 800; font-size: .9rem;
+  color: var(--bg); margin-bottom: .75rem;
+}
+.pipeline-step .step-num.green  { background: var(--green); }
+.pipeline-step .step-num.blue   { background: var(--blue); }
+.pipeline-step .step-num.amber  { background: var(--amber); }
+.pipeline-step h4 { font-size: .9rem; font-weight: 700; color: var(--text-bright); margin-bottom: .4rem; }
+.pipeline-step li { font-size: .78rem; color: var(--text-dim); margin-bottom: .2rem; }
+.pipeline-step ul { padding-left: 1rem; }
+.pipeline-step .step-prompt { font-family: var(--font-mono); font-size: .72rem; color: var(--blue); margin-top: .5rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   CHECKLIST
+   ═══════════════════════════════════════════════════════════════ */
+.checklist {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 2rem;
+}
+.check-item {
+  display: flex; align-items: flex-start; gap: .5rem;
+  padding: .4rem 0; font-size: .85rem;
+}
+.check-item .icon { color: var(--green); font-size: .9rem; flex-shrink: 0; margin-top: .1rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   TIP / WARNING BOXES
+   ═══════════════════════════════════════════════════════════════ */
+.tip-box {
+  background: rgba(74,222,128,.05);
+  border: 1px solid rgba(74,222,128,.2);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: .85rem; color: var(--green);
+}
+.tip-box strong { display: block; margin-bottom: .25rem; }
+
+.workflow-box {
+  background: var(--bg-card);
+  border: 1px solid var(--green);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 2rem;
+}
+.workflow-box h4 { color: var(--green); font-weight: 700; margin-bottom: .75rem; }
+.workflow-box ol { padding-left: 1.2rem; }
+.workflow-box li { font-size: .88rem; color: var(--text); margin-bottom: .35rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SEARCH BOX (for lexique)
+   ═══════════════════════════════════════════════════════════════ */
+.search-wrap {
+  position: relative; margin-bottom: 1rem;
+}
+.search-wrap input {
+  width: 100%; padding: .65rem 1rem .65rem 2.5rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: var(--font-body);
+  font-size: .85rem; outline: none;
+  transition: border-color .2s;
+}
+.search-wrap input::placeholder { color: var(--text-dim); }
+.search-wrap input:focus { border-color: var(--green); }
+.search-wrap .search-icon {
+  position: absolute; left: .85rem; top: 50%; transform: translateY(-50%);
+  color: var(--text-dim); font-size: .85rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════ */
+footer {
+  text-align: center; padding: 3rem 0 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}
+footer p { font-size: .78rem; color: var(--text-dim); }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+  .nav { padding: 0 1rem; gap: .75rem; }
+  .nav-links a { font-size: .7rem; padding: .25rem .5rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .pipeline { grid-template-columns: 1fr 1fr; }
+  .checklist { grid-template-columns: 1fr; }
+  .anti-item { grid-template-columns: 1fr; }
+  .template-item { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+  .pipeline { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COLLAPSIBLE
+   ═══════════════════════════════════════════════════════════════ */
+.section-inner {
+  max-height: 100000px;
+  overflow: hidden;
+  transition: max-height .4s ease;
+}
+.section-inner.collapsed {
+  max-height: 0 !important;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav class="nav">
+  <div class="nav-logo"><span class="dot"></span> Blender × Claude</div>
+  <div class="nav-links">
+    <a href="#fondamentaux">Fondamentaux</a>
+    <a href="#catalogue">Catalogue</a>
+    <a href="#controle">Contrôle</a>
+    <a href="#prompting">Prompting</a>
+    <a href="#export">Export</a>
+  </div>
+</nav>
+
+<main class="container">
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<div class="hero reveal">
+  <div class="hero-badge">▶ Référence v1.0 — Avril 2026</div>
+  <h1>Guide Animation 3D <span>Blender</span></h1>
+  <p class="subtitle">Vocabulaire technique, catalogue d'effets et templates de prompts pour piloter Blender via Claude Code.</p>
+  <div class="hero-tags">
+    <span>Keyframes</span><span>F-Curves</span><span>Easing</span><span>Contraintes</span>
+    <span>Shape Keys</span><span>Caméra</span><span>Export GLB</span><span>20 Templates</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 1 — FONDAMENTAUX
+     ══════════════════════════════════════════════════════════════ -->
+<section id="fondamentaux">
+  <div class="section-header reveal" onclick="toggleSection(this)">
+    <div class="section-num green">1</div>
+    <h2>Fondamentaux</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="section-inner">
+
+    <h3 class="section-sub reveal">Concepts clés de l'animation</h3>
+    <div class="card-grid reveal">
+      <div class="card">
+        <div class="card-title green">Keyframe</div>
+        <p>Point clé dans la timeline qui enregistre la valeur d'une propriété à un instant donné. Raccourci : <strong>I</strong> pour insérer.</p>
+      </div>
+      <div class="card">
+        <div class="card-title green">Timeline</div>
+        <p>Ligne temporelle où sont placés les keyframes. Unité = frame (image). La barre de lecture avance frame par frame.</p>
+      </div>
+      <div class="card">
+        <div class="card-title green">Frame Rate (FPS)</div>
+        <p>Nombre d'images/seconde. 24 fps (cinéma), 30 fps (vidéo), 60 fps (jeu/web). Définit la durée réelle de l'animation.</p>
+      </div>
+      <div class="card">
+        <div class="card-title green">Interpolation</div>
+        <p>Calcul automatique des valeurs entre 2 keyframes. Contrôlé par les F-Curves dans le Graph Editor.</p>
+      </div>
+      <div class="card">
+        <div class="card-title blue">F-Curve</div>
+        <p>Courbe dans le Graph Editor qui définit l'évolution d'une valeur dans le temps. Editable avec des poignées Bézier.</p>
+      </div>
+      <div class="card">
+        <div class="card-title blue">Action</div>
+        <p>Bloc réutilisable d'animation contenant un ensemble de F-Curves. Peut être assigné, dupliqué, empilé dans le NLA.</p>
+      </div>
+      <div class="card">
+        <div class="card-title blue">NLA Editor</div>
+        <p>Non-Linear Animation — empile et mixe plusieurs Actions comme des clips vidéo. Essentiel pour l'export multi-states.</p>
+      </div>
+    </div>
+
+    <h3 class="section-sub reveal">Les 3 transformations fondamentales</h3>
+    <div class="card-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card">
+        <div class="card-title green">Location (G)</div>
+        <ul>
+          <li>Déplacement de l'objet dans l'espace</li>
+          <li>Axes : X (rouge), Y (vert), Z (bleu)</li>
+          <li>Raccourci : <strong>G</strong> puis X/Y/Z</li>
+          <li>Propriété : <code>object.location</code></li>
+        </ul>
+        <div class="prompt-hint">Prompt : "déplace le cube de 2m en Z"</div>
+      </div>
+      <div class="card">
+        <div class="card-title amber">Rotation (R)</div>
+        <ul>
+          <li>Rotation autour d'un axe</li>
+          <li>Modes : Euler XYZ, Quaternion</li>
+          <li>Raccourci : <strong>R</strong> puis X/Y/Z</li>
+          <li>Propriété : <code>object.rotation_euler</code></li>
+        </ul>
+        <div class="prompt-hint">Prompt : "tourne le cube de 90° en Z"</div>
+      </div>
+      <div class="card">
+        <div class="card-title blue">Scale (S)</div>
+        <ul>
+          <li>Mise à l'échelle (uniforme ou par axe)</li>
+          <li>Uniform : même valeur X=Y=Z</li>
+          <li>Raccourci : <strong>S</strong> puis X/Y/Z</li>
+          <li>Propriété : <code>object.scale</code></li>
+        </ul>
+        <div class="prompt-hint">Prompt : "double la taille en X"</div>
+      </div>
+    </div>
+
+    <div class="card-grid reveal" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
+      <div class="card">
+        <div class="card-title purple">Espace Local vs World</div>
+        <ul>
+          <li><strong>Local</strong> : axes relatifs à l'orientation de l'objet</li>
+          <li><strong>World</strong> (Global) : axes fixes de la scène</li>
+          <li>Raccourci : appuyer 2× sur l'axe (ex: <strong>G Z Z</strong> = Z local)</li>
+        </ul>
+        <div class="prompt-hint">Prompt : "déplace en Z local" vs "déplace en Z world"</div>
+      </div>
+      <div class="card">
+        <div class="card-title purple">Pivot Point</div>
+        <ul>
+          <li><strong>3D Cursor</strong> : pivot au curseur 3D</li>
+          <li><strong>Median Point</strong> : centre de la sélection</li>
+          <li><strong>Individual Origins</strong> : chaque objet tourne sur lui-même</li>
+          <li><strong>Active Element</strong> : pivot sur l'élément actif</li>
+        </ul>
+        <div class="prompt-hint">Prompt : "tourne autour du curseur 3D"</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 2 — CATALOGUE DES EFFETS
+     ══════════════════════════════════════════════════════════════ -->
+<section id="catalogue">
+  <div class="section-header reveal" onclick="toggleSection(this)">
+    <div class="section-num blue">2</div>
+    <h2>Catalogue des effets d'animation</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="section-inner">
+
+    <!-- ROTATIONS -->
+    <h3 class="section-sub reveal">Rotations</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Effet</th><th>Description</th><th>Implémentation Blender</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Turntable</td><td>Rotation continue autour de Z (360° en boucle)</td><td>rotation_euler.z + Cycles modifier</td><td class="prompt">"tourne sur lui-même"</td></tr>
+          <tr><td>Spin rapide</td><td>Rotation rapide sur X, Y ou Z</td><td>rotation_euler.[x/y/z] multi-tours</td><td class="prompt">"tourne rapidement en X"</td></tr>
+          <tr><td>Orbit</td><td>Objet tourne autour d'un autre (parent Empty)</td><td>Empty parent + rotation_euler.z</td><td class="prompt">"orbite autour du cube"</td></tr>
+          <tr><td>Tilt / Inclinaison</td><td>Rotation partielle (ex: 15°) sur X ou Y</td><td>rotation_euler.x (valeur partielle)</td><td class="prompt">"s'incline légèrement"</td></tr>
+          <tr><td>Roll</td><td>Rotation sur l'axe longitudinal</td><td>rotation_euler.y</td><td class="prompt">"roule sur lui-même"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts pour rotations</span>
+"Fais tourner le cube en continu autour de Z, en boucle sur 120 frames"
+"Le logo orbite autour du centre à 2m de distance, 1 tour complet en 3 secondes"
+"Incline la boîte de 15° en X avec un ease in-out"</pre>
+    </div>
+
+    <!-- TRANSLATIONS -->
+    <h3 class="section-sub blue reveal">Translations / Déplacements</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Effet</th><th>Description</th><th>Implémentation Blender</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Slide / Glissement</td><td>Translation linéaire sur un axe</td><td>location.[x/y/z] linéaire</td><td class="prompt">"glisse vers la droite"</td></tr>
+          <tr><td>Float / Lévitation</td><td>Oscillation sinusoïdale en Z</td><td>location.z + Noise/Cycles modifier</td><td class="prompt">"flotte doucement"</td></tr>
+          <tr><td>Bounce / Rebond</td><td>Rebond au sol avec décélération</td><td>location.z + Bounce easing</td><td class="prompt">"rebondit au sol"</td></tr>
+          <tr><td>Follow Path</td><td>Suit une courbe Bézier</td><td>Follow Path constraint</td><td class="prompt">"suit le chemin"</td></tr>
+          <tr><td>Throw / Lancer</td><td>Trajectoire parabolique</td><td>location.x linéaire + location.z courbe</td><td class="prompt">"lancé en arc de cercle"</td></tr>
+          <tr><td>Zigzag</td><td>Alternance gauche/droite en avançant</td><td>location.x oscille + location.y linéaire</td><td class="prompt">"avance en zigzag"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts pour translations</span>
+"Fais flotter la sphère à 0.3m d'amplitude en Z, boucle douce sur 60 frames"
+"Le cube rebondit 3 fois puis s'arrête, hauteur initiale 2m"
+"Déplace l'objet le long de la courbe Bézier en 4 secondes"</pre>
+    </div>
+
+    <!-- SCALE -->
+    <h3 class="section-sub amber reveal">Échelle / Scale</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Effet</th><th>Description</th><th>Implémentation Blender</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Pulse / Respiration</td><td>Scale oscillant uniforme (1.0 → 1.1 → 1.0)</td><td>scale XYZ + Cycles modifier</td><td class="prompt">"pulse doucement"</td></tr>
+          <tr><td>Pop-in / Apparition</td><td>Scale 0 → 1 avec overshoot</td><td>scale 0→1.1→1.0, Back easing</td><td class="prompt">"apparaît en pop"</td></tr>
+          <tr><td>Squash &amp; Stretch</td><td>Aplatir puis étirer (non-uniforme)</td><td>scale.z down + scale.xy up, puis inverse</td><td class="prompt">"s'écrase et rebondit"</td></tr>
+          <tr><td>Grow / Croissance</td><td>Scale progressif de petit à grand</td><td>scale 0.1→1.0 linéaire ou ease</td><td class="prompt">"grandit progressivement"</td></tr>
+          <tr><td>Shrink / Rétrécir</td><td>Scale progressif de grand à petit</td><td>scale 1.0→0.0</td><td class="prompt">"rétrécit jusqu'à disparaître"</td></tr>
+          <tr><td>Heartbeat</td><td>Double pulse rapide + pause</td><td>scale pulse 2× rapide + hold</td><td class="prompt">"bat comme un cœur"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts pour scale</span>
+"Le logo pulse de 1.0 à 1.15 en boucle, rythme lent (90 frames par cycle)"
+"Pop-in du bouton : scale 0 → 1.2 → 1.0 sur 20 frames, easing Back"</pre>
+    </div>
+
+    <!-- SHAPE KEYS -->
+    <h3 class="section-sub reveal">Shape Keys / Morphing</h3>
+    <div class="card-grid reveal" style="grid-template-columns: 1fr 1fr;">
+      <div class="card">
+        <div class="card-title green">Principe</div>
+        <ul>
+          <li>Les Shape Keys définissent des formes alternatives du maillage</li>
+          <li><strong>Basis</strong> = forme de référence (repos)</li>
+          <li>Chaque key a une valeur (0.0 → 1.0)</li>
+          <li>Animer la valeur = morpher entre les formes</li>
+          <li>Propriété : <code>object.data.shape_keys.key_blocks['Key'].value</code></li>
+        </ul>
+        <div class="prompt-hint">Idéal pour : visages, déformations organiques, UI animées</div>
+      </div>
+      <div class="card">
+        <div class="card-title blue">Cas d'usage typiques</div>
+        <ul>
+          <li>Expressions faciales (smile, blink, surprise)</li>
+          <li>Transformation d'un objet en un autre</li>
+          <li>Respiration / gonflement organique</li>
+          <li>Boutons UI qui changent de forme</li>
+          <li>Liquide qui se déforme</li>
+        </ul>
+        <div class="prompt-hint">Combinable avec scale + rotation pour plus d'impact</div>
+      </div>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts pour Shape Keys</span>
+"Crée une shape key 'Smile' qui relève les coins de la bouche, anime de 0 à 1 sur 30 frames"
+"Morphe la sphère en cube via shape key, transition sur 2 secondes avec ease in-out"
+"Ajoute un shape key 'Breathe' qui gonfle le torse, boucle sinusoïdale 0.0→0.6→0.0"
+"Anime les shape keys 'Blink_L' et 'Blink_R' en sync : 0→1→0 sur 8 frames, toutes les 3s"</pre>
+    </div>
+
+    <!-- COMBINAISONS -->
+    <h3 class="section-sub blue reveal">Combinaisons d'effets</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Effet</th><th>Composition</th><th>Description</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Wobble</td><td>Rotation noise XYZ</td><td>Tremblement léger multi-axes</td><td class="prompt">"tremble légèrement"</td></tr>
+          <tr><td>Swing</td><td>Rotation Z oscillante</td><td>Balancement comme un pendule</td><td class="prompt">"se balance doucement"</td></tr>
+          <tr><td>Spiral / Hélice</td><td>Rotation Z + Translation Z</td><td>Monte ou descend en spirale</td><td class="prompt">"monte en spirale"</td></tr>
+          <tr><td>Pendulum</td><td>Rotation avec pivot décentré</td><td>Mouvement de pendule réaliste</td><td class="prompt">"oscille comme un pendule"</td></tr>
+          <tr><td>Float + Rotate</td><td>Location Z sinus + Rot Z</td><td>Lévitation + rotation douce</td><td class="prompt">"flotte et tourne lentement"</td></tr>
+          <tr><td>Bounce + Squash</td><td>Loc Z bounce + Scale squash</td><td>Rebond réaliste cartoon</td><td class="prompt">"rebondit avec squash &amp; stretch"</td></tr>
+          <tr><td>Orbit + Scale</td><td>Empty rotation + Scale pulse</td><td>Orbite avec pulsation</td><td class="prompt">"orbite en pulsant"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts combinés</span>
+"La mascotte flotte en Z (±0.2m, 60 frames) tout en tournant lentement en Z (1 tour / 120 frames)"
+"Rebond cartoon : bounce en Z + squash au contact + stretch en l'air, 3 rebonds"</pre>
+    </div>
+
+    <!-- CAMÉRA -->
+    <h3 class="section-sub amber reveal">Mouvements de caméra</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Mouvement</th><th>Type</th><th>Propriété</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Pan</td><td>Rotation Y</td><td>camera.rotation_euler.z</td><td class="prompt">"panoramique horizontal"</td></tr>
+          <tr><td>Tilt</td><td>Rotation X</td><td>camera.rotation_euler.x</td><td class="prompt">"panoramique vertical"</td></tr>
+          <tr><td>Dolly</td><td>Translation profondeur</td><td>camera.location.y (vers objet)</td><td class="prompt">"la caméra s'approche"</td></tr>
+          <tr><td>Truck</td><td>Translation latérale</td><td>camera.location.x</td><td class="prompt">"travelling latéral"</td></tr>
+          <tr><td>Crane / Boom</td><td>Translation hauteur</td><td>camera.location.z</td><td class="prompt">"montée en grue"</td></tr>
+          <tr><td>Orbit cam</td><td>Camera parentée à Empty</td><td>Empty.rotation_euler.z</td><td class="prompt">"caméra tourne autour"</td></tr>
+          <tr><td>Dolly Zoom</td><td>Dolly avant + FOV augmente</td><td>location.y + lens</td><td class="prompt">"effet Vertigo"</td></tr>
+          <tr><td>Rack Focus</td><td>Changement DoF focus</td><td>dof.focus_distance</td><td class="prompt">"mise au point sur l'arrière-plan"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts caméra</span>
+"Dolly avant lent vers le produit sur 90 frames, ease out à la fin"
+"Orbit caméra 360° autour de la scène, hauteur 1.5m, 4 secondes"</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 3 — CONTRÔLE DU MOUVEMENT
+     ══════════════════════════════════════════════════════════════ -->
+<section id="controle">
+  <div class="section-header reveal" onclick="toggleSection(this)">
+    <div class="section-num amber">3</div>
+    <h2>Contrôle du mouvement</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="section-inner">
+
+    <!-- INTERPOLATION -->
+    <h3 class="section-sub amber reveal">Interpolation &amp; Easing</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Type</th><th>Comportement</th><th>Cas d'usage</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Constant</td><td>Pas de transition (saut instantané)</td><td>Switch on/off, visibilité</td><td class="prompt">"change instantanément"</td></tr>
+          <tr><td>Linear</td><td>Vitesse constante (robotique)</td><td>Convoyeur, défilement</td><td class="prompt">"vitesse constante"</td></tr>
+          <tr><td>Bezier</td><td>Courbe lisse (défaut Blender)</td><td>Mouvement naturel général</td><td class="prompt">"mouvement fluide"</td></tr>
+          <tr><td>Ease In</td><td>Démarrage lent, accélère</td><td>Départ d'un objet lourd</td><td class="prompt">"accélère progressivement"</td></tr>
+          <tr><td>Ease Out</td><td>Rapide puis ralentit</td><td>Arrivée, atterrissage</td><td class="prompt">"décélère en douceur"</td></tr>
+          <tr><td>Ease In-Out</td><td>Lent → rapide → lent</td><td>La plupart des animations UI</td><td class="prompt">"démarrage et fin doux"</td></tr>
+          <tr><td>Back</td><td>Dépasse la cible puis revient</td><td>Pop-in, overshoot</td><td class="prompt">"avec un léger dépassement"</td></tr>
+          <tr><td>Elastic</td><td>Rebond élastique autour de la cible</td><td>Cartoon, UI ludique</td><td class="prompt">"rebond élastique"</td></tr>
+          <tr><td>Bounce</td><td>Rebonds décroissants</td><td>Chute réaliste, balle</td><td class="prompt">"rebondit en arrivant"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- F-CURVE MODIFIERS -->
+    <h3 class="section-sub reveal">Modificateurs F-Curve</h3>
+    <div class="card-grid reveal" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+      <div class="card">
+        <div class="card-title green">Cycles</div>
+        <ul>
+          <li>Mode <strong>REPEAT</strong> : boucle identique à l'infini</li>
+          <li>Mode <strong>MIRROR</strong> : boucle en aller-retour</li>
+          <li>Paramètres : Before/After, Count</li>
+        </ul>
+        <div class="prompt-hint">"en boucle infinie" / "ping-pong"</div>
+      </div>
+      <div class="card">
+        <div class="card-title amber">Noise</div>
+        <ul>
+          <li>Variation aléatoire à la courbe</li>
+          <li>Paramètres : Scale, Strength, Phase, Depth</li>
+          <li>Strength faible = tremblement subtil</li>
+        </ul>
+        <div class="prompt-hint">"avec du bruit" / "tremblement léger"</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--red)">Stepped</div>
+        <ul>
+          <li>Discrétise le mouvement (paliers)</li>
+          <li>Effet stop-motion / saccadé</li>
+          <li>Paramètres : Step Size, Offset</li>
+        </ul>
+        <div class="prompt-hint">"style stop-motion" / "mouvement saccadé"</div>
+      </div>
+      <div class="card">
+        <div class="card-title blue">Limits</div>
+        <ul>
+          <li>Clampe les valeurs min et/ou max</li>
+          <li>Empêche un objet de dépasser une zone</li>
+          <li>Combinable avec Noise ou Cycles</li>
+        </ul>
+        <div class="prompt-hint">"limité entre 0 et 2m en Z"</div>
+      </div>
+      <div class="card">
+        <div class="card-title purple">Envelope</div>
+        <ul>
+          <li>Module l'amplitude de la courbe</li>
+          <li>Points de contrôle d'intensité</li>
+          <li>Fade in / fade out d'animation</li>
+        </ul>
+        <div class="prompt-hint">"commence doucement, intensifie, puis calme"</div>
+      </div>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts F-Curve modifiers</span>
+"Rotation Z en boucle infinie, mode mirror (aller-retour)"
+"Ajoute un noise modifier sur location XYZ : strength 0.05, scale 3.0 (tremblement subtil)"
+"Animation stepped à 8 fps pour un rendu stop-motion"
+"Limite la position Z entre 0 et 5m, même avec le bruit"</pre>
+    </div>
+
+    <!-- CONTRAINTES -->
+    <h3 class="section-sub blue reveal">Contraintes (Constraints)</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Constraint</th><th>Rôle</th><th>Paramètres clés</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td>Track To</td><td>L'objet regarde toujours la cible</td><td>Target, Up axis, Track axis</td><td class="prompt">"regarde toujours le cube"</td></tr>
+          <tr><td>Follow Path</td><td>L'objet suit une courbe</td><td>Curve target, Offset, Follow</td><td class="prompt">"suit la courbe Bézier"</td></tr>
+          <tr><td>Copy Location</td><td>Copie la position d'un autre objet</td><td>Target, Axes, Influence</td><td class="prompt">"suit la position de X"</td></tr>
+          <tr><td>Copy Rotation</td><td>Copie la rotation d'un autre objet</td><td>Target, Axes, Mix mode</td><td class="prompt">"copie la rotation de X"</td></tr>
+          <tr><td>Copy Scale</td><td>Copie l'échelle d'un autre objet</td><td>Target, Axes, Power</td><td class="prompt">"même taille que X"</td></tr>
+          <tr><td>Limit Location</td><td>Clampe la position (min/max)</td><td>Min/Max XYZ, Owner space</td><td class="prompt">"reste entre 0 et 3m en Z"</td></tr>
+          <tr><td>Damped Track</td><td>Orientation douce vers cible</td><td>Target, Track axis</td><td class="prompt">"suit du regard doucement"</td></tr>
+          <tr><td>Child Of</td><td>Parent dynamique (animable)</td><td>Target, Influence (keyframable)</td><td class="prompt">"attaché à la main, puis lâché"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Exemples de prompts constraints</span>
+"La caméra Track To le personnage en permanence pendant l'orbite"
+"L'objet suit le path Bézier sur 120 frames, Follow Curve activé"
+"Child Of : l'épée est attachée à la main frame 1→60, puis lâchée frame 61"</pre>
+    </div>
+
+    <!-- DRIVERS -->
+    <h3 class="section-sub amber reveal">Drivers &amp; Expressions</h3>
+    <div class="card-grid reveal" style="grid-template-columns: 1fr 1fr;">
+      <div class="card">
+        <div class="card-title amber">Principe des Drivers</div>
+        <ul>
+          <li>Un driver remplace l'animation manuelle par une formule</li>
+          <li>La propriété driven est calculée automatiquement</li>
+          <li>Variables : propriétés d'autres objets, frame, custom props</li>
+          <li>Fonctions : <code>sin()</code>, <code>cos()</code>, <code>min()</code>, <code>max()</code>, <code>clamp()</code></li>
+        </ul>
+        <div class="prompt-hint">Propriété driverée = champ violet dans Blender</div>
+      </div>
+      <div class="card">
+        <div class="card-title green">Cas d'usage courants</div>
+        <ul>
+          <li>Rotation pilotée par la position (roue qui tourne en avançant)</li>
+          <li>Scale proportionnel à la distance</li>
+          <li>Oscillation automatique via <code>sin(frame / speed)</code></li>
+          <li>Visibilité conditionnelle (si Z > seuil, visible)</li>
+        </ul>
+        <div class="prompt-hint">Combinable avec constraints pour des rigs complexes</div>
+      </div>
+    </div>
+    <div class="table-wrap reveal" style="margin-top: 1rem;">
+      <table>
+        <thead><tr><th>Formule</th><th>Effet</th><th>Prompt FR</th></tr></thead>
+        <tbody>
+          <tr><td><code>sin(frame / 30) * 0.5</code></td><td>Oscillation sinusoïdale (période ≈60f)</td><td class="prompt">"oscille en sinus"</td></tr>
+          <tr><td><code>var_loc_z * 2.0</code></td><td>Scale = 2× la hauteur Z</td><td class="prompt">"grossit quand il monte"</td></tr>
+          <tr><td><code>clamp(var, 0.0, 1.0)</code></td><td>Valeur limitée entre 0 et 1</td><td class="prompt">"jamais en dessous de 0"</td></tr>
+          <tr><td><code>noise.random() * 0.1</code></td><td>Variation aléatoire à chaque frame</td><td class="prompt">"bruit aléatoire subtil"</td></tr>
+          <tr><td><code>-var_rot_z</code></td><td>Rotation inverse de la cible</td><td class="prompt">"tourne à l'opposé de X"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Prompt driver</span>
+"Ajoute un driver sur scale.z : sin(frame / 45) * 0.3 + 1.0 (pulsation automatique sans keyframes)"</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 4 — PROMPTING EFFICACE
+     ══════════════════════════════════════════════════════════════ -->
+<section id="prompting">
+  <div class="section-header reveal" onclick="toggleSection(this)">
+    <div class="section-num green">4</div>
+    <h2>Prompting efficace</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="section-inner">
+
+    <!-- STRUCTURE -->
+    <h3 class="section-sub reveal">Structure d'un prompt optimal</h3>
+    <div class="code-block reveal" style="text-align:center;">
+      <pre style="font-size:.95rem;color:var(--text-bright);font-weight:600;">[OBJET]  +  [ACTION]  +  [AXE/DIRECTION]  +  [VITESSE/DURÉE]  +  [EASING]  +  [BOUCLE]</pre>
+    </div>
+
+    <div class="reveal" style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem;">
+      <div style="display:flex;align-items:flex-start;gap:.75rem;">
+        <span style="background:var(--green);color:var(--bg);font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:5px;white-space:nowrap;margin-top:.15rem;">Basique</span>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:.82rem;color:var(--text-bright);">"Fais tourner le cube autour de Z, 1 tour complet en 120 frames, en boucle"</div>
+          <div style="font-size:.75rem;color:var(--text-dim);margin-top:.2rem;">Objet: cube | Action: rotation | Axe: Z | Durée: 120f | Boucle: oui</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;">
+        <span style="background:var(--blue);color:var(--bg);font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:5px;white-space:nowrap;margin-top:.15rem;">Interméd.</span>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:.82rem;color:var(--text-bright);">"Le logo flotte en Z (±0.2m, 60 frames, ease in-out) et tourne lentement en Y (1 tour / 180 frames)"</div>
+          <div style="font-size:.75rem;color:var(--text-dim);margin-top:.2rem;">2 actions | Amplitudes précises | Timings différents | Easing spécifié</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;">
+        <span style="background:var(--amber);color:var(--bg);font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:5px;white-space:nowrap;margin-top:.15rem;">Avancé</span>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:.82rem;color:var(--text-bright);">"Pop-in du produit : scale 0→1.15→1.0 sur 25 frames (Back easing), puis lévitation Z ±0.1m en boucle, caméra dolly avant lent sur 90 frames"</div>
+          <div style="font-size:.75rem;color:var(--text-dim);margin-top:.2rem;">3 animations séquencées | Valeurs exactes | Easing | Boucle partielle</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box reveal">
+      <strong>💡 ASTUCE</strong>
+      Plus le prompt est précis (valeurs numériques, axes, timing), plus le résultat sera conforme. Évitez les descriptions vagues comme "anime l'objet" ou "fais bouger le truc".
+    </div>
+
+    <!-- LEXIQUE -->
+    <h3 class="section-sub blue reveal">Lexique FR → Blender</h3>
+    <div class="search-wrap reveal">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="lexique-search" placeholder="Rechercher un terme français ou Blender…" oninput="filterLexique()">
+    </div>
+    <div class="table-wrap reveal">
+      <table id="lexique-table">
+        <thead><tr><th>Terme FR</th><th>Propriété / Technique Blender</th></tr></thead>
+        <tbody>
+          <tr><td>Faire tourner</td><td>rotation_euler + Cycles modifier</td></tr>
+          <tr><td>Flotter</td><td>location.z sinusoïdal + Cycles</td></tr>
+          <tr><td>Rebondir</td><td>location.z + Bounce easing</td></tr>
+          <tr><td>Pulser</td><td>scale XYZ oscillant + Cycles</td></tr>
+          <tr><td>Trembler</td><td>Noise modifier (faible Strength)</td></tr>
+          <tr><td>Glisser</td><td>location.[axe] linéaire</td></tr>
+          <tr><td>Se balancer</td><td>rotation.z oscillant (pivot décentré)</td></tr>
+          <tr><td>Apparaître</td><td>scale 0→1 + Back easing (pop-in)</td></tr>
+          <tr><td>Disparaître</td><td>scale 1→0 + Ease In</td></tr>
+          <tr><td>Grandir</td><td>scale progressif 0.1→1.0</td></tr>
+          <tr><td>Rétrécir</td><td>scale progressif 1.0→0.0</td></tr>
+          <tr><td>S'écraser</td><td>Squash: scale.z down, scale.xy up</td></tr>
+          <tr><td>S'étirer</td><td>Stretch: scale.z up, scale.xy down</td></tr>
+          <tr><td>Orbiter</td><td>Empty parent + rotation Z</td></tr>
+          <tr><td>Suivre un chemin</td><td>Follow Path constraint + courbe</td></tr>
+          <tr><td>Regarder</td><td>Track To constraint</td></tr>
+          <tr><td>Monter en spirale</td><td>rotation Z + location Z linéaire</td></tr>
+          <tr><td>Zig-zaguer</td><td>location.x oscille + location.y avance</td></tr>
+          <tr><td>Clignoter</td><td>visibility keyframes (on/off)</td></tr>
+          <tr><td>Se déformer</td><td>Shape Keys (morph 0→1)</td></tr>
+          <tr><td>Changer de forme</td><td>Shape Keys interpolation</td></tr>
+          <tr><td>Respirer (objet)</td><td>scale pulse lent + Cycles</td></tr>
+          <tr><td>Battre (cœur)</td><td>scale double-pulse + hold</td></tr>
+          <tr><td>Lancer / jeter</td><td>loc.x linéaire + loc.z parabolique</td></tr>
+          <tr><td>Accélérer</td><td>Ease In interpolation</td></tr>
+          <tr><td>Ralentir</td><td>Ease Out interpolation</td></tr>
+          <tr><td>Rebond élastique</td><td>Elastic easing</td></tr>
+          <tr><td>Stop-motion</td><td>Stepped modifier (8-12 fps)</td></tr>
+          <tr><td>En boucle</td><td>Cycles modifier (REPEAT)</td></tr>
+          <tr><td>Aller-retour</td><td>Cycles modifier (MIRROR)</td></tr>
+          <tr><td>Panoramique</td><td>Camera rotation Y/Z</td></tr>
+          <tr><td>Travelling</td><td>Camera location X/Y</td></tr>
+          <tr><td>Zoom avant</td><td>Camera dolly (loc.y) ou lens</td></tr>
+          <tr><td>Plongeante</td><td>Camera en hauteur, tilt vers bas</td></tr>
+          <tr><td>Contre-plongeante</td><td>Camera basse, tilt vers haut</td></tr>
+          <tr><td>Flou dynamique</td><td>DOF focus_distance animé</td></tr>
+          <tr><td>Effet Vertigo</td><td>Dolly + FOV inverse simult.</td></tr>
+          <tr><td>S'attacher / se détacher</td><td>Child Of constraint (influence 0/1)</td></tr>
+          <tr><td>Fondre (fondu)</td><td>Material alpha 1→0 keyframes</td></tr>
+          <tr><td>Osciller</td><td>Driver sin(frame/N) * amplitude</td></tr>
+          <tr><td>Rouler</td><td>rotation_euler.y + location.x linéaire</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TEMPLATES -->
+    <h3 class="section-sub reveal">Templates de prompts — Basiques</h3>
+    <div class="template-grid reveal">
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Turntable</div>
+        <div class="template-text">Fais tourner [OBJET] autour de Z, 1 tour complet en [N] frames, en boucle infinie</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Flottement</div>
+        <div class="template-text">Fais flotter [OBJET] en Z : amplitude ±[X]m, cycle de [N] frames, ease in-out, boucle</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Bounce</div>
+        <div class="template-text">[OBJET] rebondit en Z depuis [H]m, 3 rebonds décroissants, easing Bounce, durée [N] frames</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Pop-in</div>
+        <div class="template-text">[OBJET] apparaît : scale 0 → 1.15 → 1.0 sur [N] frames, easing Back</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Pulse</div>
+        <div class="template-text">[OBJET] pulse : scale 1.0 → [X] → 1.0, cycle [N] frames, ease in-out, boucle</div>
+      </div>
+    </div>
+
+    <h3 class="section-sub blue reveal">Templates de prompts — Intermédiaires</h3>
+    <div class="template-grid reveal">
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name blue">Float + Rotate</div>
+        <div class="template-text">[OBJET] flotte en Z (±[X]m, [N]f) et tourne lentement en Y (1 tour / [M] frames)</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name blue">Orbit + Scale</div>
+        <div class="template-text">[OBJET] orbite autour de [CIBLE] à [D]m, 1 tour en [N]f, pulse scale 1.0→[X] en boucle</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name blue">Follow Path + Tilt</div>
+        <div class="template-text">[OBJET] suit [COURBE] en [N] frames, s'incline de [X]° dans les virages</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name blue">Séquence entrée</div>
+        <div class="template-text">[OBJET] slide depuis la gauche (loc.x -5→0, 30f, ease out) puis pop scale (0.8→1.1→1.0, 15f)</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name blue">Swing</div>
+        <div class="template-text">[OBJET] se balance en Z : rotation ±[X]°, pivot décentré en Y+[D], cycle [N]f, boucle mirror</div>
+      </div>
+    </div>
+
+    <h3 class="section-sub amber reveal">Templates de prompts — Avancés</h3>
+    <div class="template-grid reveal">
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name amber">Dolly Zoom</div>
+        <div class="template-text">Caméra dolly avant (loc.y -10→-3, 60f) + augmente focal de 35mm→70mm simult. (effet Vertigo)</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name amber">Squash &amp; Stretch</div>
+        <div class="template-text">[OBJET] tombe en Z (2m→0, 15f ease in), squash au sol (scale .z=0.5 .xy=1.4, 3f), stretch rebond (.z=1.3 .xy=0.8, 5f), retour (1,1,1, 8f)</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name amber">Character Idle</div>
+        <div class="template-text">[PERSONNAGE] : location.z flotte ±0.05m (120f), rotation.z ±2° (90f), scale pulse 1.0→1.02 (60f), le tout en boucle avec des périodes différentes</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name amber">Camera Reveal</div>
+        <div class="template-text">Caméra commence derrière l'objet (Y+5, Z+0.5), orbite 180° en 120f (ease in-out), puis dolly avant léger (20f) pour reveal face</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name amber">Pendulum</div>
+        <div class="template-text">[OBJET] oscille comme un pendule : rotation X ±45°, pivot en Y+2m (origin décentré), cycle 90f, amortissement progressif via envelope modifier</div>
+      </div>
+    </div>
+
+    <h3 class="section-sub reveal" style="border-color:var(--green);">Templates de prompts — Web-Ready (GLB)</h3>
+    <div class="template-grid reveal">
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Boucle parfaite</div>
+        <div class="template-text">[OBJET] rotation Z 360° en [N] frames, frame 1 = frame N+1, Cycles modifier, bake, export GLB</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Hero product</div>
+        <div class="template-text">[PRODUIT] : turntable Z 360° (120f) + lévitation Z ±0.1m (60f) + scale pulse 1.0→1.05 (80f), boucle parfaite, bake all, export GLB Draco</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Logo animé</div>
+        <div class="template-text">[LOGO] pop-in (scale 0→1.0, 20f Back) puis idle float+rotate en boucle, total 150f, bake, GLB avec Draco compression</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Loading spinner</div>
+        <div class="template-text">[OBJET] rotation Z continue 360°/60f, scale pulse 0.9→1.1 (30f mirror), parfaitement loopable, export GLB léger (&lt; 500KB)</div>
+      </div>
+      <div class="template-item" onclick="copyTemplate(this)">
+        <div class="template-name green">Interactive hover</div>
+        <div class="template-text">[OBJET] idle: float Z ±0.05m (90f) + rot Y ±5° (120f), hover state en Action séparée: scale 1.0→1.1 (15f ease out), NLA push, export GLB</div>
+      </div>
+    </div>
+
+    <!-- ANTI-PATTERNS -->
+    <h3 class="section-sub reveal" style="border-color:var(--red);">Anti-patterns</h3>
+    <div class="reveal">
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  "Anime l'objet"</div>
+          <div class="reason">Trop vague — quel type d'animation ? rotation, translation, scale ?</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>"Fais tourner le cube en Z, 1 tour en 120 frames, boucle"</code>
+        </div>
+      </div>
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  "Fais bouger le truc"</div>
+          <div class="reason">Pas d'objet précis, pas de direction, pas de paramètres.</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>"Déplace la sphère de 3m en X sur 60 frames, ease out"</code>
+        </div>
+      </div>
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  Oublier l'axe</div>
+          <div class="reason">"Fais tourner" — autour de quel axe ? Résultat imprévisible.</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>Toujours spécifier X, Y ou Z (et local vs world si ambigu)</code>
+        </div>
+      </div>
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  Pas de timing</div>
+          <div class="reason">"Fais rebondir" — combien de frames ? quelle hauteur ?</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>"Rebondit en Z depuis 2m, 3 rebonds, 90 frames total"</code>
+        </div>
+      </div>
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  Oublier le bake/export</div>
+          <div class="reason">L'animation fonctionne dans Blender mais ne s'exporte pas.</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>"Bake all actions, puis exporte en GLB avec Draco"</code>
+        </div>
+      </div>
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  Animations &gt; 5s pour le web</div>
+          <div class="reason">Fichiers GLB trop lourds, temps de chargement excessif.</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>Viser 2-4 secondes max, boucle parfaite, compression Draco</code>
+        </div>
+      </div>
+      <div class="anti-item">
+        <div class="anti-bad">
+          <div class="label">❌  Trop d'effets simultanés</div>
+          <div class="reason">Rotation + translation + scale + morph = chaos illisible.</div>
+        </div>
+        <div class="anti-good">
+          <div class="label">✅  Corrigé</div>
+          <code>Max 2-3 effets combinés, avec des rythmes différents</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 5 — EXPORT WEB
+     ══════════════════════════════════════════════════════════════ -->
+<section id="export">
+  <div class="section-header reveal" onclick="toggleSection(this)">
+    <div class="section-num blue">5</div>
+    <h2>Export Web</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="section-inner">
+
+    <h3 class="section-sub blue reveal">Pipeline d'export animation → GLB</h3>
+    <div class="pipeline reveal">
+      <div class="pipeline-step">
+        <div class="step-num green">1</div>
+        <h4>Bake All Actions</h4>
+        <ul>
+          <li>Object → Animation → Bake Action</li>
+          <li>Convertit drivers/constraints en keyframes</li>
+          <li>Nécessaire pour l'export correct</li>
+        </ul>
+        <div class="step-prompt">Prompt : "bake toutes les animations"</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num blue">2</div>
+        <h4>NLA Editor</h4>
+        <ul>
+          <li>Push Down chaque Action dans le NLA</li>
+          <li>Gérer plusieurs clips d'animation</li>
+          <li>Séparer idle / hover / click states</li>
+        </ul>
+        <div class="step-prompt">Prompt : "push down les actions dans le NLA"</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num amber">3</div>
+        <h4>Export GLB</h4>
+        <ul>
+          <li>Format glTF 2.0 (.glb = binaire compact)</li>
+          <li>Apply Modifiers ✓, Bake Animation ✓</li>
+          <li>Sampling Rate : 1 ou 2 pour alléger</li>
+        </ul>
+        <div class="step-prompt">Prompt : "exporte en GLB, apply modifiers"</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num green">4</div>
+        <h4>Compression Draco</h4>
+        <ul>
+          <li>Réduit la taille de 50-80%</li>
+          <li>Activer dans les options d'export GLB</li>
+          <li>Compression level : 6 (bon compromis)</li>
+        </ul>
+        <div class="step-prompt">Prompt : "active la compression Draco level 6"</div>
+      </div>
+    </div>
+
+    <div class="code-block reveal">
+      <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+      <pre><span class="comment"># Prompt complet d'export</span>
+"Bake toutes les animations (Bake Action, Visual Keying activé),
+ push down dans le NLA,
+ puis exporte en GLB (.glb) avec :
+   - Apply Modifiers activé
+   - Bake Animation activé, sampling rate 1
+   - Compression Draco level 6
+   - Fichier : produit_anime.glb"</pre>
+    </div>
+
+    <!-- CHECKLIST -->
+    <h3 class="section-sub reveal">Checklist finale</h3>
+    <div class="checklist reveal">
+      <div class="check-item"><span class="icon">✓</span> Spécifier l'objet par son nom exact</div>
+      <div class="check-item"><span class="icon">✓</span> Vérifier le frame range (début et fin)</div>
+      <div class="check-item"><span class="icon">✓</span> Préciser le type d'animation (rotation, translation, scale…)</div>
+      <div class="check-item"><span class="icon">✓</span> S'assurer que frame 1 = frame N+1 pour les boucles</div>
+      <div class="check-item"><span class="icon">✓</span> Indiquer l'axe (X, Y, Z) et l'espace (local/world)</div>
+      <div class="check-item"><span class="icon">✓</span> Bake les animations avant export</div>
+      <div class="check-item"><span class="icon">✓</span> Donner des valeurs numériques (degrés, mètres, frames)</div>
+      <div class="check-item"><span class="icon">✓</span> Utiliser le NLA pour les animations multi-states</div>
+      <div class="check-item"><span class="icon">✓</span> Spécifier l'easing (Bezier, Ease In-Out, Back, Bounce…)</div>
+      <div class="check-item"><span class="icon">✓</span> Exporter en GLB (pas glTF séparé) pour le web</div>
+      <div class="check-item"><span class="icon">✓</span> Préciser si l'animation doit boucler</div>
+      <div class="check-item"><span class="icon">✓</span> Activer la compression Draco</div>
+      <div class="check-item"><span class="icon">✓</span> Limiter à 2-3 effets combinés maximum</div>
+      <div class="check-item"><span class="icon">✓</span> Tester la boucle dans un viewer GLB</div>
+      <div class="check-item"><span class="icon">✓</span> Viser 2-4 secondes pour les animations web</div>
+      <div class="check-item"><span class="icon">✓</span> Vérifier la taille du fichier (&lt; 1MB idéal)</div>
+    </div>
+
+    <!-- WORKFLOW BOX -->
+    <div class="workflow-box reveal">
+      <h4>WORKFLOW RÉSUMÉ</h4>
+      <ol>
+        <li>Décrire l'animation avec précision (objet + action + axe + timing + easing + boucle)</li>
+        <li>Claude Code génère le script Python Blender</li>
+        <li>Vérifier le résultat dans le viewport (jouer la timeline)</li>
+        <li>Ajuster si nécessaire ("rends le plus lent", "ajoute un ease out", …)</li>
+        <li>Bake → NLA → Export GLB Draco → Intégrer dans le site web</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Guide Animation 3D Blender — Référence Prompting Claude Code — v1.0 — Avril 2026</p>
+</footer>
+
+<!-- ══════════════════════ SCRIPTS ══════════════════════ -->
+<script>
+// ─── Scroll Reveal ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── Active nav link ───
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+
+// ─── Collapsible sections ───
+function toggleSection(header) {
+  const inner = header.nextElementSibling;
+  header.classList.toggle('collapsed');
+  inner.classList.toggle('collapsed');
+}
+
+// ─── Copy code block ───
+function copyCode(btn) {
+  const pre = btn.parentElement.querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    btn.textContent = 'Copié ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ─── Copy template ───
+function copyTemplate(item) {
+  const text = item.querySelector('.template-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    item.classList.add('copied');
+    setTimeout(() => item.classList.remove('copied'), 2000);
+  });
+}
+
+// ─── Lexique search/filter ───
+function filterLexique() {
+  const q = document.getElementById('lexique-search').value.toLowerCase();
+  const rows = document.querySelectorAll('#lexique-table tbody tr');
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(q) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
