@@ -77,12 +77,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    --header-height: 3.5rem;
+    --header-height: 4.75rem;
     scroll-padding-top: var(--header-height);
   }
 
-  #main-content {
-    padding-top: var(--header-height);
+  @media (max-width: 768px) {
+    #main-content {
+      padding-top: var(--header-height);
+    }
   }
 
   body {
