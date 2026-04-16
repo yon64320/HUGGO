@@ -57,9 +57,13 @@
 }
 
 .hero-phone-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: min(600px, 50vw);
+  height: min(600px, 50vw);
+  z-index: 10;
   pointer-events: none;
 }
 

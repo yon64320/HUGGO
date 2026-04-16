@@ -6,7 +6,6 @@ import * as THREE from 'three';
 // ---------------------------------------------------------------------------
 // Utilities (pattern from HeroPhoneZoom)
 // ---------------------------------------------------------------------------
-function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
 function clamp(v: number, min: number, max: number) { return Math.max(min, Math.min(max, v)); }
 function easeInOutCubic(t: number) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
 function phaseProgress(p: number, start: number, end: number) { return clamp((p - start) / (end - start), 0, 1); }
@@ -21,13 +20,12 @@ interface PhoneModelProps {
 }
 
 function PhoneModel({ screenImage, progressRef, invalidateRef }: PhoneModelProps) {
-  const { scene, animations } = useGLTF('/models/phone_zoom_anim.glb');
+  const { scene, animations } = useGLTF('/models/phone_assembly_anim.glb');
   const screenTexture = useTexture(screenImage);
-  const { camera, invalidate } = useThree();
+  const { invalidate } = useThree();
   const smoothProgress = useRef(0);
   const mixerRef = useRef<THREE.AnimationMixer | null>(null);
   const clipDurationRef = useRef(0);
-  const blenderCamRef = useRef<THREE.Object3D | null>(null);
 
   // Expose invalidate to parent so ScrollTrigger can trigger frames
   useEffect(() => { invalidateRef.current = invalidate; }, [invalidate, invalidateRef]);
@@ -43,21 +41,18 @@ function PhoneModel({ screenImage, progressRef, invalidateRef }: PhoneModelProps
     screenTexture.offset.set(0, 0);
     screenTexture.wrapS = THREE.ClampToEdgeWrapping;
     screenTexture.wrapT = THREE.ClampToEdgeWrapping;
-
-    // Rotate texture for landscape phone orientation
-    screenTexture.rotation = Math.PI / 2;
+    screenTexture.rotation = 0;
     screenTexture.center.set(0.5, 0.5);
-
     screenTexture.needsUpdate = true;
 
     // Apply texture to Screen mesh
     scene.traverse((child) => {
-      if (child.name === 'Screen') {
+      if (child.name === 'Screen' || child.name === 'ScreenDisplay') {
         const mesh = child as THREE.Mesh;
         if (mesh.isMesh) {
           mesh.material = new THREE.MeshBasicMaterial({
             map: screenTexture,
-            side: THREE.FrontSide,
+            side: THREE.DoubleSide,
             transparent: false,
             depthWrite: true,
           });
@@ -66,14 +61,12 @@ function PhoneModel({ screenImage, progressRef, invalidateRef }: PhoneModelProps
       }
     });
 
-    // Find ZoomCamera in the scene graph
-    let blenderCam: THREE.Object3D | null = null;
+    // Hide the ZoomCamera mesh (not needed for rendering)
     scene.traverse((child) => {
       if (child.name === 'ZoomCamera') {
-        blenderCam = child;
+        child.visible = false;
       }
     });
-    blenderCamRef.current = blenderCam;
 
     // Setup AnimationMixer — play all clips for scrubbing
     const mixer = new THREE.AnimationMixer(scene);
@@ -115,25 +108,12 @@ function PhoneModel({ screenImage, progressRef, invalidateRef }: PhoneModelProps
     // Map 0–85% scroll to 0–100% animation
     const animProgress = clamp(p / 0.85, 0, 1);
     mixer.setTime(animProgress * clipDurationRef.current);
-
-    // Sync R3F camera from ZoomCamera in the GLB
-    const blenderCam = blenderCamRef.current;
-    if (blenderCam) {
-      blenderCam.updateWorldMatrix(true, false);
-      camera.position.setFromMatrixPosition(blenderCam.matrixWorld);
-      camera.quaternion.setFromRotationMatrix(blenderCam.matrixWorld);
-
-      // FOV: lens 35→55mm
-      const lens = lerp(35, 55, animProgress);
-      (camera as THREE.PerspectiveCamera).fov = 2 * Math.atan(12 / lens) * (180 / Math.PI);
-      (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
-    }
   });
 
   return <primitive object={scene} />;
 }
 
-useGLTF.preload('/models/phone_zoom_anim.glb');
+useGLTF.preload('/models/phone_assembly_anim.glb');
 
 // ---------------------------------------------------------------------------
 // Main component
@@ -203,9 +183,7 @@ export default function HeroPhone3D({
           }
 
           // Phase 5: Canvas fade out (0.85 → 1.00)
-          // Opaque cream bg after hero text fades — hides stats behind canvas
           if (container) {
-            container.style.backgroundColor = p > 0.20 ? 'var(--cream)' : 'transparent';
             if (p > 0.85) {
               container.style.opacity = String(Math.max(0, 1 - (p - 0.85) / 0.15));
             } else {
@@ -242,7 +220,7 @@ export default function HeroPhone3D({
   return (
     <div ref={containerRef} className="hero-phone-canvas">
       <Canvas
-        camera={{ position: [0, 0, 6.6], fov: 38 }}
+        camera={{ position: [3, 4, 5], fov: 30, near: 0.1, far: 100 }}
         frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, toneMapping: THREE.NoToneMapping }}
